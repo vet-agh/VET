@@ -16,12 +16,18 @@ const app = express()
 
 const employeesRoutes = require('./routes/employees')
 
-// Middleware to display requests in console
+// Middleware
+
+// Display requests in console
 
 app.use((req, res, next) => {
   console.log(req.path, req.method)
   next()
 })
+
+// Attach data into the request
+
+app.use(express.json())
 
 // Routes
 
