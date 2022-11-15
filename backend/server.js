@@ -13,6 +13,13 @@ require('dotenv').config()
 
 const app = express()
 
+// Middleware to display requests in console
+
+app.use((req, res, next) => {
+  console.log(req.path, req.method)
+  next()
+})
+
 // Listening for requests
 
 app.listen(process.env.PORT , () => {
