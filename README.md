@@ -14,12 +14,12 @@ Informacje:
 
 Wymagania środowiskowe:
 
-1. Środowiska Node.js
+1. Środowisko Node.js
 2. Visual Studio Code
-3. Sklonowanie repozytorium na dysk lokalny - git clone https://github.com/vet-agh/VET.git
-3. Pobranie pakietu nodemon - npm install -g nodemon
-4. Pobranie pliku .env do folderu 'backend'
-6. Pobranie pakietów node.js dla backend i frontend
+3. Sklonowane repozytorium na dysk lokalny - git clone https://github.com/vet-agh/VET.git
+3. Pobrany pakietu nodemon - npm install -g nodemon
+4. Pobrany plik .env do folderu 'backend'
+6. Pobrane pakiety node.js dla backend i frontend
   - cd backend
   - npm install
   
