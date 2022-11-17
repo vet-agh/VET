@@ -12,17 +12,14 @@ nazwa: {
 	type: String,
 	required: true
     },
-    
 kategoria: {
 	type: String,
 	required: true
     },
-
 liczba_sprzetu: {
 	type: Number,
 	required: true
     }
-    
 }, {timestamps: true})
 
 module.exports = mongoose.model('Equipment', equipmentSchema)

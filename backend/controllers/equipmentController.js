@@ -44,5 +44,5 @@ const addEquipment = async(req,res) => {
 module.exports = {
     getEquipment,
     getSingleEquipment,
-    addEquipment,
+    addEquipment
 }
