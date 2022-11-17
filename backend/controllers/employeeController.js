@@ -7,14 +7,12 @@ const Employee = require('../models/employeeModel')
 const mongoose = require('mongoose')
 const e = require('express')
 
-
 // Get all employees
 
 const getEmployees = async (req, res) => {
   const employees = await Employee.find({}).sort({createdAt: -1})
   res.status(200).json(employees)
 }
-
 
 // Get single employee
 
