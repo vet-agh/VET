@@ -20,7 +20,7 @@ const {
 router.get('/', getEquipment)
 
 // GET SINGLE object from equipment
-router.get('/', getSingleEquipment)
+router.get('/:id', getSingleEquipment)
 
 // POST a new object to equipment
 router.get('/', addEquipment)
