@@ -5,7 +5,6 @@ const {
     getClient,
     getClients,
     deleteClient,
-    updateClinet
 
 } = require('../controllers/clientController')
 // Express package
@@ -27,8 +26,5 @@ router.post('/',createClient)
 
 //DELETE a client 
 router.delete('/:id', deleteClient)
-
-//UPDATE a client
-router.patch('/:id',updateClinet)
 
 module.exports = router
