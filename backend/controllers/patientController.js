@@ -16,23 +16,11 @@ const createPatient = async (req, res) => {
 }
 
 
-
-
-
-
-
 const getPatients = async(req, res) => {
     const patients = await Patient.find({}).sort({createdAt: -1})
 
     res.status(200).json(patients)
 }
-
-
-
-
-
-
-
 
 
 const getPatient = async(req, res) => {
