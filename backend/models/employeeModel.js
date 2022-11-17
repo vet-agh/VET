@@ -21,6 +21,7 @@ const employeeSchema = new Schema({
   },
   numer_telefonu: {
     type: String,
+    required: true
   },
   adres: {
     type: String,

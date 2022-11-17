@@ -37,8 +37,8 @@ const getEmployee = async (req, res) => {
 
 // Add new employee
 
-const addEmployee = async (req, res) => { //async is because the .create method is asynchronous, we need to wait for it to
-  const {imie, nazwisko, numer_telefonu, adres, numer_konta} = req.body // We are sending the data about the object with the request body
+const addEmployee = async (req, res) => {
+  const {imie, nazwisko, numer_telefonu, adres, numer_konta} = req.body 
 
   // Adding document to database
 
@@ -50,52 +50,10 @@ const addEmployee = async (req, res) => { //async is because the .create method 
   }
 }
 
-// Delete employee
-
-const deleteEmployee = async (req, res) => {
-  const { id } = req.params
-
-  if (!mongoose.Types.ObjectId.isValid(id)){
-    return res.status(400).json({error: 'No employee with given id.'})
-  }
-
-  const employee = await Employee.findOneAndDelete({_id: id})
-
-  if(!employee) {
-    return res.status(404).json({error: 'No employee with given id.'})
-  }
-
-  res.status(200).json(employee)
-
-
-}
-
-// Update employee data
-
-const updateEmployee = async (req, res) => {
-  const { id } = req.params
-
-  if (!mongoose.Types.ObjectId.isValid(id)){
-    return res.status(400).json({error: 'No employee with given id.'})
-  }
-
-  const employee = await Employee.findByIdAndUpdate({_id: id}, {
-    ...req.body
-  })
-
-  if(!employee) {
-    return res.status(404).json({error: 'No employee with given id.'})
-  }
-
-  res.status(200).json(employee)
-}
-
 // Exports
 
 module.exports = {
   addEmployee,
   getEmployees,
-  getEmployee,
-  deleteEmployee,
-  updateEmployee
+  getEmployee
 }

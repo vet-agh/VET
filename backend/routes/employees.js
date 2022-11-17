@@ -17,9 +17,7 @@ const router = express.Router()
 const {
   addEmployee,
   getEmployees,
-  getEmployee,
-  deleteEmployee,
-  updateEmployee
+  getEmployee
 } = require('../controllers/employeeController')
 
 // routes
@@ -32,12 +30,6 @@ router.get('/:id', getEmployee)  // Where :id is a router parameter
 
 // POST employee
 router.post('/', addEmployee) // Where :id is a router parameter
-
-// DELETE single employee
-router.delete('/:id', deleteEmployee)
-
-// UPDATE single employee
-router.patch('/:id', updateEmployee)
 
 // Export employees routes to be used in server
 
