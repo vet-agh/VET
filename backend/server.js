@@ -1,5 +1,3 @@
-// Imports
-
 // Express Package
 
 const express = require('express')
@@ -19,8 +17,6 @@ const app = express()
 // Routes for patients
 
 const patientsRoutes = require('./routes/patients')
-
-// Middleware
 
 // Display requests in console
 
