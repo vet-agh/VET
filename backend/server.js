@@ -27,6 +27,10 @@ app.use((req, res, next) => {
   next()
 })
 
+// Attach data into the request
+
+app.use(express.json())
+
 // Routes
 
 app.use('/api/equipment', equipmentRoutes)
