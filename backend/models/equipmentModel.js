@@ -25,4 +25,4 @@ ilość: {
     
 }, {timestamps: true})
 
-module.exports = mongoose.model('Employee', employeeSchema)
+module.exports = mongoose.model('Equipment', equipmentSchema)
