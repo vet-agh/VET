@@ -2,10 +2,10 @@ const Patient = require('../models/patientModel')
 
 
 const createPatient = async(req, res) => {
-    const {imie, gatunek, rasa, id_wlasciciela} = req.body
+    const {id_pacjenta, imie, gatunek, rasa, id_wlasciciela} = req.body
 
     try {
-        const patient = await Patient.create({imie, gatunek, rasa, id_wlasciciela})
+        const patient = await Patient.create({id_pacjenta, imie, gatunek, rasa, id_wlasciciela})
         res.status(200).json(patient)
     } catch(error) {
         res.status(400).json({error: error.message})
