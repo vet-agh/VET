@@ -3,6 +3,11 @@
 
 const express = require('express')
 
+
+// Equipment model
+
+const Equipment = require('../models/equipmentModel')
+
 // Router objext to handle routes for equipment
 
 const router = express.Router()
