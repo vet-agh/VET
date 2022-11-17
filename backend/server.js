@@ -16,12 +16,20 @@ require('dotenv').config()
 
 const app = express()
 
+// Routes for equipment
+
+const equipmentRoutes = require('./routes/equipment')
+
 // Middleware to display requests in console
 
 app.use((req, res, next) => {
   console.log(req.path, req.method)
   next()
 })
+
+// Routes
+
+app.use('/api/equipment', equipmentRoutes)
 
 // Connect to database and listen on port 4000
 
@@ -33,4 +41,4 @@ mongoose.connect(process.env.MONGO_URI)
   }) 
   .catch((error) => {
     console.log(error) 
-  }) 
+  })
