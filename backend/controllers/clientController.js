@@ -35,7 +35,7 @@ const createClient = async(req,res) => {
         res.status(400).json({error: error.message})
     }
 }
-//delete a client 
+//Delete a client 
 const deleteClient = async(req,res)=> {
     const { id } = req.params
     
@@ -49,7 +49,7 @@ const deleteClient = async(req,res)=> {
     }
     res.status(200).json(client)
 
-    //
+    
 }
 
 //update a details about client

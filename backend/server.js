@@ -28,7 +28,7 @@ app.use((req, res, next) => {
   next()
 })
 
-//routes
+//Routes
 app.use('/api/clients',clientRoutes)
 
 // Connect to database and listen on port 4000
