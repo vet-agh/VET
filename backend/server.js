@@ -5,6 +5,9 @@
 
 const express = require('express')
 
+// Routes for clients
+const clientRoutes = require('./routes/clients')
+
 // Mongoose package
 
 const mongoose = require('mongoose')
@@ -18,11 +21,15 @@ require('dotenv').config()
 const app = express()
 
 // Middleware to display requests in console
+app.use(express.json())
 
 app.use((req, res, next) => {
   console.log(req.path, req.method)
   next()
 })
+
+//routes
+app.use('/api/clients',clientRoutes)
 
 // Connect to database and listen on port 4000
 
