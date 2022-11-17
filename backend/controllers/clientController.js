@@ -59,11 +59,11 @@ const updateClinet = async (res,req) => {
     if(!mongoose.Types.ObjectId.isValid(id)){   //check if such id exists (is valid)
         return res.status(404).json({error:'No such client'})
     }
-const client = await Client.findOneAndUpdate({_id: id},{
+    const client = await Client.findOneAndUpdate({_id: id},{
     ...req.body //adding all properties from body
 }) //each var doc has 5 properties - imie, nazwisko, numer_konta, id_pacjenta
 
-if(!workout){
+if(!client){
     return res.status(404).json({error:'No such client'})
 }
 res.status(200).json(client)
