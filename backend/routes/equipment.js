@@ -25,12 +25,5 @@ router.get('/', getSingleEquipment)
 // POST a new object to equipment
 router.get('/', addEquipment)
 
-// DELETE object from equipment
-router.get('/', deleteEquipment)
-
-// UPDATE object from equipment
-router.get('/', updateEquipment)
-
-
 // Export equipment routes to be used in server
 module.exports = router
