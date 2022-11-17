@@ -18,7 +18,7 @@ kategoria: {
 	required: true
     },
 
-ilość: {
+liczba_sprzetu: {
 	type: Number,
 	required: true
     }
