@@ -1,20 +1,26 @@
 const Client = require('../models/clientModel')
 // Loading mongoose package
 const mongoose = require('mongoose')
+const { response, json } = require('express')
 
 
 //get all clients
 const getClients = async(req,res) => {
-    const client = await Client.find({}).sort({createdAt: -1}) //listing all of clients sorted by creating dates
+    const clients = await Client.find({}).sort({createdAt: -1}) //listing all of clients sorted by creating dates
 
-    res.status(200).json(workouts) //200 - resons = all ok
+    res.status(200).json(clients) //200 - resons = all ok
 }
+
+
 // get a single client 
 const getClient = async(req,res) =>{
     const { id } = req.params
+    if(!mongoose.Types.ObjectId.isValid(id)){
+        return res.status(400).json({error:'No such client'})
+    }
     const client = await Client.findById(id)
-    if(!workout){
-        return res.status(404),json({error:'No such client'})
+    if(!client){
+        return res.status(404).json({error:'No such client'})
     }
     res.status(200).json(client)
 }
@@ -29,14 +35,45 @@ const createClient = async(req,res) => {
         res.status(400).json({error: error.message})
     }
 }
-//delete a workout 
+//delete a client 
+const deleteClient = async(req,res)=> {
+    const { id } = req.params
+    
+    if(!mongoose.Types.ObjectId.isValid(id)){   //check if such id exists
+        return res.status(404).json({error:'No such client'})
+    }
+    const client = await Client.findOneAndDelete({_id: id})
+    
+    if(!client){
+        return res.status(400).json({error:'No such client'})
+    }
+    res.status(200).json(client)
+
+    //
+}
 
 //update a details about client
+const updateClinet = async (res,req) => {
+    const { id } = req.params
+    
+    if(!mongoose.Types.ObjectId.isValid(id)){   //check if such id exists (is valid)
+        return res.status(404).json({error:'No such client'})
+    }
+const client = await Client.findOneAndUpdate({_id: id},{
+    ...req.body //adding all properties from body
+}) //each var doc has 5 properties - imie, nazwisko, numer_konta, id_pacjenta
 
+if(!workout){
+    return res.status(404).json({error:'No such client'})
+}
+res.status(200).json(client)
+}
 
 //exporting function from clients.js
 module.exports = {
     getClients,
     getClient,
-    createClient
+    createClient,
+    deleteClient,
+    updateClinet
 }
