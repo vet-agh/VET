@@ -1,4 +1,5 @@
 const Client = require('../models/clientModel')
+
 // Loading mongoose package
 const mongoose = require('mongoose')
 const { response, json } = require('express')
@@ -24,6 +25,7 @@ const getClient = async(req,res) =>{
     }
     res.status(200).json(client)
 }
+
 //create new client
 const createClient = async(req,res) => {
     const {imie, nazwisko, numer_konta, id_pacjenta} = req.body
@@ -35,6 +37,7 @@ const createClient = async(req,res) => {
         res.status(400).json({error: error.message})
     }
 }
+
 //Delete a client 
 const deleteClient = async(req,res)=> {
     const { id } = req.params
@@ -58,6 +61,5 @@ module.exports = {
     getClients,
     getClient,
     createClient,
-    deleteClient,
     
 }

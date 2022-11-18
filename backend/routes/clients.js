@@ -4,9 +4,9 @@ const {
     createClient,
     getClient,
     getClients,
-    deleteClient,
 
 } = require('../controllers/clientController')
+
 // Express package
 const express = require('express')
 
@@ -14,10 +14,11 @@ const express = require('express')
 const Client = require('../models/clientModel')
 
 // Router object to handle routes for employees
-
 const router = express.Router()
+
 //GET all clients
 router.get('/',getClients)
+
 //GET a single client
 router.get('/:id',getClient)
 

@@ -1,9 +1,10 @@
 const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema
+
 //creating new Schema 
 const clinetSchema = new Schema({
-    imie:{
+    imie: {
         type: String,
         required: true
     },
@@ -11,10 +12,10 @@ const clinetSchema = new Schema({
         type: String,
         required : true
     },
-    numer_konta:{
+    numer_konta: {
         type: String
     },
-    id_pacjenta:{
+    id_pacjenta: {
         type: Number,
         required: true
     }

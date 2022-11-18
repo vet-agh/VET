@@ -29,10 +29,9 @@ app.use((req, res, next) => {
 })
 
 //Routes
-app.use('/api/clients',clientRoutes)
+app.use('/api/clients', clientRoutes)
 
 // Connect to database and listen on port 4000
-
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
     app.listen(process.env.PORT , () => {
