@@ -1,4 +1,4 @@
-// Imports
+// Importing packages
 
 // Express Package
 
@@ -16,11 +16,15 @@ require('dotenv').config()
 
 const app = express()
 
-// Routes for equipment
+// Routes variable paths
 
+const employeesRoutes = require('./routes/employees')
+const clientRoutes = require('./routes/clients')
 const equipmentRoutes = require('./routes/equipment')
 
-// Middleware to display requests in console
+// Middleware
+
+// Display requests in console
 
 app.use((req, res, next) => {
   console.log(req.path, req.method)
@@ -31,9 +35,12 @@ app.use((req, res, next) => {
 
 app.use(express.json())
 
-// Routes
+//Routes
 
+app.use('/api/clients', clientRoutes)
+app.use('/api/employees', employeesRoutes)
 app.use('/api/equipment', equipmentRoutes)
+
 
 // Connect to database and listen on port 4000
 
