@@ -16,14 +16,28 @@ require('dotenv').config()
 
 const app = express()
 
-// Middleware to display requests in console
+// Routes for employees
+
+const employeesRoutes = require('./routes/employees')
+
+// Middleware
+
+// Display requests in console
 
 app.use((req, res, next) => {
   console.log(req.path, req.method)
   next()
 })
 
-// Connect to database and listen on port 4000
+// Attach data into the request
+
+app.use(express.json())
+
+// Routes
+
+app.use('/api/employees', employeesRoutes)
+
+// Listening for requests
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
