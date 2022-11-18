@@ -5,9 +5,6 @@
 
 const express = require('express')
 
-// Routes for clients
-const clientRoutes = require('./routes/clients')
-
 // Mongoose package
 
 const mongoose = require('mongoose')
@@ -21,15 +18,33 @@ require('dotenv').config()
 const app = express()
 
 // Middleware to display requests in console
+
 app.use(express.json())
+
+// Routes variable paths
+
+const employeesRoutes = require('./routes/employees')
+const clientRoutes = require('./routes/clients')
+
+// Middleware
+
+// Display requests in console
 
 app.use((req, res, next) => {
   console.log(req.path, req.method)
   next()
 })
 
+// Attach data into the request
+
+app.use(express.json())
+
 //Routes
+
 app.use('/api/clients', clientRoutes)
+app.use('/api/employees', employeesRoutes)
+
+// Listening for requests
 
 // Connect to database and listen on port 4000
 mongoose.connect(process.env.MONGO_URI)
