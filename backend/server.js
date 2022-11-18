@@ -1,6 +1,5 @@
 // Importing packages
 
-
 // Express Package
 
 const express = require('express')
@@ -17,14 +16,11 @@ require('dotenv').config()
 
 const app = express()
 
-// Middleware to display requests in console
-
-app.use(express.json())
-
 // Routes variable paths
 
 const employeesRoutes = require('./routes/employees')
 const clientRoutes = require('./routes/clients')
+const equipmentRoutes = require('./routes/equipment')
 
 // Middleware
 
@@ -43,10 +39,11 @@ app.use(express.json())
 
 app.use('/api/clients', clientRoutes)
 app.use('/api/employees', employeesRoutes)
+app.use('/api/equipment', equipmentRoutes)
 
-// Listening for requests
 
 // Connect to database and listen on port 4000
+
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
     app.listen(process.env.PORT , () => {
@@ -55,4 +52,4 @@ mongoose.connect(process.env.MONGO_URI)
   }) 
   .catch((error) => {
     console.log(error) 
-  }) 
+  })
