@@ -61,5 +61,5 @@ module.exports = {
     getClients,
     getClient,
     createClient,
-    
+    deleteClient
 }

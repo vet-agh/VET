@@ -4,6 +4,7 @@ const {
     createClient,
     getClient,
     getClients,
+    deleteClient
 
 } = require('../controllers/clientController')
 
