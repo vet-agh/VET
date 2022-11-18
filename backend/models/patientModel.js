@@ -3,10 +3,6 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const patientSchema = new Schema({
-id_pacjenta: {
-    type: Number,
-    required: true
-},
     imie: {
     type: String,
     required: true
