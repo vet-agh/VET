@@ -27,7 +27,7 @@ router.get('/:id', getSingleEquipment)
 router.post('/', addEquipment)
 
 // DELETE object from equipment
-router.delete('/', deleteEquipment)
+router.delete('/:id', deleteEquipment)
 
 // Export equipment routes to be used in server
 module.exports = router
