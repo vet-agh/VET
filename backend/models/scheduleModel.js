@@ -13,16 +13,12 @@ const scheduleSchema = new Schema({
     default: Date.now, 
     required: true
   },
+  czas_trwania_min: {
+    type: Number, 
+    required: true
+  },
   usluga: {
     type: String,
-    required: true
-  },
-  id_budynku: {
-    type: Number,
-    required: true
-  },
-  nr_pokoju: {
-    type: Number,
     required: true
   },
   id_lekarza: {
@@ -36,10 +32,6 @@ const scheduleSchema = new Schema({
   id_pacjenta: {
     type: Number,
     required: true
-  }, 
-  uwagi: {
-    type: String,
-    required: false
   }
 }, {timestamps: true})
 
