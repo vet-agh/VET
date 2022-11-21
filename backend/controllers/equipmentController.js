@@ -39,10 +39,27 @@ const addEquipment = async(req,res) => {
         res.status(400).json({error: error.message})   // returning an error message
     }
 }
+// Delete existing object from equipment
+const deleteEquipment = async(req,res) => {
+    const{ id } = req.params                    
+
+    if (!mongoose.Types.ObjectId.isValid(id)){                                                //method to check if the id is valid
+        return res.status(400).json({error: 'No object in equipment registry with given id'}) // if it's not valid it returns response with error message
+    }
+
+    const equipment = await Equipment.findOneAndDelete({_id:id}) //method to deleting object by given id
+     
+    if(!equipment){                            // if there is no object by given id we use if statement and we send back error message
+        return res.status(404).json({error:'No object in equipment registry with given id'})
+    }
+
+    res.status(200).json(equipment)   // if it finds id, it send back json with object we just deleted
+ }
 
  // exporting functions
 module.exports = {
     getEquipment,
     getSingleEquipment,
-    addEquipment
+    addEquipment,
+    deleteEquipment
 }
