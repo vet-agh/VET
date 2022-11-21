@@ -13,7 +13,8 @@ const router = express.Router()
 const {
     getEquipment,
     getSingleEquipment,
-    addEquipment
+    addEquipment,
+    deleteEquipment
 } = require('../controllers/equipmentController')
 
 // GET all equipment
@@ -24,6 +25,9 @@ router.get('/:id', getSingleEquipment)
 
 // POST a new object to equipment
 router.post('/', addEquipment)
+
+// DELETE object from equipment
+router.delete('/', deleteEquipment)
 
 // Export equipment routes to be used in server
 module.exports = router
