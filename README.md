@@ -8,8 +8,9 @@ Informacje:
 3. Wszystkie commity muszą mieć strukture typu JIRA-ID 'short description' f.e. 'VET-21 Adding Employee Model'
 4. Commity powinny być atomowe
 5. Kod musi być okomentowany
-6. Skończony task musi być wystawiony jako pull request do branch develop
-7. Każdy task musi przejść proces code review dopiero wtedy może być mergowany do głównego brancha develop
+6. Unit Testy do każdej funkcjonalności
+7. Skończony task musi być wystawiony jako pull request do branch develop
+8. Każdy task musi przejść proces code review dopiero wtedy może być mergowany do głównego brancha develop
 
 
 Wymagania środowiskowe:
