@@ -54,7 +54,7 @@ const deleteEmployee = async(req, res) => {
     return res.status(400).json({error: "No employee with given id."})
   }
 
-  const employee = await Employee.findById({_id: id})
+  const employee = await Employee.findOneAndDelete({_id: id})
 
   if(!employee) {
     return res.status(404).json({error: "No employee with given id."})
