@@ -14,7 +14,8 @@ const {
     getEquipment,
     getSingleEquipment,
     addEquipment,
-    deleteEquipment
+    deleteEquipment,
+    updateEquipment
 } = require('../controllers/equipmentController')
 
 // GET all equipment
@@ -28,6 +29,9 @@ router.post('/', addEquipment)
 
 // DELETE object from equipment
 router.delete('/:id', deleteEquipment)
+
+// UPDATE object from equipment
+router.patch('/:id', updateEquipment)
 
 // Export equipment routes to be used in server
 module.exports = router
