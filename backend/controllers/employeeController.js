@@ -68,5 +68,6 @@ const deleteEmployee = async(req, res) => {
 module.exports = {
   addEmployee,
   getEmployees,
-  getEmployee
+  getEmployee,
+  deleteEmployee
 }
