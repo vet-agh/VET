@@ -50,10 +50,9 @@ const deleteClient = async(req,res)=> {
     if(!client){
         return res.status(400).json({error:'No such client'})
     }
-    res.status(200).json(client)
-
-    
+    res.status(200).json(client) 
 }
+
 //update a details about client
 const updateClient = async (req,res) => {
     const { id } = req.params
