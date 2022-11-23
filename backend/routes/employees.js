@@ -18,7 +18,8 @@ const {
   addEmployee,
   getEmployees,
   getEmployee,
-  deleteEmployee
+  deleteEmployee,
+  updateEmployee
 } = require('../controllers/employeeController')
 
 // routes
@@ -30,11 +31,13 @@ router.get('/', getEmployees)
 router.get('/:id', getEmployee)  // Where :id is a router parameter
 
 // POST employee
-router.post('/', addEmployee) // Where :id is a router parameter
+router.post('/', addEmployee)
 
 // DELETE employee
-
 router.delete('/:id', deleteEmployee)
+
+//PATCH employee
+router.patch('/:id', updateEmployee)
 
 // Export employees routes to be used in server
 
