@@ -4,7 +4,8 @@ const {
     createClient,
     getClient,
     getClients,
-    deleteClient
+    deleteClient,
+    updateClient
 
 } = require('../controllers/clientController')
 
@@ -28,5 +29,8 @@ router.post('/',createClient)
 
 //DELETE a client 
 router.delete('/:id', deleteClient)
+
+//UPDATE a client
+router.patch('/:id', updateClient)
 
 module.exports = router
