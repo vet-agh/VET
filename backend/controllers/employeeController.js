@@ -47,10 +47,51 @@ const addEmployee = async (req, res) => {
   }
 }
 
+// Delete single employee
+
+const deleteEmployee = async(req, res) => {
+  const { id } = req.params
+  
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(400).json({error: "No employee with given id."})
+  }
+
+  const employee = await Employee.findOneAndDelete({_id: id})
+
+  if(!employee) {
+    return res.status(404).json({error: "No employee with given id."})
+  }
+
+  res.status(200).json(employee)
+}
+
+// Update single employee
+
+const updateEmployee = async (req, res) => {
+  const { id } = req.params
+
+  if (!mongoose.Types.ObjectId.isValid(id)){
+    return res.status(400).json({error: 'No employee with given id.'})
+  }
+
+  const employee = await Employee.findByIdAndUpdate({_id: id}, {
+    ...req.body
+  })
+
+  if(!employee) {
+    return res.status(404).json({error: 'No employee with given id.'})
+  }
+
+  res.status(200).json(employee)
+}
+
+
 // Exports
 
 module.exports = {
   addEmployee,
   getEmployees,
-  getEmployee
+  getEmployee,
+  deleteEmployee,
+  updateEmployee
 }
