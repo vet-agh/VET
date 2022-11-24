@@ -50,9 +50,24 @@ const deleteClient = async(req,res)=> {
     if(!client){
         return res.status(400).json({error:'No such client'})
     }
-    res.status(200).json(client)
+    res.status(200).json(client) 
+}
 
+//update a details about client
+const updateClient = async (req,res) => {
+    const { id } = req.params
     
+    if(!mongoose.Types.ObjectId.isValid(id)){   //check if such id exists (is valid)
+        return res.status(400).json({error:'No such client'})
+    }
+    const client = await Client.findOneAndUpdate({_id: id}, {
+    ...req.body //adding all properties from body
+}) //each var doc has 5 properties - imie, nazwisko, numer_konta, id_pacjenta
+
+if(!client){
+    return res.status(404).json({error:'No such client'})
+}
+res.status(200).json(client)
 }
 
 
@@ -61,5 +76,6 @@ module.exports = {
     getClients,
     getClient,
     createClient,
-    deleteClient
+    deleteClient,
+    updateClient
 }
