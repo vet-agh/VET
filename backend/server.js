@@ -23,6 +23,7 @@ const employeesRoutes = require('./routes/employees')
 const clientRoutes = require('./routes/clients')
 const equipmentRoutes = require('./routes/equipment')
 const scheduleRoutes = require('./routes/schedule')
+const clinicRoutes = require('./routes/clinics')
 
 // Middleware
 
@@ -44,7 +45,7 @@ app.use('/api/clients', clientRoutes)
 app.use('/api/employees', employeesRoutes)
 app.use('/api/equipment', equipmentRoutes)
 app.use('/api/schedule', scheduleRoutes)
-
+app.use('/api/clinics', clinicRoutes)
 
 // Connect to database and listen on port 4000
 
