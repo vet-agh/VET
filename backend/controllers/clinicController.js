@@ -25,7 +25,6 @@ const getClinic = async (req, res) => {
   if(!clinic) {
     return res.status(404).json({error: 'No clinic with given id.'})
   }
-
   res.status(200).json(clinic)
 }
 
@@ -56,7 +55,6 @@ const deleteClinic = async(req, res) => {
   if(!clinic) {
     return res.status(404).json({error: "No clinic with given id."})
   }
-
   res.status(200).json(clinic)
 }
 
@@ -76,7 +74,6 @@ const updateClinic = async (req, res) => {
   if(!clinic) {
     return res.status(404).json({error: 'No clinic with given id.'})
   }
-
   res.status(200).json(clinic)
 }
 
