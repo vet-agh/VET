@@ -80,8 +80,6 @@ const updateClinic = async (req, res) => {
   res.status(200).json(clinic)
 }
 
-
-
 module.exports = {
   createClinic,
   getClinic,

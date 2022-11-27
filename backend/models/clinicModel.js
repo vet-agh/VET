@@ -18,4 +18,3 @@ const clinicSchema = new Schema({
     }
 },{timestamps:true})
 module.exports = mongoose.model('Clinic', clinicSchema)
-
