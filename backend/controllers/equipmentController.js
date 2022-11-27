@@ -30,9 +30,9 @@ const getSingleEquipment = async(req,res) => {
 
 // Add new object to equipment (Add doc to DB)
 const addEquipment = async(req,res) => {
-    const {nazwa, kategoria, liczba_sprzetu} = req.body // grabbing properties from req.body
+    const {nazwa, kategoria, liczba_sprzetu, id_kliniki} = req.body // grabbing properties from req.body
     try {
-        const equipment = await Equipment.create({nazwa, kategoria, liczba_sprzetu}) // trying to create new object in Equipment
+        const equipment = await Equipment.create({nazwa, kategoria, liczba_sprzetu, id_kliniki}) // trying to create new object in Equipment
         res.status(200).json(equipment) // returning that equipment is json
     } 
     catch(error) {                                          // catching the erorr if it's any  
