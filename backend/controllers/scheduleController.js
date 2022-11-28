@@ -47,10 +47,28 @@ const addSchedule = async (req, res) => {
   }
 }
 
+
+//update a details about client
+const updateSchedule = async (req,res) => {
+  const { id } = req.params
+  
+  if(!mongoose.Types.ObjectId.isValid(id)){   
+      return res.status(400).json({error:'No such appointment'})
+  }
+  const schedule = await Schedule.findOneAndUpdate({_id: id}, {
+  ...req.body 
+}) 
+
+if(!schedule){
+  return res.status(404).json({error:'No such appointment'})
+}
+res.status(200).json(schedule)
+}
 // Exports
 
 module.exports = {
   getSchedules,
   getSchedule,
-  addSchedule
+  addSchedule,
+  updateSchedule
 }
