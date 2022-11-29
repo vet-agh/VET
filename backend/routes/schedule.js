@@ -13,7 +13,8 @@ const router = express.Router()
 const {
   getSchedules,
   getSchedule,
-  addSchedule
+  addSchedule,
+  updateSchedule
 } = require('../controllers/scheduleController')
 
 // routes
@@ -26,6 +27,9 @@ router.get('/:id', getSchedule)  // Where :id is a router parameter
 
 // POST appointment
 router.post('/', addSchedule) 
+
+//UPDATE appointment
+router.patch('/:id', updateSchedule)
 
 // Export schedule routes to be used in server
 module.exports = router
