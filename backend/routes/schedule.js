@@ -28,7 +28,7 @@ router.get('/:id', getSchedule)  // Where :id is a router parameter
 // POST appointment
 router.post('/', addSchedule) 
 
-//DELATE appointment
+//DELETE appointment
 router.delete('/:id', deleteSchedule)
 
 // Export schedule routes to be used in server

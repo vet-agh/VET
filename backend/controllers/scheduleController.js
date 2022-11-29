@@ -47,7 +47,7 @@ const addSchedule = async (req, res) => {
   }
 }
 
-// Delate appointment
+// Delete appointment
 const deleteSchedule = async(req,res)=> {
   const { id } = req.params
   
