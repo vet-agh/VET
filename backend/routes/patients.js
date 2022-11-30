@@ -8,24 +8,27 @@ const router = express.Router()
 
 
 const {
-    createPatient,
-    getPatient,
     getPatients,
-    deletePatient
+    getPatient,
+    createPatient,
+    deletePatient,
+    updatePatient
 } = require('../controllers/patientController')
   
-// POST patient
-router.post('/', createPatient)
-
 // GET all patients
 router.get('/', getPatients)
 
-// GET a single patient
+// GET single patient
 router.get('/:id', getPatient) 
+
+// POST patient
+router.post('/', createPatient)
 
 // DELETE patient
 router.delete('/:id', deletePatient)
 
+//PATCH employee
+router.patch('/:id', updatePatient)
 
 
 module.exports = router

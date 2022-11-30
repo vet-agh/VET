@@ -46,11 +46,31 @@ const deletePatient = async(req, res) => {
     }
   
     res.status(200).json(patient)
-  }
+}
+
+
+const updatePatient = async (req, res) => {
+    const { id } = req.params
+  
+    if (!mongoose.Types.ObjectId.isValid(id)){
+      return res.status(400).json({error: "No patient with given id."})
+    }
+  
+    const patient = await Patient.findByIdAndUpdate({_id: id}, {
+      ...req.body
+    })
+  
+    if(!patient) {
+      return res.status(404).json({error: 'No patient with given id.'})
+    }
+  
+    res.status(200).json(patient)
+}
 
 module.exports = {
-    createPatient,
     getPatients,
     getPatient,
-    deletePatient
+    createPatient,
+    deletePatient,
+    updatePatient
 }
