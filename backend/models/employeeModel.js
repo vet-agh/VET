@@ -27,9 +27,14 @@ const employeeSchema = new Schema({
     type: String,
   },
   numer_konta: {
-    type: Number,
+    type: String,     //bug fix - bank account can possibly start with zero
+    required: true
+  },
+  id_kliniki: {
+    type: String,
     required: true
   }
+
 }, {timestamps: true})
 
 module.exports = mongoose.model('Employee', employeeSchema)

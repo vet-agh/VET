@@ -35,12 +35,12 @@ const getEmployee = async (req, res) => {
 // Add new employee
 
 const addEmployee = async (req, res) => {
-  const {imie, nazwisko, numer_telefonu, adres, numer_konta} = req.body 
+  const {imie, nazwisko, numer_telefonu, adres, numer_konta, id_kliniki} = req.body 
 
   // Adding document to database
 
   try {
-    const employee = await Employee.create({imie, nazwisko, numer_telefonu, adres, numer_konta})
+    const employee = await Employee.create({imie, nazwisko, numer_telefonu, adres, numer_konta, id_kliniki})
     res.status(200).json(employee)
   } catch (error) {
     res.status(400).json({error: error.message}) 

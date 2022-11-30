@@ -19,7 +19,11 @@ kategoria: {
 liczba_sprzetu: {
 	type: Number,
 	required: true
-    }
+    },
+id_kliniki: {
+	  type: String,
+	  required: true
+	}
 }, {timestamps: true})
 
 module.exports = mongoose.model('Equipment', equipmentSchema)

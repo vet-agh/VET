@@ -10,7 +10,6 @@ const Schema = mongoose.Schema
 const scheduleSchema = new Schema({
   data: {
     type: Date,
-    default: Date.now, 
     required: true
   },
   czas_trwania_min: {
@@ -22,15 +21,19 @@ const scheduleSchema = new Schema({
     required: true
   },
   id_lekarza: {
-    type: Number,
+    type: String,     //changing all id's to string in order to match mongo _id
     required: true
   },
   id_klienta: {
-    type: Number,
+    type: String,
     required: true
   },
   id_pacjenta: {
-    type: Number,
+    type: String,
+    required: true
+  },
+  id_kliniki: {
+    type: String,
     required: true
   }
 }, {timestamps: true})
