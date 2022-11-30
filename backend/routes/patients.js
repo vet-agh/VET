@@ -11,6 +11,7 @@ const {
     createPatient,
     getPatient,
     getPatients,
+    deletePatient
 } = require('../controllers/patientController')
   
 // POST patient
@@ -21,6 +22,9 @@ router.get('/', getPatients)
 
 // GET a single patient
 router.get('/:id', getPatient) 
+
+// DELETE patient
+router.delete('/:id', deletePatient)
 
 
 
