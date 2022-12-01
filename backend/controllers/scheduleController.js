@@ -35,12 +35,12 @@ const getSchedule = async (req, res) => {
 // Add new appointment
 
 const addSchedule = async (req, res) => {
-  const {data, czas_trwania_min, usluga, id_lekarza, id_klienta, id_pacjenta} = req.body 
+  const {data, czas_trwania_min, usluga, id_lekarza, id_klienta, id_pacjenta, id_kliniki} = req.body 
 
   // Adding document to database
 
   try {
-    const schedule = await Schedule.create({data, czas_trwania_min, usluga, id_lekarza, id_klienta, id_pacjenta})
+    const schedule = await Schedule.create({data, czas_trwania_min, usluga, id_lekarza, id_klienta, id_pacjenta, id_kliniki})
     res.status(200).json(schedule)
   } catch (error) {
     res.status(400).json({error: error.message}) 
@@ -48,7 +48,7 @@ const addSchedule = async (req, res) => {
 }
 
 // Delete appointment
-const deleteSchedule = async(req,res)=> {
+const deleteSchedule = async(req,res) => {
   const { id } = req.params
   
   if(!mongoose.Types.ObjectId.isValid(id)){   //check if such id exists
@@ -61,11 +61,29 @@ const deleteSchedule = async(req,res)=> {
   }
   res.status(200).json(schedule) 
 }
+
+//update a details about client
+const updateSchedule = async (req,res) => {
+  const { id } = req.params
+  
+  if(!mongoose.Types.ObjectId.isValid(id)){   
+      return res.status(400).json({error:'No such appointment'})
+  }
+  const schedule = await Schedule.findOneAndUpdate({_id: id}, {
+  ...req.body 
+}) 
+
+if(!schedule){
+  return res.status(404).json({error:'No such appointment'})
+}
+res.status(200).json(schedule)
+}
 // Exports
 
 module.exports = {
   getSchedules,
   getSchedule,
   addSchedule,
-  deleteSchedule
+  deleteSchedule,
+  updateSchedule
 }

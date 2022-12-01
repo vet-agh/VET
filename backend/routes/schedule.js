@@ -14,7 +14,8 @@ const {
   getSchedules,
   getSchedule,
   addSchedule,
-  deleteSchedule
+  deleteSchedule,
+  updateSchedule
 } = require('../controllers/scheduleController')
 
 // routes
@@ -30,6 +31,9 @@ router.post('/', addSchedule)
 
 //DELETE appointment
 router.delete('/:id', deleteSchedule)
+
+//UPDATE appointment
+router.patch('/:id', updateSchedule)
 
 // Export schedule routes to be used in server
 module.exports = router
