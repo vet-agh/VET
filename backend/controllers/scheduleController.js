@@ -47,6 +47,20 @@ const addSchedule = async (req, res) => {
   }
 }
 
+// Delete appointment
+const deleteSchedule = async(req,res) => {
+  const { id } = req.params
+  
+  if(!mongoose.Types.ObjectId.isValid(id)){   //check if such id exists
+      return res.status(400).json({error: 'No appointment with given id.'})
+  }
+  const schedule = await Schedule.findOneAndDelete({_id: id})
+  
+  if(!schedule){
+      return res.status(404).json({error: error.message})
+  }
+  res.status(200).json(schedule) 
+}
 
 //update a details about client
 const updateSchedule = async (req,res) => {
@@ -70,5 +84,6 @@ module.exports = {
   getSchedules,
   getSchedule,
   addSchedule,
+  deleteSchedule,
   updateSchedule
 }

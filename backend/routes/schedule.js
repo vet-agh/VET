@@ -14,6 +14,7 @@ const {
   getSchedules,
   getSchedule,
   addSchedule,
+  deleteSchedule,
   updateSchedule
 } = require('../controllers/scheduleController')
 
@@ -27,6 +28,9 @@ router.get('/:id', getSchedule)  // Where :id is a router parameter
 
 // POST appointment
 router.post('/', addSchedule) 
+
+//DELETE appointment
+router.delete('/:id', deleteSchedule)
 
 //UPDATE appointment
 router.patch('/:id', updateSchedule)
