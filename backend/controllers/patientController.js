@@ -11,10 +11,7 @@ const createPatient = async (req, res) => {
     } catch(error) {
         res.status(400).json({error: error.message})
     }
-
-
 }
-
 
 const getPatients = async(req, res) => {
     const patients = await Patient.find({}).sort({createdAt: -1})
@@ -26,19 +23,54 @@ const getPatients = async(req, res) => {
 const getPatient = async(req, res) => {
     const{ id } = req.params
 
-
-
     const patient = await Patient.findById(id)
 
     if(!patient) {
-        return res.status(404).json({error: 'No such patient'})
+        return res.status(404).json({error: 'No patient with given id.'})
     }
 
     res.status(200).json(patient)
 }
 
+const deletePatient = async(req, res) => {
+    const { id } = req.params
+    
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({error: "No patient with given id."})
+    }
+  
+    const patient = await Patient.findOneAndDelete({_id: id})
+  
+    if(!patient) {
+      return res.status(404).json({error: "No patient with given id."})
+    }
+  
+    res.status(200).json(patient)
+}
+
+
+const updatePatient = async (req, res) => {
+    const { id } = req.params
+  
+    if (!mongoose.Types.ObjectId.isValid(id)){
+      return res.status(400).json({error: "No patient with given id."})
+    }
+  
+    const patient = await Patient.findByIdAndUpdate({_id: id}, {
+      ...req.body
+    })
+  
+    if(!patient) {
+      return res.status(404).json({error: 'No patient with given id.'})
+    }
+  
+    res.status(200).json(patient)
+}
+
 module.exports = {
-    createPatient,
     getPatients,
-    getPatient
+    getPatient,
+    createPatient,
+    deletePatient,
+    updatePatient
 }
