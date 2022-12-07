@@ -12,6 +12,10 @@ export const equipmentReducer = (state, action) => {
             return {
                 equipment: [action.payload, ...state.equipment]
             }
+        case 'DELETE_EQUIPMENT':
+            return {
+                equipment: state.equipment.filter((e) => e._id !== action.payload._id )
+            }
         default:
             return state
     }
