@@ -31,7 +31,7 @@ const EquipmentForm = () => {
             setLiczbaSprzetu('')
             setIdKliniki('')
             setError(null)
-            console.log('New equipment added!', json)
+            console.log('Dodano nowy sprzęt!', json)
         }
     }
 
