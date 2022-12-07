@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 // components
 import EquipmentDetails from '../components/EquipmentDetails'
+import EquipmentForm from "../components/EquipmentForm";
 
 const EquipmentPage = () => {
     const [equipment, setEquipment] = useStat(null)
@@ -28,6 +29,7 @@ const EquipmentPage = () => {
                 ))}
         <h2> Rejestr sprzętu </h2>
         </div> 
+        <EquipmentForm/>
     </div>
     )
 }
