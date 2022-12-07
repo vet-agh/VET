@@ -1,6 +1,9 @@
 import { useState } from "react"
+import { useEquipmentContext } from "../hooks/useEquipmentContext";
 
 const EquipmentForm = () => {
+    const {dispatch} = useEquipmentContext()
+
     const {nazwa, setNazwa} = useState('')
     const {kategoria, setKategoria} = useState('')
     const {liczba_sprzetu, setLiczbaSprzetu} = useState('')
@@ -32,6 +35,7 @@ const EquipmentForm = () => {
             setIdKliniki('')
             setError(null)
             console.log('Dodano nowy sprzęt!', json)
+            dispatch({type: 'CREATE_EQUIPMENT', payload: json})
         }
     }
 
