@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect} from "react";
+import { useEquipmentContext } from "../hooks/useEquipmentContext";
 
 // components
 import EquipmentDetails from '../components/EquipmentDetails'
 import EquipmentForm from "../components/EquipmentForm";
 
 const EquipmentPage = () => {
-    const [equipment, setEquipment] = useStat(null)
+    const {equipment, dispatch} = useEquipmentContext()
 
     useEffect(() => {
     const fetchEquipment = async() => {
@@ -13,7 +14,7 @@ const EquipmentPage = () => {
         const json = await response.json()
 
         if(response.ok) {
-            setEquipment(json)
+          dispatch({type: 'SET_EQUIPMENT', payload: json})
         }
     }
 
