@@ -16,7 +16,7 @@ export const equipmentReducer = (state, action) => {
             return state
     }
 }
-const EquipmentContextProvider = ({children}) => {
+export const EquipmentContextProvider = ({children}) => {
 
     const [state, dispatch] = useReducer(equipmentReducer, {
         equipment: null
@@ -28,3 +28,4 @@ const EquipmentContextProvider = ({children}) => {
         </EquipmentContext.Provider>
     )
 }
+
