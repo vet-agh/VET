@@ -21,10 +21,9 @@ export const EmployeeContextProvider = ({children}) => {
     const [state,dispatch] = useReducer(EmployeeReducer, {
         employees: null
     })
-
     return (
         <EmployeeContext.Provider value={{...state,dispatch}}>
-            {children }
+            { children }
         </EmployeeContext.Provider>
     )
 }

@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './views/Home'
 import EmployeePage from './views/EmployeeMainPage'
 
-
 function App() {
   return (
     <div className="App">
