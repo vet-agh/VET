@@ -12,6 +12,10 @@ export const EmployeeReducer = (state, action) => {
                 return{
                     employees: [action.payload, ...state.employees]
                 }
+            case 'DELETE_EMPLOYEES':
+                return {
+                    employees: state.employees.filter(e => e._id !== action.payload._id)
+                 }
             default:
             return state
     }
