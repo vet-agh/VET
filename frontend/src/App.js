@@ -1,6 +1,8 @@
-import { BrowserRouter, Routes, Route} from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import Home from './views/Home'
+import EmployeePage from './views/EmployeeMainPage'
+
 
 function App() {
   return (
@@ -10,8 +12,9 @@ function App() {
           <Routes>
             <Route
               path="/"
-              element={<Home />}
-            />
+              element={<Home />}/>
+              <Route path="/employees" element={<EmployeePage />} />
+
           </Routes>
         </div>
       </BrowserRouter>
