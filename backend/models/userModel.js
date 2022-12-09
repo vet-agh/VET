@@ -16,17 +16,19 @@ const userSchema = new Schema({
 })
 
 // static signup method
-userSchema.statics.signup = async function( email, password ) {
+userSchema.statics.signup = async function(email, password) {
 
-    const exists = await this.findOne({ email })
+    const exists = await this.findOne({email})
 
     if (exists) {
         throw Error('Email already in use')
     }
 
+    // salt - randomly generated characters 
     const salt = await bcrypt.genSalt(10)
-    const hash = await bcrypt.hash(password, salt)
 
+    // password saved as hashed password+salt - additional protection layer
+    const hash = await bcrypt.hash(password, salt)
     const user = await this.create({email, password: hash})
 
     return user
