@@ -1,6 +1,22 @@
+import {useScheduleContext} from "../hooks/useScheduleContext"
+
 const ScheduleDetails = ({schedule}) => {
+  const {dispatch} = useScheduleContext()
+  const handleClickDelete = async () => {
+    const response = await fetch('/api/schedule/' + schedule._id, {
+      method: "DELETE"
+    })
+    const json = await response.json()
+
+    if (response.ok)
+    {
+      dispatch({type: "DELETE_SCHEDULE", payload: json})
+    }
+  }
+
   return (
     <div className="schedule-details">
+      <button onClick={handleClickDelete}>Usuń wizyte</button>
       <p><strong>Data:</strong> {schedule.data.substring(0, 10) + ' ' + schedule.data.substring(11, 19)}</p>
       <p><strong>ID Klniki</strong>: {schedule.id_kliniki}</p> 
       <p><strong>ID Lekarza</strong>: {schedule.id_lekarza}</p>
