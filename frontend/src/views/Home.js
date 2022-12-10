@@ -5,7 +5,7 @@ const Home = () =>
     <center><h3> Strona startowa Sieci Weterynaryjnej</h3></center>
     <br></br>
     <p>Jesteś zalogowany jako administrator</p>
-    <div class="NavigationButtons">
+    <div className="NavigationButtons">
 
       <form action="/clients">
       <input type="submit" value="Klienci"/></form>
