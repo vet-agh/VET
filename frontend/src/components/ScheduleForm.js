@@ -1,6 +1,9 @@
 import {useState} from "react"
+import {useScheduleContext} from "../hooks/useScheduleContext"
 
 const ScheduleForm = () => {
+  const {dispatch} = useScheduleContext()
+  
   const [data, setData] = useState('')
   const [czas_trwania_min, setCzasTrwaniaMin] = useState('')
   const [usluga, setUsluga] = useState('')
@@ -37,6 +40,7 @@ const ScheduleForm = () => {
       setIdPacjenta('')
       setIdKliniki('')
       setError(null)
+      dispatch({type: 'CREATE_SCHEDULE', payload: json})
     }
   }
 
@@ -45,7 +49,7 @@ const ScheduleForm = () => {
       <h3>Dodaj nową wizyte do harmongramu wizyt:</h3>
 
       <label>Data:</label>
-      <input type="date" onChange={(s) => setData(s.target.value)} value={data}/>
+      <input type="datetime-local" onChange={(s) => setData(s.target.value)} value={data}/>
 
       <label>Minimalny czas trwania:</label>
       <input type="number" onChange={(s) => setCzasTrwaniaMin(s.target.value)} value={czas_trwania_min}/>
