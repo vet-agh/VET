@@ -16,7 +16,7 @@ const ScheduleDetails = ({schedule}) => {
 
   return (
     <div className="schedule-details">
-      <button onClick={handleClickDelete}>Usuń wizyte</button>
+      <button class="delete-button" onClick={handleClickDelete}>Usuń wizyte</button>
       <p><strong>Data:</strong> {schedule.data.substring(0, 10) + ' ' + schedule.data.substring(11, 19)}</p>
       <p><strong>ID Klniki</strong>: {schedule.id_kliniki}</p> 
       <p><strong>ID Lekarza</strong>: {schedule.id_lekarza}</p>
