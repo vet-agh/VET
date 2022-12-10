@@ -11,6 +11,7 @@ export const scheduleReducer = (state, action) => {
   {
     case "SET_SCHEDULE": return {schedule: action.payload}
     case "CREATE_SCHEDULE": return {schedule: [action.payload, ...state.schedule]}
+    case "DELETE_SCHEDULE": return {schedule: state.schedule.filter(s => s._id !== action.payload._id)}
     default: return state
   }
 }
