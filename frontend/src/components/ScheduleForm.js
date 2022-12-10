@@ -45,25 +45,25 @@ const ScheduleForm = () => {
       <h3>Dodaj nową wizyte do harmongramu wizyt:</h3>
 
       <label>Data:</label>
-      <input type="date" onchange={(s) => setData(s.target.value)} value={data}/>
+      <input type="date" onChange={(s) => setData(s.target.value)} value={data}/>
 
       <label>Minimalny czas trwania:</label>
-      <input type="number" onchange={(s) => setCzasTrwaniaMin(s.target.value)} value={czas_trwania_min}/>
+      <input type="number" onChange={(s) => setCzasTrwaniaMin(s.target.value)} value={czas_trwania_min}/>
 
       <label>Usluga:</label>
-      <input type="text" onchange={(s) => setUsluga(s.target.value)} value={usluga}/>
+      <input type="text" onChange={(s) => setUsluga(s.target.value)} value={usluga}/>
 
       <label>ID Lekarza:</label>
-      <input type="text" onchange={(s) => setIdLekarza(s.target.value)} value={id_lekarza}/>
+      <input type="text" onChange={(s) => setIdLekarza(s.target.value)} value={id_lekarza}/>
 
       <label>ID Klienta:</label>
-      <input type="text" onchange={(s) => setIdKlienta(s.target.value)} value={id_klienta}/>
+      <input type="text" onChange={(s) => setIdKlienta(s.target.value)} value={id_klienta}/>
 
       <label>ID Pacjenta:</label>
-      <input type="text" onchange={(s) => setIdPacjenta(s.target.value)} value={id_pacjenta}/>
+      <input type="text" onChange={(s) => setIdPacjenta(s.target.value)} value={id_pacjenta}/>
 
       <label>ID Kliniki:</label>
-      <input type="text" onchange={(s) => setIdKliniki(s.target.value)} value={id_kliniki}/>
+      <input type="text" onChange={(s) => setIdKliniki(s.target.value)} value={id_kliniki}/>
 
       <button>Dodaj wizyte</button>
 
