@@ -26,7 +26,7 @@ const EquipmentPage = () => {
         <div className="home">
             <div className = "equipment">
                 {equipment && equipment.map(()=>(
-                    <EquipmentDetails ket = {equipment._id} equipment = {equipment}/>
+                    <EquipmentDetails key = {equipment._id} equipment = {equipment}/>
                 ))}
         <h2> Rejestr sprzętu </h2>
         </div> 
