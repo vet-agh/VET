@@ -9,7 +9,7 @@ const SchedulePage = () => {
 
     useEffect(() => {
       const fetchSchedule = async() => {
-        const response = await fetch('/api/equipment')
+        const response = await fetch('/api/schedule')
         const json = await response.json()
 
         if (response.ok)
@@ -20,16 +20,17 @@ const SchedulePage = () => {
 
       fetchSchedule()
     }, [])
-
     return (
-      <div className="home">
-        <div className="schedule">
-          {schedule && schedule.map(() => (
-            <ScheduleDetails key = {schedule._id} schedule = {schedule} />
-          ))}
+      <>
+        <div className="go_back">
+          <form action="/">
+          <input type="submit" value="Wróć do strony głównej" /></form>
         </div>
         <ScheduleForm/>
-      </div>
+        <h2>Harmonogram wizyt:</h2>
+        {schedule && schedule.map(s => (
+        <ScheduleDetails schedule={s} key={s._id}  />))}
+      </>
     )
 
 }
