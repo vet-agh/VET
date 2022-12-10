@@ -147,6 +147,7 @@ div.error {
 
 .NavigationButtons input{
   background-color: #FF7912;
+  width: 120px;
   padding: 20px;
   color: #CCCCFF;
   cursor: pointer;
