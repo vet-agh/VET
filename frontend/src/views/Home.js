@@ -13,7 +13,7 @@ const Home = () =>
       <form action="/patients">
       <input type="submit" value="Pacjenci"/></form> 
       
-      <form action="/schedules">
+      <form action="/schedule">
       <input type="submit" value="Wizyty"/></form> 
       
       <form action="/equipment">
