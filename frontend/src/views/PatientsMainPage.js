@@ -3,6 +3,7 @@ import { usePatientContext } from "../hooks/usePatientContext";
 
 // components
 import PatientDetails from '../components/PatientsDetails'
+import PatientForm from "../components/PatientForm";
 
 const PatientPage = () => {
     const {patient, dispatch} = usePatientContext()
@@ -22,14 +23,17 @@ const PatientPage = () => {
     }, [])
 
     return(
-        <div className="home">
-            <div className = "patient">
-                {patient && patient.map(()=>(
-                    <PatientDetails ket = {patient._id} patient = {patient}/>
-                ))}
+        <>
+        <div className="go_back">
+          <form action="/">
+          <input type="submit" value="Wróć do strony głównej" /></form>
+        </div>
+          <PatientForm/>
+        
         <h2> Rejestr pacjentów </h2>
-        </div> 
-    </div>
+        {schedule && patient.map(s => (
+        <PatientDetails patient={s} key={s._id}  />))}
+      </>
     )
 }
 
