@@ -21,13 +21,15 @@ const PatientForm = () => {
                 'Content-Type':'application/json'
             }
         })
+
         const json = await response.json() 
 
         if (!response.ok) {
             setError(json.error)
         }
 
-        if (response.ok) {
+        if (response.ok)
+         {
             setImie('')
             setGatunek('')
             setRasa('')
@@ -42,41 +44,17 @@ const PatientForm = () => {
         <form classImie = "create" onSubmit={handleSubmit}> 
         <h3> Dodaj nowego pacjenta do rejestru: </h3>
 
-        <label> 
-            Imię pacjenta:
-        </label>
-        <input
-        type="text"
-        onChange={(e) => setImie(e.target.value)}
-        value = {imie}
-        />
+        <label> Imię pacjenta:</label>
+        <input type="text" onChange={(e) => setImie(e.target.value)} value = {imie}/>
 
-        <label> 
-            Gatunek pacjenta:
-        </label>
-        <input
-        type="text"
-        onChange={(e) => setGatunek(e.target.value)}
-        value = {gatunek}
-        />
+        <label> Gatunek pacjenta:</label>
+        <input type="text" onChange={(e) => setGatunek(e.target.value)} value = {gatunek}/>
 
-        <label> 
-            Rasa pacjenta:
-        </label>
-        <input
-        type="text"
-        onChange={(e) => setRasa(e.target.value)}
-        value = {rasa}
-        />
+        <label> Rasa pacjenta:</label>
+        <input type="text" onChange={(e) => setRasa(e.target.value)} value = {rasa}/>
 
-        <label> 
-            Id właściciela pacjenta:
-        </label>
-        <input
-        type="number"
-        onChange={(e) => setId_owner(e.target.value)}
-        value = {id_owner}
-        />
+        <label> Id właściciela pacjenta:</label>
+        <input type="number" onChange={(e) => setId_owner(e.target.value)} value = {id_owner}/>
 
         <button> Dodaj pacjenta </button> 
         {error && <div className="error"> {error} </div>}
