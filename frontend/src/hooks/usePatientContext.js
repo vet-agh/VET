@@ -4,8 +4,10 @@ import { useContext } from "react"
 export const usePatientContext = () => {
     const context = useContext(PatientContext)
 
-    if (!context) {
+    if (!context) 
+    {
         throw Error ('usePatientContext must be used inside an PatientContextProvider')
     }
+    
     return context
 }
