@@ -5,7 +5,7 @@ const PatientDetails = ({ patient }) => {
             <strong> <p> Imie: {patient.imie} </p> </strong>
             <strong> <p> Gatunek: {patient.gatunek} </p> </strong>
             <p> Rasa: {patient.rasa} </p>
-            <p> ID właściciela: {patient.id_owner} </p>
+            <strong><p> ID właściciela: {patient.id_owner} </p></strong>
         </div>
     )
 }
