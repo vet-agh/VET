@@ -5,6 +5,7 @@ import Home from './views/Home'
 
 // Routes import
 import SchedulePage from './views/ScheduleMainPage'
+import ClinicPage from './views/ClinicMainPage';
 
 
 
@@ -17,7 +18,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home/>}/>
             {/* Clients */}
-            {/* Clinics */}
+            <Route path="/clinics" element={<ClinicPage/>}/>
             {/* Equipment */}
             {/* Patients */}
             <Route path="/schedule" element={<SchedulePage/>}/>
