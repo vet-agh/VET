@@ -18,12 +18,11 @@ const PatientPage = () => {
         }
     }
 
-
     fetchPatient()
     }, [])
 
     return(
-        <>
+       <>
         <div className="go_back">
           <form action="/">
           <input type="submit" value="Wróć do strony głównej" /></form>
