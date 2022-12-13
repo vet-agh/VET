@@ -53,12 +53,12 @@ const ClientForm = () => {
              onChange={(e) => setNazwisko(e.target.value)}
             value={nazwisko}/>
                                     
-            <label>  Numer konta (opcjonalne): </label>
+            <label> Numer konta (opcjonalne): </label>
             <input type="text"
             onChange={(e) => setNumer_konta(e.target.value)}
             value={numer_konta} />
 
-            <label> id pacjenta: </label>
+            <label> Numer identyfikacyjny pacjenta: </label>
             <input type="text"
             onChange={(e) => setId_pacjenta(e.target.value)}
             value={id_pacjenta} />
