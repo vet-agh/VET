@@ -4,20 +4,12 @@ export const PatientContext = createContext()
 
 export const patientReducer = (state, action) => {
     switch (action.type) {
-        case 'SET_PATIENT':
-            return {
-                patient: action.payload
-            }
-        case 'CREATE_PATIENT':
-            return {
-                patient: [action.payload, ...state.patient]
-            }
-        default:
-            return state
+        case 'SET_PATIENT': return { patient: action.payload }
+        case 'CREATE_PATIENT': return {patient: [action.payload, ...state.patient] }
+        default: return state
     }
 }
 export const PatientContextProvider = ({children}) => {
-
     const [state, dispatch] = useReducer(patientReducer, {
         patient: null
     })
