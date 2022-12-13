@@ -4,16 +4,18 @@ export const EmployeeContext = createContext()
 
 export const EmployeeReducer = (state, action) => {
     switch (action.type){
-        case 'SET_EMPLOYEES':
-            return {
+
+    case 'SET_EMPLOYEES':
+        return {
                 employees: action.payload
-            }
-            case 'CREATE_EMPLOYEES':
-                return{
-                    employees: [action.payload, ...state.employees]
-                }
-            default:
+        }
+    case 'CREATE_EMPLOYEES':
+        return {
+                employees: [action.payload, ...state.employees]
+        }
+    default:
             return state
+
     }
 }
 
@@ -24,7 +26,7 @@ export const EmployeeContextProvider = ({children}) => {
 
     return (
         <EmployeeContext.Provider value={{...state,dispatch}}>
-            {children }
+            {children}
         </EmployeeContext.Provider>
     )
 }

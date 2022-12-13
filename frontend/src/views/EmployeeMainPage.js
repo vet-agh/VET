@@ -1,4 +1,4 @@
-import {useEffect} from 'react'
+import { useEffect } from 'react'
 import { useEmployeesContext } from '../hooks/useEmployeeContext'
 
 import EmployeeDetails from '../components/EmployeeDetails'
