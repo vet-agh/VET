@@ -1,4 +1,4 @@
-import {useState} from "react"
+import { useState } from "react"
 import { useEmployeesContext } from '../hooks/useEmployeeContext'
 
 const EmployeeForm = () => {
@@ -69,7 +69,7 @@ const EmployeeForm = () => {
                 onChange={(e) => setAdres(e.target.value)}
                 value={adres}/>
     
-                <label> id kliniki: </label>
+                <label> Numer identyfikacyjny kliniki: </label>
                 <input type="text"
                 onChange={(e) => setId_kliniki(e.target.value)}
                 value={id_kliniki}/>
