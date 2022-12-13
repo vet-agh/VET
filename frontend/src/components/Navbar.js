@@ -6,6 +6,11 @@ const Navbar = () => {
             <Link to="/">
                 <h1>System zarządzania siecią weterynaryjną</h1>
             </Link>
+            <nav>
+                <div>
+                    <Link to="/login"> Login </Link>
+                </div>
+            </nav>
         </div>
     </header>
     )
