@@ -1,6 +1,10 @@
 import { BrowserRouter, Routes, Route} from 'react-router-dom'
 
+// Pages and components
 import Home from './views/Home'
+
+// Routes import
+import EquipmentMainPage from './views/EquipmentMainPage'
 
 function App() {
   return (
@@ -8,10 +12,13 @@ function App() {
       <BrowserRouter>
         <div className="pages">
           <Routes>
-            <Route
-              path="/"
-              element={<Home />}
-            />
+            <Route path="/" element={<Home/>}/>
+
+
+            <Route path="/equipment" element={<EquipmentMainPage/>}/>
+
+
+
           </Routes>
         </div>
       </BrowserRouter>
