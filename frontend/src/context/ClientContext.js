@@ -23,13 +23,13 @@ export const clientsReducer = (state, action) => {
     }
 }
 
-export const ClientContextProvider = ({children}) => {
+export const ClientContextProvider = ({ children }) => {
     const[state, dispatch] = useReducer(clientsReducer, {
         clients: null
     })
 
     return (
-        <ClientContext.Provider value = {{...state, dispatch}}>
+        <ClientContext.Provider value = {{ ...state, dispatch }}>
             {children }
         </ClientContext.Provider>
     )
