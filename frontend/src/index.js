@@ -6,7 +6,7 @@ import App from './App';
 // Importing context providers
 //Clients
 //Clinics
-//Equipment
+import { EquipmentContextProvider } from './context/EquipmentContext';
 import { PatientContextProvider } from './context/PatientContext';
 import {ScheduleContextProvider} from './context/ScheduleContext';
 //Employees
@@ -16,7 +16,9 @@ root.render(
   <React.StrictMode>
     <PatientContextProvider>
       <ScheduleContextProvider>
-        <App />
+        <EquipmentContextProvider>
+          <App />
+        </EquipmentContextProvider>
       </ScheduleContextProvider>
     </PatientContextProvider>
   </React.StrictMode>
