@@ -20,5 +20,9 @@ export const useSingup = () => {
             setIsLoading(false)
             setError(json.error)
         }
+        if (response.ok) {
+            // Save the user to local storage
+            localStorage.setItem('user', JSON.stringify(json))  
+          }
     }
 }
