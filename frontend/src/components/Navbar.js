@@ -17,11 +17,11 @@ const Navbar = () => {
             </Link>
             <nav>
                 <div>
-                    <button onClick={handleClick}> Wyloguj się </button>
+                    <Link to="/login"> Zaloguj się </Link>
                 </div>
-                
+
                 <div>
-                    <Link to="/login"> Login </Link>
+                    <button onClick={handleClick}> Wyloguj się </button>
                 </div>
             </nav>
         </div>
