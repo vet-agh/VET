@@ -23,15 +23,16 @@ const EquipmentPage = () => {
     }, [])
 
     return(
-        <div className="home">
-            <div className = "equipment">
-                {equipment && equipment.map(()=>(
-                    <EquipmentDetails ket = {equipment._id} equipment = {equipment}/>
-                ))}
-        <h2> Rejestr sprzętu </h2>
-        </div> 
-        <EquipmentForm/>
-    </div>
+        <>
+            <div className="go_back">
+                <form action = "/">
+                <input type="submit" value="Wróć do strony głównej" /> </form>
+            </div>
+            <EquipmentForm/>
+            <h2> Rejestr sprzętu </h2>
+            {equipment && equipment.map(() => ( 
+            <EquipmentDetails key = {equipment._id} equipment = {equipment}/>))}
+        </>
     )
 }
 
