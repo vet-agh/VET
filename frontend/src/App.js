@@ -20,7 +20,7 @@ function App() {
             {/* Clients */}
             {/* Clinics */}
             {/* Equipment */}
-            <Route path="/patient" element={<PatientPage/>}/>
+            <Route path="/patients" element={<PatientPage/>}/>
             <Route path="/schedule" element={<SchedulePage/>}/>
             {/* Employees */}
           </Routes>

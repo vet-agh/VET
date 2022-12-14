@@ -14,7 +14,7 @@ const PatientForm = () => {
 
         const patient = {imie, gatunek, rasa, id_owner}
 
-        const response = await fetch('/api/patient',{
+        const response = await fetch('/api/patients',{
             method: 'POST',
             body: JSON.stringify(patient),
             headers: {
@@ -41,7 +41,7 @@ const PatientForm = () => {
     }
 
     return (
-        <form classImie = "create" onSubmit={handleSubmit}> 
+        <form className="create" onSubmit={handleSubmit}> 
         <h3> Dodaj nowego pacjenta do rejestru: </h3>
 
         <label> Imię pacjenta:</label>

@@ -1,8 +1,8 @@
-import { useEffect} from "react";
+import { useEffect } from "react";
 import { usePatientContext } from "../hooks/usePatientContext";
 
 // components
-import PatientDetails from '../components/PatientsDetails'
+import PatientDetails from '../components/PatientDetails'
 import PatientForm from "../components/PatientForm";
 
 const PatientPage = () => {
@@ -10,7 +10,7 @@ const PatientPage = () => {
 
     useEffect(() => {
     const fetchPatient = async() => {
-        const response = await fetch('/api/patient')
+        const response = await fetch('/api/patients')
         const json = await response.json()
 
         if(response.ok) {
@@ -19,6 +19,7 @@ const PatientPage = () => {
     }
 
     fetchPatient()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return(
@@ -30,8 +31,8 @@ const PatientPage = () => {
           <PatientForm/>
         
         <h2> Rejestr pacjentów </h2>
-        {schedule && patient.map(s => (
-        <PatientDetails patient={s} key={s._id}  />))}
+        {patient && patient.map(p => (
+        <PatientDetails patient={p} key={p._id}  />))}
       </>
     )
 }
