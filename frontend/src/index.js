@@ -7,15 +7,17 @@ import App from './App';
 //Clients
 //Clinics
 //Equipment
-//Patients
+import { PatientContextProvider } from './context/PatientContext';
 import {ScheduleContextProvider} from './context/ScheduleContext';
 //Employees
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ScheduleContextProvider>
-      <App />
-    </ScheduleContextProvider>
+    <PatientContextProvider>
+      <ScheduleContextProvider>
+        <App />
+      </ScheduleContextProvider>
+    </PatientContextProvider>
   </React.StrictMode>
 );
