@@ -19,8 +19,7 @@ function App() {
         <div className="pages">
           <Routes>
             <Route path="/" element={<Home/>}/>
-            import ClinicPage from './views/ClinicMainPage';
-            {/* Clinics */}
+            <Route path="/clinics" element={<ClinicPage/>}/>
             <Route path="/equipment" element={<EquipmentMainPage/>}/>
             <Route path="/patients" element={<PatientPage/>}/>
             <Route path="/schedule" element={<SchedulePage/>}/>
