@@ -17,8 +17,7 @@ const EquipmentPage = () => {
           dispatch({type: 'SET_EQUIPMENT', payload: json})
         }
     }
-
-
+    
     fetchEquipment()
     }, [])
 

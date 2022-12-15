@@ -1,5 +1,5 @@
 import {useState} from 'react'
-import { useAuthContext} from './useAuthContext'
+import {useAuthContext} from './useAuthContext'
 
 export const useLogin = () => {
 const [error, setError] = useState(null)
@@ -23,17 +23,15 @@ const login = async (email, password) => {
     }
     if (response.ok){
         // Save the user to local storage
-        localStorage.setItem('user',JSON.stringify(json))
+        localStorage.setItem('user', JSON.stringify(json))
 
         // Update the auth context
         dispatch({type: 'LOGIN', payload: json})
         
         setIsLoading(false)
-
         }
-    }
-
-    return { login, isLoading, error}
+    } 
+    return {login, isLoading, error}
 }
 
 
