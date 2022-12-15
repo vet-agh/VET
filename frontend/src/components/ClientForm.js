@@ -13,7 +13,7 @@ const ClientForm = () => {
     const handleSubmit = async(e) => {
         e.preventDefault()
     
-    const client = {imie, nazwisko, numer_konta, id_pacjenta}
+    const client = { imie, nazwisko, numer_konta, id_pacjenta }
 
     const response = await fetch ('/api/clients', {
         method: 'POST',
@@ -65,7 +65,6 @@ const ClientForm = () => {
 
             {error && <div className="error">{error}</div>}
         </form>
-
     )
 }
 
