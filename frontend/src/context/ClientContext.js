@@ -5,19 +5,11 @@ export const ClientContext = createContext()
 export const clientsReducer = (state, action) => {
     switch (action.type) {
         case 'SET_CLIENTS':
-            return {
-                clients: action.payload
-            }
+            return {clients: action.payload}
         case 'CREATE_CLIENT':
-            return {
-                clients: [action.payload, ...state.clients]
-            }
+            return {clients: [action.payload, ...state.clients]}
         case 'DELETE_CLIENT':
-            return {
-                clients: state.clients.filter((c) => c._id !== action.payload._id)
-            }
-
-
+            return {clients: state.clients.filter((c) => c._id !== action.payload._id)}
         default: 
             return state
     }

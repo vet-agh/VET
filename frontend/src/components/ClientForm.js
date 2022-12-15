@@ -48,7 +48,7 @@ const ClientForm = () => {
 
             <label> Nazwisko: </label>
             <input type="text"
-             onChange={(e) => setNazwisko(e.target.value)}
+            onChange={(e) => setNazwisko(e.target.value)}
             value={nazwisko}/>
                                     
             <label> Numer konta (opcjonalne): </label>
