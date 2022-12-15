@@ -3,16 +3,16 @@ import { usePatientContext } from "../hooks/usePatientContext";
 
 const PatientForm = () => {
     const {dispatch} = usePatientContext()
-    const {imie, setImie} = useState('')
-    const {gatunek, setGatunek} = useState('')
-    const {rasa, setRasa} = useState('')
-    const {id_owner, setId_owner} = useState('')
-    const {error, setError} = useState(null)
+    const [imie, setImie] = useState('')
+    const [gatunek, setGatunek] = useState('')
+    const [rasa, setRasa] = useState('')
+    const [id_wlasciciela, setIdWlasciciela] = useState('')
+    const [error, setError] = useState(null)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const patient = {imie, gatunek, rasa, id_owner}
+        const patient = {imie, gatunek, rasa, id_wlasciciela}
 
         const response = await fetch('/api/patients',{
             method: 'POST',
@@ -33,9 +33,8 @@ const PatientForm = () => {
             setImie('')
             setGatunek('')
             setRasa('')
-            setId_owner('')
+            setIdWlasciciela('')
             setError(null)
-            console.log('Dodano nowego pacjenta!', json)
             dispatch({type: 'CREATE_PATIENT', payload: json})
         }
     }
@@ -54,7 +53,7 @@ const PatientForm = () => {
         <input type="text" onChange={(e) => setRasa(e.target.value)} value = {rasa}/>
 
         <label> Id właściciela pacjenta:</label>
-        <input type="number" onChange={(e) => setId_owner(e.target.value)} value = {id_owner}/>
+        <input type="number" onChange={(e) => setIdWlasciciela(e.target.value)} value = {id_wlasciciela}/>
 
         <button> Dodaj pacjenta </button> 
         {error && <div className="error"> {error} </div>}
