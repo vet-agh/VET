@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import {AuthContextProvider} from './context/AuthContext'
 
 // Importing context providers
 //Clients
@@ -17,9 +18,11 @@ root.render(
     <PatientContextProvider>
       <ScheduleContextProvider>
         <EquipmentContextProvider>
-          <App />
+          <AuthContextProvider> 
+            <App />
+          </AuthContextProvider>
         </EquipmentContextProvider>
       </ScheduleContextProvider>
     </PatientContextProvider>
   </React.StrictMode>
-);
+)

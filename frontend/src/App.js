@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 // Pages and components
 import Navbar from './components/Navbar'
 import Home from './views/Home'
+import Login from './pages/Login'
 // Routes import
 import PatientPage from './views/PatientsMainPage'
 import SchedulePage from './views/ScheduleMainPage'
@@ -23,6 +24,7 @@ function App() {
             <Route path="/patients" element={<PatientPage/>}/>
             <Route path="/schedule" element={<SchedulePage/>}/>
             {/* Employees */}
+            <Route path='/login' element={<Login/>}/>
           </Routes>
         </div>
       </BrowserRouter> 
