@@ -30,9 +30,7 @@ const ClinicPage = () => {
             {clinics && clinics.map((clinic) => (
             <ClinicDetails key={clinic._id} clinic={clinic}/>
             ))}
-
         </>
-
     )
 }
 
