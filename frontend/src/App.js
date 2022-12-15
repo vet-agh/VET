@@ -10,6 +10,7 @@ import SchedulePage from './views/ScheduleMainPage'
 import EquipmentMainPage from './views/EquipmentMainPage'
 import ClinicPage from './views/ClinicMainPage'
 import ClientPage from './views/ClientMainPage'
+import EmployeePage from './views/EmployeeMainPage'
 
 
 function App() {
@@ -25,7 +26,7 @@ function App() {
             <Route path="/equipment" element={<EquipmentMainPage/>}/>
             <Route path="/patients" element={<PatientPage/>}/>
             <Route path="/schedule" element={<SchedulePage/>}/>
-            {/* Employees */}
+            <Route path="/employees" element={<EmployeePage />}/>
             <Route path='/login' element={<Login/>}/>
           </Routes>
         </div>
