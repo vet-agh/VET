@@ -1,12 +1,12 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
-//pages and components
+// Pages and components
 import Navbar from './components/Navbar'
 import Home from './views/Home'
 // Routes import
 import PatientPage from './views/PatientsMainPage'
 import SchedulePage from './views/ScheduleMainPage'
-
+import EquipmentMainPage from './views/EquipmentMainPage'
 
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
             <Route path="/" element={<Home/>}/>
             {/* Clients */}
             {/* Clinics */}
-            {/* Equipment */}
+            <Route path="/equipment" element={<EquipmentMainPage/>}/>
             <Route path="/patients" element={<PatientPage/>}/>
             <Route path="/schedule" element={<SchedulePage/>}/>
             {/* Employees */}
