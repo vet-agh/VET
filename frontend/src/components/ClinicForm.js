@@ -30,7 +30,6 @@ const ClinicForm = () => {
             setNazwa('')
             setNumer_telefonu('')
             setAdres('')
-            console.log('new clinic added', json)
             dispatch({type: 'CREATE_CLINICS', payload: json})
         }
     }
