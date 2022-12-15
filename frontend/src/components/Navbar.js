@@ -18,18 +18,19 @@ const Navbar = () => {
                 <h1>System zarządzania siecią weterynaryjną</h1>
             </Link>
             <nav>
-                {!user &&(
-                <div>
-                    <Link to="/login"> Zaloguj się </Link>
-                </div>
-                )}
-
                 {user && (
                 <div>
                     <span>{user.email}</span>
                     <button onClick={handleClick}> Wyloguj się </button>
                 </div>
                 )}
+
+                {!user &&(
+                <div>
+                    <Link to="/login"> Zaloguj się </Link>
+                </div>
+                )}
+                
             </nav>
         </div>
     </header>
