@@ -24,12 +24,10 @@ const ClientForm = () => {
     })
     const json = await response.json()
     
-    if (!response.ok)
-    {
+    if (!response.ok){
         setError(json.error)
     }  
-    if (response.ok)
-    {
+    if (response.ok){
         setImie('')
         setNazwisko('')
         setNumer_konta('')
