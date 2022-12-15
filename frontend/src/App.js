@@ -8,7 +8,8 @@ import Login from './pages/Login'
 import PatientPage from './views/PatientsMainPage'
 import SchedulePage from './views/ScheduleMainPage'
 import EquipmentMainPage from './views/EquipmentMainPage'
-import ClinicPage from './views/ClinicMainPage';
+import ClinicPage from './views/ClinicMainPage'
+import ClientPage from './views/ClientMainPage'
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <div className="pages">
           <Routes>
             <Route path="/" element={<Home/>}/>
+            <Route path="/clients" element={<ClientPage/>}/>
             <Route path="/clinics" element={<ClinicPage/>}/>
             <Route path="/equipment" element={<EquipmentMainPage/>}/>
             <Route path="/patients" element={<PatientPage/>}/>
