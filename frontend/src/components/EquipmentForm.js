@@ -1,14 +1,14 @@
-import { useState } from "react"
-import { useEquipmentContext } from "../hooks/useEquipmentContext";
+import {useState} from "react"
+import {useEquipmentContext} from "../hooks/useEquipmentContext";
 
 const EquipmentForm = () => {
     const {dispatch} = useEquipmentContext()
 
-    const {nazwa, setNazwa} = useState('')
-    const {kategoria, setKategoria} = useState('')
-    const {liczba_sprzetu, setLiczbaSprzetu} = useState('')
-    const {id_kliniki, setIdKliniki} = useState('')
-    const {error, setError} = useState(null)
+    const [nazwa, setNazwa] = useState('')
+    const [kategoria, setKategoria] = useState('')
+    const [liczba_sprzetu, setLiczbaSprzetu] = useState('')
+    const [id_kliniki, setIdKliniki] = useState('')
+    const [error, setError] = useState(null)
 
     const handleSubmit = async (e) => {
         e.preventDefault()

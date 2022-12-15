@@ -17,8 +17,7 @@ const EquipmentPage = () => {
           dispatch({type: 'SET_EQUIPMENT', payload: json})
         }
     }
-
-
+    
     fetchEquipment()
     }, [])
 
@@ -30,7 +29,7 @@ const EquipmentPage = () => {
             </div>
             <EquipmentForm/>
             <h2> Rejestr sprzętu </h2>
-            {equipment && equipment.map(() => ( 
+            {equipment && equipment.map(equipment => ( 
             <EquipmentDetails key = {equipment._id} equipment = {equipment}/>))}
         </>
     )
