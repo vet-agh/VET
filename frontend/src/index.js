@@ -14,15 +14,15 @@ import {ScheduleContextProvider} from './context/ScheduleContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <EmployeeContextProvider>
   <React.StrictMode>
-    <PatientContextProvider>
-      <ScheduleContextProvider>
-        <EquipmentContextProvider>
-          <App />
-        </EquipmentContextProvider>
-      </ScheduleContextProvider>
-    </PatientContextProvider>
+    <EmployeeContextProvider>
+      <PatientContextProvider>
+        <ScheduleContextProvider>
+          <EquipmentContextProvider>
+            <App />
+          </EquipmentContextProvider>
+        </ScheduleContextProvider>
+      </PatientContextProvider>
+    </EmployeeContextProvider>
   </React.StrictMode>
-  </EmployeeContextProvider>
 );
