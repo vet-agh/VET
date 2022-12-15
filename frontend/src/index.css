@@ -27,26 +27,26 @@ header .container {
   background-color: #F4A460;
 }
 
-a{
+a {
   color: red;
 }
 
-header a{
+header a {
   color: #333;
   text-decoration: none;
 }
 
-.pages{
+.pages {
   max-width: 1400px;
   padding: 20px;
   margin: 0 auto;
 }
 
-.clients{
+.clients {
   color: #696969;
 }
 
-h2{
+h2 {
   color: orange;
   font-size: 35px;
 }
@@ -89,7 +89,7 @@ form button {
   cursor: pointer;
 }
 
-form button:hover{
+form button:hover {
   background-color: darkseagreen;
 }
 
@@ -102,7 +102,7 @@ div.error {
   margin: 20px 0;
 }
 
-.client-details button{
+.delete-button{
   float: right;
   border: 0;
   padding: 8px;
@@ -113,22 +113,7 @@ div.error {
   cursor: pointer;
 }
 
-.employee-details button{
-  float: right;
-  border: 0;
-  padding: 8px;
-  margin-top: 20px;
-  color: #FF4500;
-  background-color: #dddddd;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.employee-details button:hover{
-  background-color: #cccccc;
-}
-
-.client-details button:hover{
+.delete-button:hover {
   background-color: #cccccc;
 }
 
@@ -137,18 +122,19 @@ div.error {
   height: 20%;
 }
 
-.NavigationButtons{
+.NavigationButtons {
   float: right;
   display: flex;
 }
 
-.NavigationButtons input{
+.NavigationButtons input {
   background-color: #FF7912;
+  width: 120px;
   padding: 20px;
   color: #CCCCFF;
   cursor: pointer;
 }
 
-.NavigationButtons input:hover{
+.NavigationButtons input:hover {
   background-color: #CC7912;
 }
