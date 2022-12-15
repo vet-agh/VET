@@ -65,7 +65,6 @@ const ClientForm = () => {
 
             {error && <div className="error">{error}</div>}
         </form>
-
     )
 }
 
