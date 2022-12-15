@@ -6,11 +6,11 @@ const PatientDetails = ({ patient }) => {
         const response = await fetch('/api/patients/' + patient._id, {
            method: "DELETE" 
         })
-        const json = await response.json
+        const json = await response.json()
 
         if (response.ok)
         {
-            dispatch({type: "DELETE_PATIENT", payload: json})
+            dispatch({type: 'DELETE_PATIENT', payload: json})
         }
     }
 
