@@ -2,27 +2,34 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import { EmployeeContextProvider } from './context/EmployeeContext';
+import {AuthContextProvider} from './context/AuthContext'
 
 // Importing context providers
-//Clients
-//Clinics
+import { ClientContextProvider } from './context/ClientContext';
+import { ClinicContextProvider } from './context/ClinicContext';
 import { EquipmentContextProvider } from './context/EquipmentContext';
 import { PatientContextProvider } from './context/PatientContext';
 import {ScheduleContextProvider} from './context/ScheduleContext';
-//Employees
+import { EmployeeContextProvider } from './context/EmployeeContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <EmployeeContextProvider>
   <React.StrictMode>
-    <PatientContextProvider>
-      <ScheduleContextProvider>
-        <EquipmentContextProvider>
-          <App />
-        </EquipmentContextProvider>
-      </ScheduleContextProvider>
-    </PatientContextProvider>
+  <EmployeeContextProvider>
+      <ClientContextProvider>
+        <ClinicContextProvider>
+          <PatientContextProvider>
+            <ScheduleContextProvider>
+              <EquipmentContextProvider>
+                <AuthContextProvider> 
+                  <App />
+                </AuthContextProvider>
+              </EquipmentContextProvider>
+            </ScheduleContextProvider>
+          </PatientContextProvider>
+        </ClinicContextProvider>
+      </ClientContextProvider>
+    </EmployeeContextProvider>
+
   </React.StrictMode>
-  </EmployeeContextProvider>
-);
+)
