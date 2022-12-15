@@ -9,6 +9,8 @@ export const ClinicReducer = (state, action) => {
         return {clinics: action.payload}
     case 'CREATE_CLINICS':
         return {clinics: [action.payload, ...state.clinics]}
+    case 'DELETE_CLINICS':
+        return {clinics: state.clinics.filter((c) => c._id !== action.payload._id)}
     default:
         return state
     }
