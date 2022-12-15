@@ -13,7 +13,7 @@ export const clientsReducer = (state, action) => {
                 clients: [action.payload, ...state.clients]
             }
         default: 
-        return state
+            return state
     }
 }
 
