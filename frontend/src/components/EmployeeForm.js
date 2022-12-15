@@ -78,7 +78,6 @@ const EmployeeForm = () => {
                 {error && <div className="error">{error}</div>}
             </form>
         )
-    
 }
 
 export default EmployeeForm

@@ -28,8 +28,7 @@ const EmployeePage = () => {
             <EmployeeForm/>
             <h2>Lista pracowników:</h2>
             {employees && employees.map((employee) => (
-            <EmployeeDetails key={employee._id} employee={employee}/>
-            ))}
+            <EmployeeDetails key={employee._id} employee={employee}/> ))}
 
         </>
 
