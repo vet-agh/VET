@@ -16,7 +16,7 @@ const ClientDetails = ({ client }) => {
 
     return (
         <div className="client-details">
-            <button onClick={handleClickDelete}>Usuń klienta</button>
+            <button class="delete-button" onClick={handleClickDelete}>Usuń klienta</button>
             <strong> <p> {client.imie} { } {client.nazwisko}</p> </strong>
             <p>Data dodania do rejestru klientów: {client.createdAt.substring(0, 10)}</p>
             <p>Numer konta: {client.numer_konta} </p>
