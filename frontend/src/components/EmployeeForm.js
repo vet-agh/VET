@@ -3,6 +3,7 @@ import { useEmployeesContext } from '../hooks/useEmployeeContext'
 
 const EmployeeForm = () => {
     const {dispatch} = useEmployeesContext()
+
     const [imie, setImie] = useState('')
     const [nazwisko, setNazwisko] = useState('')
     const [numer_telefonu, setNumer_telefonu] = useState('')

@@ -3,6 +3,7 @@ import { usePatientContext } from "../hooks/usePatientContext";
 
 const PatientForm = () => {
     const {dispatch} = usePatientContext()
+
     const [imie, setImie] = useState('')
     const [gatunek, setGatunek] = useState('')
     const [rasa, setRasa] = useState('')
@@ -44,16 +45,16 @@ const PatientForm = () => {
         <h3> Dodaj nowego pacjenta do rejestru: </h3>
 
         <label>Imię pacjenta:</label>
-        <input type="text" onChange={(e) => setImie(e.target.value)} value = {imie}/>
+        <input type="text" onChange={(p) => setImie(p.target.value)} value = {imie}/>
 
         <label>Gatunek pacjenta:</label>
-        <input type="text" onChange={(e) => setGatunek(e.target.value)} value = {gatunek}/>
+        <input type="text" onChange={(p) => setGatunek(p.target.value)} value = {gatunek}/>
 
         <label>Rasa pacjenta:</label>
-        <input type="text" onChange={(e) => setRasa(e.target.value)} value = {rasa}/>
+        <input type="text" onChange={(p) => setRasa(p.target.value)} value = {rasa}/>
 
         <label>ID Właściciela:</label>
-        <input type="number" onChange={(e) => setIdWlasciciela(e.target.value)} value = {id_wlasciciela}/>
+        <input type="number" onChange={(p) => setIdWlasciciela(p.target.value)} value = {id_wlasciciela}/>
 
         <button className="add-button"> Dodaj pacjenta </button> 
         {error && <div className="error"> {error} </div>}

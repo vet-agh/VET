@@ -25,7 +25,7 @@ const ClientPage = () => {
     <>
         <div className="go_back">
             <form action="/">
-            <input type="submit" value="Wróć do strony głównej" /></form>
+            <input className="go-back-button" type="submit" value="Wróć do strony głównej" /></form>
         </div>
         <ClientForm/>
         <h2>Lista klientów:</h2>

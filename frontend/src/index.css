@@ -18,6 +18,10 @@ header {
   background: #fff;
 }
 
+.container {
+  position: relative;
+}
+
 header .container {
   max-width: 1400px;
   margin:  auto;
@@ -116,6 +120,46 @@ div.error {
 
 .delete-button:hover {
   background-color: #a12315;
+}
+
+.logout-button {
+  position: absolute;
+  top: 5%;
+  right: 2%;
+  font-family: "Poppins";
+  margin: auto 0;
+  text-align: center;
+  background-color: #f44336;
+  border: none;
+  color: white;
+  width: 10%;
+  height: 40px;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.logout-button:hover {
+  background-color: #a12315; 
+}
+
+.login-button {
+  background-color: var(--primary);
+  right: 5%;
+  font-family: "Poppins";
+  margin: auto 0;
+  text-align: center;
+  border: none;
+  color: white;
+  width: 30%;
+  height: 40px;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.login-button:hover {
+  background-color: rgb(21, 71, 21);
 }
 
 .go_back{
