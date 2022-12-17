@@ -15,7 +15,7 @@ const EmployeeDetails = ({employee}) => {
 
     return (
         <div className="employee-details">
-            <button class="delete-button" onClick={handleClickDelete}>Usuń pracownika</button>
+            <button className="delete-button" onClick={handleClickDelete}>Usuń pracownika</button>
             <strong><p>{employee.imie} {  } {employee.nazwisko}</p></strong>
             <p>Data dodania do rejestru: {employee.createdAt.substring(0, 10)}</p>
             <p>Numer telefonu: {employee.numer_telefonu}</p>
