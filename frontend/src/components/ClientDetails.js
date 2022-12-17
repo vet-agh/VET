@@ -17,7 +17,7 @@ const ClientDetails = ({ client }) => {
     return (
         <div className="form-details">
             <button className="delete-button" onClick={handleClickDelete}>Usuń klienta</button>
-            <p><strong>Imie: </strong>{client.imie}</p>
+            <p><strong>Imię: </strong>{client.imie}</p>
             <p><strong>Nazwisko: </strong>{client.nazwisko}</p>
             <p><strong>Numer konta: </strong>{client.numer_konta} </p>
             <p><strong>Numer identyfikacyjny pacjenta: </strong>{client.id_pacjenta}</p>
