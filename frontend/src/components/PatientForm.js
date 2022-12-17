@@ -43,16 +43,16 @@ const PatientForm = () => {
         <form className="create" onSubmit={handleSubmit}> 
         <h3> Dodaj nowego pacjenta do rejestru: </h3>
 
-        <label> Imię pacjenta:</label>
+        <label>Imię pacjenta:</label>
         <input type="text" onChange={(e) => setImie(e.target.value)} value = {imie}/>
 
-        <label> Gatunek pacjenta:</label>
+        <label>Gatunek pacjenta:</label>
         <input type="text" onChange={(e) => setGatunek(e.target.value)} value = {gatunek}/>
 
-        <label> Rasa pacjenta:</label>
+        <label>Rasa pacjenta:</label>
         <input type="text" onChange={(e) => setRasa(e.target.value)} value = {rasa}/>
 
-        <label> Id właściciela pacjenta:</label>
+        <label>ID Właściciela:</label>
         <input type="number" onChange={(e) => setIdWlasciciela(e.target.value)} value = {id_wlasciciela}/>
 
         <button> Dodaj pacjenta </button> 

@@ -20,11 +20,10 @@ const ClientDetails = ({ client }) => {
             <p><strong>Imię: </strong>{client.imie}</p>
             <p><strong>Nazwisko: </strong>{client.nazwisko}</p>
             <p><strong>Numer konta: </strong>{client.numer_konta} </p>
-            <p><strong>Numer identyfikacyjny pacjenta: </strong>{client.id_pacjenta}</p>
+            <p><strong>ID Pacjenta: </strong>{client.id_pacjenta}</p>
             <p><i>Data dodania do rejestru klientów: </i>{client.createdAt.substring(0, 10)}</p>
-            </div>
+        </div>
     )
-
 }
 
 export default ClientDetails
