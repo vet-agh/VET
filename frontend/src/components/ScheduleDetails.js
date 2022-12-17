@@ -1,4 +1,5 @@
-import {useScheduleContext} from "../hooks/useScheduleContext"
+import { useScheduleContext } from "../hooks/useScheduleContext"
+
 
 const ScheduleDetails = ({schedule}) => {
   const {dispatch} = useScheduleContext()
@@ -13,11 +14,11 @@ const ScheduleDetails = ({schedule}) => {
       dispatch({type: "DELETE_SCHEDULE", payload: json})
     }
   }
-
+  
   return (
-    <div className="schedule-details">
+    <div className="form-details">
       <button className="delete-button" onClick={handleClickDelete}>Usuń wizyte</button>
-      <p><strong>Data:</strong> {schedule.data.substring(0, 10) + ' ' + schedule.data.substring(11, 19)}</p>
+      <p><strong>Data wizyty:</strong> {schedule.data.substring(11, 16) + ' ' + schedule.data.substring(0, 10)}</p>
       <p><strong>ID Kliniki</strong>: {schedule.id_kliniki}</p> 
       <p><strong>ID Lekarza</strong>: {schedule.id_lekarza}</p>
       <p><strong>ID Klienta</strong>: {schedule.id_klienta}</p>
