@@ -14,14 +14,15 @@ const EmployeeDetails = ({employee}) => {
     }
 
     return (
-        <div className="employee-details">
+        <div className="form-details">
             <button className="delete-button" onClick={handleClickDelete}>Usuń pracownika</button>
-            <strong><p>{employee.imie} {  } {employee.nazwisko}</p></strong>
-            <p>Data dodania do rejestru: {employee.createdAt.substring(0, 10)}</p>
-            <p>Numer telefonu: {employee.numer_telefonu}</p>
-            <p>Numer konta: {employee.numer_konta}</p>
-            <p>Adres: {employee.adres}</p>
-            <p>Numer identyfikacyjny kliniki: {employee.id_kliniki}</p>
+            <p><strong>Imię: </strong>{employee.imie}</p>
+            <p><strong>Nazwisko: </strong>{employee.nazwisko}</p>
+            <p><strong>Numer telefonu: </strong>{employee.numer_telefonu}</p>
+            <p><strong>Numer konta: </strong>{employee.numer_konta}</p>
+            <p><strong>Adres: </strong>{employee.adres}</p>
+            <p><strong>ID Kliniki: </strong>{employee.id_kliniki}</p>
+            <p><i>Data dodania do rejestru pracowników: </i>{employee.createdAt.substring(0, 10)}</p>
         </div>
     )
 }
