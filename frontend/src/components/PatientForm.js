@@ -55,7 +55,7 @@ const PatientForm = () => {
         <label>ID Właściciela:</label>
         <input type="number" onChange={(e) => setIdWlasciciela(e.target.value)} value = {id_wlasciciela}/>
 
-        <button> Dodaj pacjenta </button> 
+        <button className="add-button"> Dodaj pacjenta </button> 
         {error && <div className="error"> {error} </div>}
         </form>
     )

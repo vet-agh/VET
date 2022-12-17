@@ -42,26 +42,18 @@ const ClientForm = () => {
             <h3> Dodaj nowego klienta: </h3>
 
             <label> Imię: </label>
-            <input type="text"
-            onChange={(e) => setImie(e.target.value)}
-            value={imie} />
+            <input type="text" onChange={(e) => setImie(e.target.value)} value={imie}/>
 
             <label> Nazwisko: </label>
-            <input type="text"
-            onChange={(e) => setNazwisko(e.target.value)}
-            value={nazwisko}/>
+            <input type="text" onChange={(e) => setNazwisko(e.target.value)} value={nazwisko}/>
                                     
             <label> Numer konta (opcjonalne): </label>
-            <input type="text"
-            onChange={(e) => setNumer_konta(e.target.value)}
-            value={numer_konta} />
+            <input type="text" onChange={(e) => setNumer_konta(e.target.value)} value={numer_konta}/>
 
             <label> Numer identyfikacyjny pacjenta: </label>
-            <input type="text"
-            onChange={(e) => setId_pacjenta(e.target.value)}
-            value={id_pacjenta} />
+            <input type="text" onChange={(e) => setId_pacjenta(e.target.value)} value={id_pacjenta}/>
 
-            <button>Dodaj klienta</button>
+            <button className="add-button">Dodaj klienta</button>
 
             {error && <div className="error">{error}</div>}
         </form>

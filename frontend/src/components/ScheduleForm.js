@@ -69,7 +69,7 @@ const ScheduleForm = () => {
       <label>ID Pacjenta:</label>
       <input type="text" onChange={(s) => setIdPacjenta(s.target.value)} value={id_pacjenta}/>
 
-      <button>Dodaj wizyte</button>
+      <button className="add-button">Dodaj wizyte</button>
 
       {error && <div className="error"> {error} </div>}
     </form>
