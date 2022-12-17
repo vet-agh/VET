@@ -71,18 +71,20 @@ input {
   box-sizing: border-box;
 }
 
-form button {
+.add-button {
   background: var(--primary);
   border: 0;
   color: #fff;
   padding: 10px;
   font-family: "Poppins";
+  width: 15%;
+  height: 50px;
   border-radius: 4px;
   cursor: pointer;
 }
 
-form button:hover {
-  background-color: darkseagreen;
+.add-button:hover {
+  background-color: rgb(21, 71, 21);
 }
 
 div.error {
@@ -99,6 +101,7 @@ div.error {
   top: 0;
   bottom: 0;
   right: 2%;
+  font-family: "Poppins";
   margin: auto 0;
   background-color: #f44336;
   border: none;
@@ -107,6 +110,8 @@ div.error {
   width: 15%;
   height: 50px;
   text-decoration: none;
+  cursor: pointer;
+  border-radius: 4px;
 }
 
 .delete-button:hover {
