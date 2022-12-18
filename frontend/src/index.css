@@ -5,6 +5,7 @@
 
 :root {
   --primary: #1aac83;
+  --go-back: #E5BA73;
   --error: #e7195a;
 }
 
@@ -165,6 +166,25 @@ div.error {
 .go_back{
   width: 15%;
   height: 20%;
+}
+
+.go-back-button {
+  background-color: var(--go-back);
+  right: 5%;
+  font-family: "Poppins";
+  margin: auto 0;
+  text-align: center;
+  border: none;
+  color: white;
+  width: 200px;
+  height: 40px;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.go-back-button:hover {
+  background-color: #C58940;
 }
 
 .NavigationButtons {
