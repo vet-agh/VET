@@ -1,5 +1,5 @@
-import {useEffect} from "react";
-import {useScheduleContext} from "../hooks/useScheduleContext";
+import { useEffect } from "react";
+import { useScheduleContext } from "../hooks/useScheduleContext";
 import ScheduleDetails from '../components/ScheduleDetails'
 import ScheduleForm from "../components/ScheduleForm";
 
@@ -28,6 +28,7 @@ const SchedulePage = () => {
           <input className="go-back-button" type="submit" value="Wróć do strony głównej" /></form>
         </div>
         <ScheduleForm/>
+
         <h2>Harmonogram wizyt:</h2>
         {schedule && schedule.map(s => (
         <ScheduleDetails schedule={s} key={s._id}  />))}

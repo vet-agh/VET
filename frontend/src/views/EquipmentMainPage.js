@@ -25,12 +25,15 @@ const EquipmentPage = () => {
         <>
             <div className="go_back">
                 <form action = "/">
-                <input className="go-back-button" type="submit" value="Wróć do strony głównej" /> </form>
+                    <input className="go-back-button" type="submit" value="Wróć do strony głównej"/>
+                </form>
             </div>
             <EquipmentForm/>
-            <h2> Rejestr sprzętu </h2>
-            {equipment && equipment.map(equipment => ( 
-            <EquipmentDetails key = {equipment._id} equipment = {equipment}/>))}
+
+            <h2>Rejestr sprzętu </h2>
+            {equipment && equipment.map((e) => ( 
+            <EquipmentDetails equipment={e} key={e._id}/>
+            ))}
         </>
     )
 }

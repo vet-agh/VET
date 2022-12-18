@@ -25,12 +25,15 @@ const ClientPage = () => {
     <>
         <div className="go_back">
             <form action="/">
-            <input className="go-back-button" type="submit" value="Wróć do strony głównej" /></form>
+              <input className="go-back-button" type="submit" value="Wróć do strony głównej" />
+            </form>
         </div>
         <ClientForm/>
         <h2>Lista klientów:</h2>
-        {clients && clients.map(client => (
-        <ClientDetails client={client} key={client._id}  />))}
+
+        {clients && clients.map(c => (
+        <ClientDetails client={c} key={c._id} />
+        ))}
     </>
   )
 }
