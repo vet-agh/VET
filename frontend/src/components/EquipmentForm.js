@@ -1,7 +1,15 @@
 import {useState} from "react"
 import {useEquipmentContext} from "../hooks/useEquipmentContext"
+import Select from "react-select"
 
 const EquipmentForm = () => {
+
+    const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' }
+      ]
+
     const {dispatch} = useEquipmentContext()
 
     const [nazwa, setNazwa] = useState('')
@@ -54,12 +62,7 @@ const EquipmentForm = () => {
             
             <label> ID kliniki, do której dodawany jest sprzęt: </label>
             {/* <input type="number" onChange={(e) => setIdKliniki(e.target.value)} value = {id_kliniki}/> */}
-            <select onChange={(e) => setIdKliniki(e.target.value)} value = {id_kliniki}>
-                <option value="grapefruit">Grapefruit</option>
-                <option value="lime">Lime</option>
-                <option value="coconut">Coconut</option>
-                <option value="mango">Mango</option>
-            </select>
+            <Select options={options} onChange={(e) => setIdKliniki(e.target.value)} value = {id_kliniki}/>
 
             <button> Dodaj sprzęt </button> 
             
