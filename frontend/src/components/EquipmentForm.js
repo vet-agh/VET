@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useEquipmentContext } from "../hooks/useEquipmentContext";
+import { useEquipmentContext } from "../hooks/useEquipmentContext"
 
 const EquipmentForm = () => {
     const {dispatch} = useEquipmentContext()
