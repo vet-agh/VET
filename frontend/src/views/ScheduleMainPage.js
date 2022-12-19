@@ -1,7 +1,7 @@
-import { useEffect } from "react";
-import { useScheduleContext } from "../hooks/useScheduleContext";
+import { useEffect } from "react"
+import { useScheduleContext } from "../hooks/useScheduleContext"
 import ScheduleDetails from '../components/ScheduleDetails'
-import ScheduleForm from "../components/ScheduleForm";
+import ScheduleForm from "../components/ScheduleForm"
 
 
 const SchedulePage = () => {
