@@ -23,7 +23,7 @@ const Signup = () => {
             <label> Hasło:  </label>
             <input type = "password" onChange={(e) => setPassword(e.target.value)} value={password}/> 
 
-            <button disabled={isLoading}> Zarejestruj się! </button>
+            <button disabled={isLoading}> Zarejestruj się </button>
             {error && <div className="error"> {error} </div>}
             
         </form>
