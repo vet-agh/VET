@@ -1,16 +1,26 @@
-import {useState} from "react"
-import {useEquipmentContext} from "../hooks/useEquipmentContext"
+import { useState, useEffect } from 'react'
+import { useEquipmentContext } from '../hooks/useEquipmentContext'
+import { useClinicContext } from '../hooks/useClinicContext'
 
 const EquipmentForm = () => {
 
-    const options = [
-        {value: '', text: '--Choose an option--'},
-        {value: 'apple', text: 'Apple 🍏'},
-        {value: 'banana', text: 'Banana 🍌'},
-        {value: 'kiwi', text: 'Kiwi 🥝'},
-      ]
+    // Fetch clinics data
+    const {clinics, dispatch} = useClinicContext()
 
-    const {dispatch} = useEquipmentContext()
+        useEffect(() => {
+        const fetchClinics = async () => {
+            const response = await fetch('/api/clinics')
+            const json = await response.json()
+
+            if (response.ok){
+                dispatch({type: 'SET_CLINICS', payload: json})
+            }
+        }
+        fetchClinics()
+    }, [dispatch])
+
+    // No auto refresh - bug ment to be fixed
+    //const {dispatch} = useEquipmentContext()
 
     const [nazwa, setNazwa] = useState('')
     const [kategoria, setKategoria] = useState('')
@@ -61,16 +71,14 @@ const EquipmentForm = () => {
             <input type="number" onChange={(e) => setLiczbaSprzetu(e.target.value)} value = {liczba_sprzetu}/>
             
             <label> ID kliniki, do której dodawany jest sprzęt: </label>
-            {/* <input type="number" onChange={(e) => setIdKliniki(e.target.value)} value = {id_kliniki}/> */}
-
             <select onChange={(e) => setIdKliniki(e.target.value)} value = {id_kliniki}>
-                {options.map(option => (
-                    <option key={option.value} value={option.value}>
-                        {option.text}
+                <option value=''> -- Wybierz klinikę -- </option>
+                {clinics && clinics.map((clinic) => (
+                    <option key={clinic._id} value={clinic._id}>
+                        {clinic.nazwa}
                     </option>
                 ))}
             </select>
-
 
             <button> Dodaj sprzęt </button> 
             
