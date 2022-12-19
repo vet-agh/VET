@@ -20,7 +20,7 @@ const Login = () => {
             <label>Email: </label>
             <input type="email" onChange={(e) => setEmail(e.target.value)} value={email}/> 
 
-            <label>Hasło:  </label>
+            <label>Hasło: </label>
             <input type = "password" onChange={(e) => setPassword(e.target.value)} value={password}/> 
 
             <button className="login-button" disabled={isLoading}>Zaloguj się</button>
