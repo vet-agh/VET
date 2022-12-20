@@ -1,4 +1,4 @@
-import {usePatientContext} from "../hooks/usePatientContext"
+import { usePatientContext } from "../hooks/usePatientContext"
 
 const PatientDetails = ({ patient }) => {
     const {dispatch} = usePatientContext()
@@ -15,14 +15,13 @@ const PatientDetails = ({ patient }) => {
     }
 
     return (
-        <div className="patient-details">
+        <div className="form-details">
             <button className="delete-button" onClick={handleClickDelete}>Usuń pacjenta</button>
             <p><strong>Imie:</strong> {patient.imie} </p>
             <p><strong>Gatunek:</strong> {patient.gatunek} </p>
             <p><strong>Rasa: </strong>{patient.rasa}</p>
-            <p><strong>ID właściciela:</strong> {patient.id_owner} </p>
-            <p><i>Data dodania pacjenta do rejestru pacjentów:</i> {patient.createdAt.substring(0, 10)}</p>
-            <br></br>
+            <p><strong>ID Właściciela:</strong> {patient.id_owner} </p>
+            <p><i>Data dodania pacjenta do rejestru pacjentów: </i>{patient.createdAt.substring(0, 10)}</p>
         </div>
     )
 }

@@ -23,12 +23,15 @@ const EmployeePage = () => {
         <>
             <div className="go_back">   
                 <form action="/">
-                <input type="submit" value="Wróć do strony głównej"/></form>
+                    <input className="go-back-button" type="submit" value="Wróć do strony głównej"/>
+                </form>
             </div>
             <EmployeeForm/>
+
             <h2>Lista pracowników:</h2>
-            {employees && employees.map((employee) => (
-            <EmployeeDetails key={employee._id} employee={employee}/> ))}
+            {employees && employees.map((e) => (
+            <EmployeeDetails employee={e} key={e._id} />
+            ))}
 
         </>
 

@@ -15,13 +15,13 @@ const EquipmentDetails = ({ equipment }) => {
     }
 
     return (
-        <div className="equipment-details">
+        <div className="form-details">
             <button className="delete-button" onClick={handleClick}> Usuń sprzęt </button>
-            <p> <strong> Nazwa: {equipment.nazwa} </strong> </p> 
-            <p> <strong> Kategoria: {equipment.kategoria} </strong> </p> 
-            <p> <strong> Liczba sprzętu: {equipment.liczba_sprzetu} </strong> </p>
-            <p> <strong> ID kliniki: {equipment.id_kliniki} </strong> </p>
-            <p> <strong> Data dodania sprzętu: {equipment.createdAt.substring(0, 10)} </strong> </p>
+            <p><strong>Nazwa: </strong>{equipment.nazwa}</p> 
+            <p><strong>Kategoria: </strong>{equipment.kategoria}</p> 
+            <p><strong>Liczba sprzętu: </strong>{equipment.liczba_sprzetu}</p>
+            <p><strong>ID kliniki: </strong>{equipment.id_kliniki}</p>
+            <p><i>Data dodania sprzętu: </i>{equipment.createdAt.substring(0, 10)}</p>
         </div>
     )
 }

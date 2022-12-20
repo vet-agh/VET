@@ -3,16 +3,11 @@ import { createContext, useReducer } from "react"
 export const ClinicContext = createContext()
 
 export const ClinicReducer = (state, action) => {
-    switch (action.type){
-
-    case 'SET_CLINICS':
-        return {clinics: action.payload}
-    case 'CREATE_CLINICS':
-        return {clinics: [action.payload, ...state.clinics]}
-    case 'DELETE_CLINICS':
-        return {clinics: state.clinics.filter((c) => c._id !== action.payload._id)}
-    default:
-        return state
+    switch (action.type) {
+    case 'SET_CLINICS': return {clinics: action.payload}
+    case 'CREATE_CLINICS': return {clinics: [action.payload, ...state.clinics]}
+    case 'DELETE_CLINICS': return {clinics: state.clinics.filter((c) => c._id !== action.payload._id)}
+    default: return state
     }
 }
 

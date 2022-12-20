@@ -17,7 +17,7 @@ export const PatientContextProvider = ({children}) => {
 
     return (
         <PatientContext.Provider value={{...state, dispatch}}> 
-            { children }
+            {children}
         </PatientContext.Provider>
     )
 }

@@ -15,15 +15,15 @@ const ClientDetails = ({ client }) => {
     }
 
     return (
-        <div className="client-details">
-            <button class="delete-button" onClick={handleClickDelete}>Usuń klienta</button>
-            <strong> <p> {client.imie} { } {client.nazwisko}</p> </strong>
-            <p>Data dodania do rejestru klientów: {client.createdAt.substring(0, 10)}</p>
-            <p>Numer konta: {client.numer_konta} </p>
-            <p>Numer identyfikacyjny pacjenta: {client.id_pacjenta}</p>
-            </div>
+        <div className="form-details">
+            <button className="delete-button" onClick={handleClickDelete}>Usuń klienta</button>
+            <p><strong>Imię: </strong>{client.imie}</p>
+            <p><strong>Nazwisko: </strong>{client.nazwisko}</p>
+            <p><strong>Numer konta: </strong>{client.numer_konta} </p>
+            <p><strong>ID Pacjenta: </strong>{client.id_pacjenta}</p>
+            <p><i>Data dodania do rejestru klientów: </i>{client.createdAt.substring(0, 10)}</p>
+        </div>
     )
-
 }
 
 export default ClientDetails

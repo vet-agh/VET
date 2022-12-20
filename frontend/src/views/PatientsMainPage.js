@@ -26,13 +26,14 @@ const PatientPage = () => {
        <>
         <div className="go_back">
           <form action="/">
-          <input type="submit" value="Wróć do strony głównej" /></form>
+            <input className="go-back-button" type="submit" value="Wróć do strony głównej" />
+          </form>
         </div>
-          <PatientForm/>
+        <PatientForm/>
         
         <h2> Rejestr pacjentów </h2>
         {patient && patient.map(p => (
-        <PatientDetails patient={p} key={p._id}  />))}
+        <PatientDetails patient={p} key={p._id}/>))}
       </>
     )
 }
