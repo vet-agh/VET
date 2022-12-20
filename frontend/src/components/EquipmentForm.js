@@ -4,23 +4,30 @@ import { useClinicContext } from '../hooks/useClinicContext'
 
 const EquipmentForm = () => {
 
-    // Fetch clinics data
-    const {clinics, dispatch} = useClinicContext()
+    // Fetch clinics data - start
 
-        useEffect(() => {
-        const fetchClinics = async () => {
-            const response = await fetch('/api/clinics')
-            const json = await response.json()
+    // clinics declared globally
+    const {clinics} = useClinicContext()
+    {
+        // dispatch declared locally - avoiding conflict with equipment dispatch
+        const {dispatch} = useClinicContext()
 
-            if (response.ok){
-                dispatch({type: 'SET_CLINICS', payload: json})
+            useEffect(() => {
+            const fetchClinics = async () => {
+                const response = await fetch('/api/clinics')
+                const json = await response.json()
+
+                if (response.ok){
+                    dispatch({type: 'SET_CLINICS', payload: json})
+                }
             }
-        }
-        fetchClinics()
-    }, [dispatch])
+            fetchClinics()
+        }, [dispatch])
+    }
 
-    // No auto refresh - bug ment to be fixed
-    //const {dispatch} = useEquipmentContext()
+    // Fetch clinics data - end
+
+    const {dispatch} = useEquipmentContext()
 
     const [nazwa, setNazwa] = useState('')
     const [kategoria, setKategoria] = useState('')
