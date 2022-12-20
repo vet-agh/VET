@@ -77,7 +77,7 @@ const EquipmentForm = () => {
             <label> Liczba sprzętu: </label> 
             <input type="number" onChange={(e) => setLiczbaSprzetu(e.target.value)} value = {liczba_sprzetu}/>
             
-            <label> ID kliniki, do której dodawany jest sprzęt: </label>
+            <label> Klinika do której dodawany jest sprzęt: </label>
             <select onChange={(e) => setIdKliniki(e.target.value)} value = {id_kliniki}>
                 <option value=''> -- Wybierz klinikę -- </option>
                 {clinics && clinics.map((clinic) => (
