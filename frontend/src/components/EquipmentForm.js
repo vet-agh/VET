@@ -1,5 +1,5 @@
-import {useState} from "react"
-import {useEquipmentContext} from "../hooks/useEquipmentContext";
+import { useState } from "react"
+import { useEquipmentContext } from "../hooks/useEquipmentContext"
 
 const EquipmentForm = () => {
     const {dispatch} = useEquipmentContext()
@@ -41,23 +41,23 @@ const EquipmentForm = () => {
 
     return (
         <form className = "create" onSubmit={handleSubmit}> 
-            <h3> Dodaj nowy sprzęt do rejestru: </h3>
+            <h3>Dodaj nowy sprzęt do rejestru: </h3>
         
-            <label> Nazwa sprzętu: </label>
-            <input type="text" onChange={(e) => setNazwa(e.target.value)} value = {nazwa}/>
+            <label>Nazwa sprzętu: </label>
+            <input type="text" onChange={(e) => setNazwa(e.target.value)} value={nazwa}/>
 
-            <label> Kategoria sprzętu: </label>
-            <input type="text" onChange={(e) => setKategoria(e.target.value)} value = {kategoria}/>
+            <label>Kategoria sprzętu: </label>
+            <input type="text" onChange={(e) => setKategoria(e.target.value)} value={kategoria}/>
         
-            <label> Liczba sprzętu: </label> 
-            <input type="number" onChange={(e) => setLiczbaSprzetu(e.target.value)} value = {liczba_sprzetu}/>
+            <label>Liczba sprzętu: </label> 
+            <input type="number" min="0" onChange={(e) => setLiczbaSprzetu(e.target.value)} value={liczba_sprzetu}/>
             
-            <label> ID kliniki, do której dodawany jest sprzęt: </label>
-            <input type="number" onChange={(e) => setIdKliniki(e.target.value)} value = {id_kliniki}/>
+            <label>ID Kliniki: </label>
+            <input type="number" onChange={(e) => setIdKliniki(e.target.value)} value={id_kliniki}/>
 
-            <button> Dodaj sprzęt </button> 
+            <button className="add-button">Dodaj sprzęt</button> 
             
-            {error && <div className="error"> {error} </div>}
+            {error && <div className="error">{error}</div>}
         </form>
     )
 }

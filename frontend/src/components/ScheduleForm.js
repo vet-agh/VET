@@ -57,6 +57,9 @@ const ScheduleForm = () => {
       <label>Usluga:</label>
       <input type="text" onChange={(s) => setUsluga(s.target.value)} value={usluga}/>
 
+      <label>ID Kliniki:</label>
+      <input type="text" onChange={(s) => setIdKliniki(s.target.value)} value={id_kliniki}/>
+
       <label>ID Lekarza:</label>
       <input type="text" onChange={(s) => setIdLekarza(s.target.value)} value={id_lekarza}/>
 
@@ -66,10 +69,7 @@ const ScheduleForm = () => {
       <label>ID Pacjenta:</label>
       <input type="text" onChange={(s) => setIdPacjenta(s.target.value)} value={id_pacjenta}/>
 
-      <label>ID Kliniki:</label>
-      <input type="text" onChange={(s) => setIdKliniki(s.target.value)} value={id_kliniki}/>
-
-      <button>Dodaj wizyte</button>
+      <button className="add-button">Dodaj wizyte</button>
 
       {error && <div className="error"> {error} </div>}
     </form>

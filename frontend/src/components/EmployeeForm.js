@@ -3,6 +3,7 @@ import { useEmployeesContext } from '../hooks/useEmployeeContext'
 
 const EmployeeForm = () => {
     const {dispatch} = useEmployeesContext()
+
     const [imie, setImie] = useState('')
     const [nazwisko, setNazwisko] = useState('')
     const [numer_telefonu, setNumer_telefonu] = useState('')
@@ -44,37 +45,25 @@ const EmployeeForm = () => {
             <form className="create" onSubmit={handleSubmit}>
                 <h3>Dodaj nowego pracownika: </h3>
 
-                <label> Imię: </label>
-                <input type="text"
-                onChange={(e) => setImie(e.target.value)}
-                value={imie}/>
+                <label>Imię: </label>
+                <input type="text" onChange={(e) => setImie(e.target.value)} value={imie}/>
 
-                <label> Nazwisko: </label>
-                <input type="text"
-                onChange={(e) => setNazwisko(e.target.value)}
-                value={nazwisko}/>
+                <label>Nazwisko: </label>
+                <input type="text"nonChange={(e) => setNazwisko(e.target.value)} value={nazwisko}/>
                 
-                <label>  Numer telefonu: </label>
-                <input type="text"
-                onChange={(e) => setNumer_telefonu(e.target.value)}
-                value={numer_telefonu}/>
+                <label>Numer telefonu: </label>
+                <input type="text" onChange={(e) => setNumer_telefonu(e.target.value)} value={numer_telefonu}/>
 
-                <label> Numer konta: </label>
-                <input type="text"
-                onChange={(e) => setNumer_konta(e.target.value)}
-                value={numer_konta}/>
+                <label>Numer konta: </label>
+                <input type="text" onChange={(e) => setNumer_konta(e.target.value)} value={numer_konta}/>
 
-                <label> Adres: </label>
-                <input type="text"
-                onChange={(e) => setAdres(e.target.value)}
-                value={adres}/>
+                <label>Adres: </label>
+                <input type="text" onChange={(e) => setAdres(e.target.value)} value={adres}/>
     
-                <label> Numer identyfikacyjny kliniki: </label>
-                <input type="text"
-                onChange={(e) => setId_kliniki(e.target.value)}
-                value={id_kliniki}/>
+                <label>ID Kliniki: </label>
+                <input type="text" onChange={(e) => setId_kliniki(e.target.value)} value={id_kliniki}/>
     
-                <button>Dodaj pracownika</button>
+                <button className="add-button">Dodaj pracownika</button>
                 {error && <div className="error">{error}</div>}
             </form>
         )

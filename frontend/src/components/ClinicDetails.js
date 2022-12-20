@@ -15,12 +15,12 @@ const ClinicDetails = ({clinic}) => {
     }
     
     return (
-        <div className="clinic-details">
-            <button class="delete-button" onClick={handleClickDelete}>Usuń zakład</button>
-            <strong><p>{clinic.nazwa}</p></strong>
-            <p>Data dodania do rejestru: {clinic.createdAt.substring(0, 10)}</p>
-            <p>Numer telefonu: {clinic.numer_telefonu}</p>
-            <p>Adres: {clinic.adres}</p>
+        <div className="form-details">
+            <button className="delete-button" onClick={handleClickDelete}>Usuń klinikę</button>
+            <p><strong>Nazwa Kliniki: </strong>{clinic.nazwa}</p>
+            <p><strong>Numer telefonu: </strong>{clinic.numer_telefonu}</p>
+            <p><strong>Adres: </strong>{clinic.adres}</p> 
+            <p><i>Data dodania pacjenta do rejestru pacjentów: </i>{clinic.createdAt.substring(0, 10)}</p>
         </div>
     )
 }

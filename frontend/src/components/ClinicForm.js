@@ -3,6 +3,7 @@ import { useClinicContext } from '../hooks/useClinicContext'
 
 const ClinicForm = () => {
     const {dispatch} = useClinicContext()
+
     const [nazwa, setNazwa] = useState('')
     const [numer_telefonu, setNumer_telefonu] = useState('')
     const [adres, setAdres] = useState('')
@@ -38,21 +39,16 @@ const ClinicForm = () => {
                 <h3>Dodaj nowy zakład: </h3>
 
                 <label> Nazwa: </label>
-                <input type="text"
-                onChange={(c) => setNazwa(c.target.value)}
-                value={nazwa}/>
+                <input type="text" onChange={(c) => setNazwa(c.target.value)} value={nazwa}/>
 
                 <label>  Numer telefonu: </label>
-                <input type="text"
-                onChange={(c) => setNumer_telefonu(c.target.value)}
-                value={numer_telefonu}/>
+                <input type="text" onChange={(c) => setNumer_telefonu(c.target.value)} value={numer_telefonu}/>
 
                 <label> Adres: </label>
-                <input type="text"
-                onChange={(c) => setAdres(c.target.value)}
-                value={adres}/>
+                <input type="text" onChange={(c) => setAdres(c.target.value)} value={adres}/>
 
-                <button>Dodaj zakład</button>
+                <button className="add-button">Dodaj zakład</button>
+
                 {error && <div className="error">{error}</div>}
             </form>
         )

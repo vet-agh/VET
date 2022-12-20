@@ -23,7 +23,7 @@ const Home = () =>
       <input type="submit" value="Pracownicy"/></form> 
       
       <form action="/clinics">
-      <input type="submit" value="Zakłady"/></form> 
+      <input type="submit" value="Kliniki"/></form> 
 
     </div>
   </>
