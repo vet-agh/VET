@@ -13,8 +13,14 @@ const Login = () => {
     }
 
     return (
+    <>
+        <div className="go_back">
+            <form action="/">
+                <input className="go-back-button" type="submit" value="Wróć do strony głównej" />
+            </form>
+        </div>
         <form className="login" onSubmit={handleSubmit}> 
-            
+
             <h3>Zaloguj się</h3>
 
             <label>Email: </label>
@@ -27,6 +33,7 @@ const Login = () => {
             {error && <div className="error"> {error} </div>}
             
         </form>
+    </>
     )
 }
 
