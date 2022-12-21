@@ -12,7 +12,7 @@ import EquipmentMainPage from './views/EquipmentMainPage'
 import ClinicPage from './views/ClinicMainPage'
 import ClientPage from './views/ClientMainPage'
 import EmployeePage from './views/EmployeeMainPage'
-import { useAuthContext } from './hooks/useAuthContext'
+import {useAuthContext} from './hooks/useAuthContext'
 
 
 function App() {
