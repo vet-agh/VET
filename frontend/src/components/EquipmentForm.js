@@ -1,7 +1,32 @@
-import { useState } from "react"
-import { useEquipmentContext } from "../hooks/useEquipmentContext"
+import { useState, useEffect } from 'react'
+import { useEquipmentContext } from '../hooks/useEquipmentContext'
+import { useClinicContext } from '../hooks/useClinicContext'
 
 const EquipmentForm = () => {
+
+    // Fetch clinics data - start
+
+    // clinics declared globally
+    const {clinics} = useClinicContext()
+    {
+        // dispatch declared locally - avoiding conflict with equipment dispatch
+        const {dispatch} = useClinicContext()
+
+            useEffect(() => {
+            const fetchClinics = async () => {
+                const response = await fetch('/api/clinics')
+                const json = await response.json()
+
+                if (response.ok){
+                    dispatch({type: 'SET_CLINICS', payload: json})
+                }
+            }
+            fetchClinics()
+        }, [dispatch])
+    }
+
+    // Fetch clinics data - end
+
     const {dispatch} = useEquipmentContext()
 
     const [nazwa, setNazwa] = useState('')
@@ -52,11 +77,17 @@ const EquipmentForm = () => {
             <label>Liczba sprzętu: </label> 
             <input type="number" min="0" onChange={(e) => setLiczbaSprzetu(e.target.value)} value={liczba_sprzetu}/>
             
-            <label>ID Kliniki: </label>
-            <input type="number" onChange={(e) => setIdKliniki(e.target.value)} value={id_kliniki}/>
+            <label> Klinika do której dodawany jest sprzęt: </label>
+            <select onChange={(e) => setIdKliniki(e.target.value)} value = {id_kliniki}>
+                <option value=''> -- Wybierz klinikę -- </option>
+                {clinics && clinics.map((clinic) => (
+                    <option key={clinic._id} value={clinic._id}>
+                        {clinic.nazwa}
+                    </option>
+                ))}
+            </select>
 
             <button className="add-button">Dodaj sprzęt</button> 
-            
             {error && <div className="error">{error}</div>}
         </form>
     )
