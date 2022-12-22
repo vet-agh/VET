@@ -1,26 +1,21 @@
+import { useEffect } from "react"
 import { useClientContext } from "../hooks/useClientContext"
-import {usePatientContext} from "../hooks/usePatientContext"
-
-// Fetch clinics data
-const {patient, dispatch} = usePatientContext()
-useEffect(() => {
-    const fetchPatients = async () => {
-        const response = await fetch('/api/patient')
-        const json = await response.json()
-
-        if (response.ok){
-            dispatch({type: 'SET_PATIENT', payload: json})
-        }
-    }
-    fetchPatients()
-}, [dispatch])
-
-// No auto refresh - bug ment to be fixed
-//const {dispatch} = useEquipmentContext()
-
+import { useState } from "react"
 
 const ClientDetails = ({ client }) => {
     const {dispatch} = useClientContext()
+    const [patients, setPatients] = useState('')
+
+    useEffect(() => {
+        const fetchData = async () => {   
+            const response = await fetch('/api/patients')
+            const json = await response.json()
+            setPatients(json)
+        }
+        fetchData().catch(console.error);
+    }, [])
+
+    console.log(patients)
 
     const handleClickDelete = async () => {
         const response = await fetch('/api/clients/' + client._id, {
@@ -40,11 +35,10 @@ const ClientDetails = ({ client }) => {
             <p><strong>Nazwisko: </strong>{client.nazwisko}</p>
             <p><strong>Numer konta: </strong>{client.numer_konta} </p>
             <p><strong>ID Pacjenta: </strong>{client.id_pacjenta}</p>
-            <p><strong>Szczegóły pacjenta: </strong>
-            {{patient , patient.map((patient) => (
-                    key={client._id} , value={patient._id}>
-                        {patient.imie})}</p>
-            
+            <p><strong>Szczegóły pacjenta: </strong></p>
+            {patients && patients.filter((p) => p._id === client.id_pacjenta) && patients.map(p => (
+            <p patient={p} key={p._id} >{p.imie}({p._id})</p> 
+            ))}
             <p><i>Data dodania do rejestru klientów: </i>{client.createdAt.substring(0, 10)}</p>
         </div>
     )
