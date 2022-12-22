@@ -36,9 +36,7 @@ const ClientDetails = ({ client }) => {
             <p><strong>Numer konta: </strong>{client.numer_konta} </p>
             <p><strong>ID Pacjenta: </strong>{client.id_pacjenta}</p>
             <p><strong>Szczegóły pacjenta: </strong></p>
-            {patients && patients.filter((p) => p._id === client.id_pacjenta) && patients.map(p => (
-            <p patient={p} key={p._id} >{p.imie}({p._id})</p> 
-            ))}
+            {patients && patients.filter(p => (p._id === client.id_pacjenta)).map(p => (<p key={client.id_pacjenta}>{p.imie}</p>))}
             <p><i>Data dodania do rejestru klientów: </i>{client.createdAt.substring(0, 10)}</p>
         </div>
     )

@@ -16,7 +16,7 @@ const clinetSchema = new Schema({
         type: String
     },
     id_pacjenta: {
-        type: Number,
+        type: String,
         required: true
     }
 },{timestamps:true}) //add data when doc were created

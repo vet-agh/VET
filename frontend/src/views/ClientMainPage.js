@@ -18,20 +18,9 @@ const ClientPage = () => {
           dispatch({type:'SET_CLIENTS', payload: json}) 
       }
     }
-
     fetchClients()
-    //dodane fetchPatients
-    const fetchPatients = async() => {
-      const response = await fetch('/api/patients')
-      const json = await response.json()
-
-      if (response.ok){
-          dispatch({type:'SET_PATIENTS', payload: json}) 
-      }
-    }
-
-    fetchPatients()
   }, [dispatch])
+
 
   return (
     <>
