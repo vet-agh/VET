@@ -5,6 +5,7 @@ import { useClientContext } from '../hooks/useClientContext'
 import ClientDetails from '../components/ClientDetails'
 import ClientForm from '../components/ClientForm'
 
+
 const ClientPage = () => {
   const {clients, dispatch} = useClientContext()
 
@@ -19,6 +20,17 @@ const ClientPage = () => {
     }
 
     fetchClients()
+    //dodane fetchPatients
+    const fetchPatients = async() => {
+      const response = await fetch('/api/patients')
+      const json = await response.json()
+
+      if (response.ok){
+          dispatch({type:'SET_PATIENTS', payload: json}) 
+      }
+    }
+
+    fetchPatients()
   }, [dispatch])
 
   return (
@@ -32,8 +44,9 @@ const ClientPage = () => {
         <h2>Lista klientów:</h2>
 
         {clients && clients.map(c => (
-        <ClientDetails client={c} key={c._id} />
+        <ClientDetails client={c} key={c._id} /> 
         ))}
+        
     </>
   )
 }
