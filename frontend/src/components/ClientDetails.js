@@ -37,8 +37,8 @@ const ClientDetails = ({ client }) => {
             <p style={{color: "#E5BA73"}} onClick={() => setShowed(showed => !showed)}><strong>Pokaż szczegóły pacjenta:</strong></p>
             {showed ? 
             <div id="patient-details">
-                {patients && patients.filter(p => (p._id === client.id_pacjenta)).map(p => (
-                <PatientDetails patient={p} key={client.id_pacjenta}/>))}
+                {patients && patients.filter(p => (p.id_klienta === client._id)).map(p => (
+                <PatientDetails patient={p} key={p._id}/>))}
                 <br></br>
             </div> : null}
             <p><i>Data dodania klienta do rejestru klientów: </i>{client.createdAt.substring(0, 10)}</p>

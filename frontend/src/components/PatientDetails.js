@@ -20,7 +20,7 @@ const PatientDetails = ({ patient }) => {
             <p><strong>Imie:</strong> {patient.imie} </p>
             <p><strong>Gatunek:</strong> {patient.gatunek} </p>
             <p><strong>Rasa: </strong>{patient.rasa}</p>
-            <p><strong>ID Właściciela:</strong> {patient.id_owner} </p>
+            <p><strong>ID Klienta:</strong> {patient.id_klienta} </p>
             <p><i>Data dodania pacjenta do rejestru pacjentów: </i>{patient.createdAt.substring(0, 10)}</p>
         </div>
     )
