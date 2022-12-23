@@ -17,8 +17,6 @@ const ClientDetails = ({ client }) => {
         fetchData().catch(console.error);
     }, [])
 
-    console.log(patients)
-
     const handleClickDelete = async () => {
         const response = await fetch('/api/clients/' + client._id, {
             method: 'DELETE'
