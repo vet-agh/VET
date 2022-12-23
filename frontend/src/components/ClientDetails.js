@@ -1,7 +1,6 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useClientContext } from "../hooks/useClientContext"
-import { useState } from "react"
-import PatientDetails from '../components/PatientDetails'
+import PatientDetails from "../components/PatientDetails"
 
 const ClientDetails = ({ client }) => {
     const {dispatch} = useClientContext()
@@ -39,7 +38,7 @@ const ClientDetails = ({ client }) => {
             {showed ? 
             <div id="patient-details">
                 {patients && patients.filter(p => (p._id === client.id_pacjenta)).map(p => (
-                <PatientDetails patient={p} key={p._id}/>))}
+                <PatientDetails patient={p} key={client.id_pacjenta}/>))}
                 <br></br>
             </div> : null}
             <p><i>Data dodania klienta do rejestru klientów: </i>{client.createdAt.substring(0, 10)}</p>
