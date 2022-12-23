@@ -14,8 +14,8 @@ gatunek: {
 rasa: {
     type: String,
 },
-id_wlasciciela: {
-    type: Number,
+id_klienta: {
+    type: String,
     required: true
     }
 }, {timestamps: true})
