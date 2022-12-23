@@ -187,6 +187,14 @@ div.error {
   background-color: #C58940;
 }
 
+
+#patient-details {
+  height: 100%;
+  opacity: 0.79;
+  width: 50%;
+}
+
+
 .NavigationButtons {
   float: right;
   display: flex;

@@ -6,6 +6,7 @@ import PatientDetails from '../components/PatientDetails'
 const ClientDetails = ({ client }) => {
     const {dispatch} = useClientContext()
     const [patients, setPatients] = useState('')
+    const [showed, setShowed] = useState('');
 
     useEffect(() => {
         const fetchData = async () => {   
@@ -36,11 +37,14 @@ const ClientDetails = ({ client }) => {
             <p><strong>Nazwisko: </strong>{client.nazwisko}</p>
             <p><strong>Numer konta: </strong>{client.numer_konta} </p>
             <p><strong>ID Pacjenta: </strong>{client.id_pacjenta}</p>
-            <p><strong>Szczegóły pacjenta: </strong></p>
-            {patients && patients.filter(p => (p._id === client.id_pacjenta)).map(p => (<p key={client.id_pacjenta}>{p.imie}</p>))}
-            {patients && patients.filter(p => (p._id === client.id_pacjenta)).map(p => (
-            <PatientDetails patient={p} key={p._id}/>))}
-            <p><i>Data dodania do rejestru klientów: </i>{client.createdAt.substring(0, 10)}</p>
+            <p style={{color: "#E5BA73"}} onClick={() => setShowed(showed => !showed)}><strong>Pokaż szczegóły pacjenta:</strong></p>
+            {showed ? 
+            <div id="patient-details">
+                {patients && patients.filter(p => (p._id === client.id_pacjenta)).map(p => (
+                <PatientDetails patient={p} key={p._id}/>))}
+                <br></br>
+            </div> : null}
+            <p><i>Data dodania klienta do rejestru klientów: </i>{client.createdAt.substring(0, 10)}</p>
         </div>
     )
 }
