@@ -1,7 +1,20 @@
+import { useEffect, useState } from "react"
 import { useClientContext } from "../hooks/useClientContext"
+import PatientDetails from "../components/PatientDetails"
 
 const ClientDetails = ({ client }) => {
     const {dispatch} = useClientContext()
+    const [patients, setPatients] = useState('')
+    const [showed, setShowed] = useState('');
+
+    useEffect(() => {
+        const fetchData = async () => {   
+            const response = await fetch('/api/patients')
+            const json = await response.json()
+            setPatients(json)
+        }
+        fetchData().catch(console.error);
+    }, [])
 
     const handleClickDelete = async () => {
         const response = await fetch('/api/clients/' + client._id, {
@@ -21,7 +34,14 @@ const ClientDetails = ({ client }) => {
             <p><strong>Nazwisko: </strong>{client.nazwisko}</p>
             <p><strong>Numer konta: </strong>{client.numer_konta} </p>
             <p><strong>ID Pacjenta: </strong>{client.id_pacjenta}</p>
-            <p><i>Data dodania do rejestru klientów: </i>{client.createdAt.substring(0, 10)}</p>
+            <p style={{color: "#E5BA73"}} onClick={() => setShowed(showed => !showed)}><strong>Pokaż szczegóły pacjentów:</strong></p>
+            {showed ? 
+            <div id="patient-details">
+                {patients && patients.filter(p => (p.id_klienta === client._id)).map(p => (
+                <PatientDetails patient={p} key={p._id}/>))}
+                <br></br>
+            </div> : null}
+            <p><i>Data dodania klienta do rejestru klientów: </i>{client.createdAt.substring(0, 10)}</p>
         </div>
     )
 }

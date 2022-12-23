@@ -7,13 +7,13 @@ const PatientForm = () => {
     const [imie, setImie] = useState('')
     const [gatunek, setGatunek] = useState('')
     const [rasa, setRasa] = useState('')
-    const [id_wlasciciela, setIdWlasciciela] = useState('')
+    const [id_klienta, setIdKlienta] = useState('')
     const [error, setError] = useState(null)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const patient = {imie, gatunek, rasa, id_wlasciciela}
+        const patient = {imie, gatunek, rasa, id_klienta}
 
         const response = await fetch('/api/patients',{
             method: 'POST',
@@ -34,7 +34,7 @@ const PatientForm = () => {
             setImie('')
             setGatunek('')
             setRasa('')
-            setIdWlasciciela('')
+            setIdKlienta('')
             setError(null)
             dispatch({type: 'CREATE_PATIENT', payload: json})
         }
@@ -53,8 +53,8 @@ const PatientForm = () => {
         <label>Rasa pacjenta:</label>
         <input type="text" onChange={(p) => setRasa(p.target.value)} value = {rasa}/>
 
-        <label>ID Właściciela:</label>
-        <input type="number" onChange={(p) => setIdWlasciciela(p.target.value)} value = {id_wlasciciela}/>
+        <label>ID Klienta:</label>
+        <input type="string" onChange={(p) => setIdKlienta(p.target.value)} value = {id_klienta}/>
 
         <button className="add-button"> Dodaj pacjenta </button> 
         {error && <div className="error"> {error} </div>}

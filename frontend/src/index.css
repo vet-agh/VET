@@ -112,8 +112,8 @@ div.error {
   border: none;
   color: white;
   padding: 15px 32px;
-  width: 15%;
-  height: 25%;
+  width: 200px;
+  height: 50px;
   text-decoration: none;
   cursor: pointer;
   border-radius: 4px;
@@ -186,6 +186,14 @@ div.error {
 .go-back-button:hover {
   background-color: #C58940;
 }
+
+
+#patient-details {
+  height: 100%;
+  opacity: 0.79;
+  width: 50%;
+}
+
 
 .NavigationButtons {
   float: right;
