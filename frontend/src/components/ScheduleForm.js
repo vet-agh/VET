@@ -6,7 +6,6 @@ const ScheduleForm = () => {
 
   const {employees} = useEmployeesContext()
   {
-      // dispatch declared locally - avoiding conflict with equipment dispatch
       const {dispatch} = useEmployeesContext()
 
           useEffect(() => {
