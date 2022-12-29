@@ -22,15 +22,6 @@ const ScheduleForm = () => {
       }, [dispatch])
   }
 
-
-
-
-
-
-
-
-
-
   const {dispatch} = useScheduleContext()
   
   const [data, setData] = useState('')
@@ -90,15 +81,14 @@ const ScheduleForm = () => {
       <input type="text" onChange={(s) => setIdKliniki(s.target.value)} value={id_kliniki}/>
 
       <label> Pracownik: </label>
-            <select onChange={(e) => setIdLekarza(e.target.value)} value = {id_lekarza}>
-                <option value=''> -- Wybierz pracownika -- </option>
-                {employees && employees.map((employee) => (
-                    <option key={employee._id} value={employee._id}>
-                    dr {employee.imie} {employee.nazwisko}
-
-                    </option>
-                ))}
-            </select>
+      <select onChange={(e) => setIdLekarza(e.target.value)} value = {id_lekarza}>
+        <option value=''> -- Wybierz pracownika -- </option>
+        {employees && employees.map((employee) => (
+          <option key={employee._id} value={employee._id}>
+            dr {employee.imie} {employee.nazwisko}
+          </option>
+        ))}
+      </select>
 
       <label>ID Klienta:</label>
       <input type="text" onChange={(s) => setIdKlienta(s.target.value)} value={id_klienta}/>
