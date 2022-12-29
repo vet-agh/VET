@@ -80,7 +80,7 @@ const ScheduleForm = () => {
       <label>ID Kliniki:</label>
       <input type="text" onChange={(s) => setIdKliniki(s.target.value)} value={id_kliniki}/>
 
-      <label> Pracownik: </label>
+      <label>Pracownik: </label>
       <select onChange={(e) => setIdLekarza(e.target.value)} value = {id_lekarza}>
         <option value=''> -- Wybierz pracownika -- </option>
         {employees && employees.map((employee) => (
