@@ -1,12 +1,12 @@
 // Imports
 
+// Loading the clientsController controller
 const {
     createClient,
     getClient,
     getClients,
     deleteClient,
     updateClient
-
 } = require('../controllers/clientController')
 
 // Express package
@@ -17,6 +17,13 @@ const Client = require('../models/clientModel')
 
 // Router object to handle routes for employees
 const router = express.Router()
+
+// Require authentication for all routes
+const requireAuth = require('../middleware/requireAuth')
+
+router.use(requireAuth)
+
+// Routes
 
 //GET all clients
 router.get('/',getClients)
