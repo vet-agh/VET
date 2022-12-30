@@ -4,6 +4,8 @@ import { useClinicContext } from '../hooks/useClinicContext'
 import { useAuthContext } from '../hooks/useAuthContext'
 
 const EquipmentForm = () => {
+    const { dispatch } = useEquipmentContext()
+    const { user } = useAuthContext()
 
     // Fetch clinics data - start
 
@@ -15,7 +17,11 @@ const EquipmentForm = () => {
 
             useEffect(() => {
             const fetchClinics = async () => {
-                const response = await fetch('/api/clinics')
+                const response = await fetch('/api/clinics', {
+                    headers: {
+                      'Authorization': `Bearer ${user.token}`
+                    }
+                  })
                 const json = await response.json()
 
                 if (response.ok){
@@ -23,13 +29,10 @@ const EquipmentForm = () => {
                 }
             }
             fetchClinics()
-        }, [dispatch])
+        }, [dispatch, user])
     }
 
     // Fetch clinics data - end
-
-    const { dispatch } = useEquipmentContext()
-    const { user } = useAuthContext()
 
     const [nazwa, setNazwa] = useState('')
     const [kategoria, setKategoria] = useState('')
