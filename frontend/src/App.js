@@ -23,15 +23,15 @@ function App() {
         <Navbar/>
         <div className="pages">
           <Routes>
-            <Route path="/" element={<Home/>}/>
-            <Route path="/clients" element={<ClientPage/>}/>
-            <Route path="/clinics" element={<ClinicPage/>}/>
-            <Route path="/equipment" element={<EquipmentMainPage/>}/>
-            <Route path="/patients" element={<PatientPage/>}/>
-            <Route path="/schedule" element={<SchedulePage/>}/>
-            <Route path="/employees" element={<EmployeePage/>}/>
-            <Route path='/login' element={!user ? <Login/> : <Navigate to="/"/>}/>
-            <Route path='/signup' element={!user ? <Signup/> : <Navigate to="/login"/>}/>
+            <Route path="/" element={ user ? <Home/> : <Navigate to="/login"/> }/>
+            <Route path="/clients" element={ user ? <ClientPage/> : <Navigate to="/login"/> }/>
+            <Route path="/clinics" element={ user ? <ClinicPage/> : <Navigate to="/login"/> }/>
+            <Route path="/equipment" element={ user ? <EquipmentMainPage/> : <Navigate to="/login"/> }/>
+            <Route path="/patients" element={ user ? <PatientPage/> : <Navigate to="/login"/> }/>
+            <Route path="/schedule" element={ user ? <SchedulePage/> : <Navigate to="/login"/> }/>
+            <Route path="/employees" element={ user ? <EmployeePage/> : <Navigate to="/login"/> }/>
+            <Route path='/login' element={ !user ? <Login/> : <Navigate to="/"/>}/>
+            <Route path='/signup' element={ !user ? <Signup/> : <Navigate to="/"/>}/>
           </Routes>
         </div>
       </BrowserRouter> 
