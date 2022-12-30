@@ -49,7 +49,7 @@ const EmployeeForm = () => {
                 <input type="text" onChange={(e) => setImie(e.target.value)} value={imie}/>
 
                 <label>Nazwisko: </label>
-                <input type="text"nonChange={(e) => setNazwisko(e.target.value)} value={nazwisko}/>
+                <input type="text" onChange={(e) => setNazwisko(e.target.value)} value={nazwisko}/>
                 
                 <label>Numer telefonu: </label>
                 <input type="text" onChange={(e) => setNumer_telefonu(e.target.value)} value={numer_telefonu}/>
