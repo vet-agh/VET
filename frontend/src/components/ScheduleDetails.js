@@ -1,11 +1,20 @@
-import { useScheduleContext } from "../hooks/useScheduleContext"
-
+import { useScheduleContext } from '../hooks/useScheduleContext'
+import { useAuthContext } from '../hooks/useAuthContext'
 
 const ScheduleDetails = ({schedule}) => {
-  const {dispatch} = useScheduleContext()
+  const { dispatch } = useScheduleContext()
+  const { user } = useAuthContext()
+
   const handleClickDelete = async () => {
+    if (!user) {
+      return
+    }
+
     const response = await fetch('/api/schedule/' + schedule._id, {
-      method: "DELETE"
+      method: 'DELETE',
+      headers: {
+          'Authorization': `Bearer ${user.token}`
+      }
     })
     const json = await response.json()
 

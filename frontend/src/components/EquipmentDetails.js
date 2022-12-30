@@ -1,11 +1,20 @@
 import { useEquipmentContext } from '../hooks/useEquipmentContext'
+import { useAuthContext } from '../hooks/useAuthContext'
 
 const EquipmentDetails = ({ equipment }) => {
     const { dispatch } = useEquipmentContext()
+    const { user } = useAuthContext()
  
     const handleClick = async() => {
+        if (!user) {
+            return
+        }
+
         const response = await fetch('/api/equipment/' + equipment._id, {
-            method: "DELETE"
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+            }
         })
         const json = await response.json()
 

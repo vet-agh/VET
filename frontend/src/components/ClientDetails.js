@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react"
-import { useClientContext } from "../hooks/useClientContext"
-import PatientDetails from "../components/PatientDetails"
+import { useEffect, useState } from 'react'
+import { useClientContext } from '../hooks/useClientContext'
+import { useAuthContext } from '../hooks/useAuthContext'
+import PatientDetails from '../components/PatientDetails'
 
 const ClientDetails = ({ client }) => {
-    const {dispatch} = useClientContext()
+    const { dispatch } = useClientContext()
+    const { user } = useAuthContext()
     const [patients, setPatients] = useState('')
     const [showed, setShowed] = useState('');
 
@@ -17,8 +19,15 @@ const ClientDetails = ({ client }) => {
     }, [])
 
     const handleClickDelete = async () => {
+        if (!user) {
+            return
+        }
+
         const response = await fetch('/api/clients/' + client._id, {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+            }
         })
         const json = await response.json()
 

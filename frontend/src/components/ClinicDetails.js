@@ -1,11 +1,20 @@
-import { useClinicContext } from "../hooks/useClinicContext"
+import { useClinicContext } from '../hooks/useClinicContext'
+import { useAuthContext } from '../hooks/useAuthContext'
 
 const ClinicDetails = ({clinic}) => {
-    const {dispatch} = useClinicContext()
+    const { dispatch } = useClinicContext()
+    const { user } = useAuthContext()
 
     const handleClickDelete = async () => {
+        if (!user) {
+            return
+        }
+        
         const response = await fetch('/api/clinics/' + clinic._id, {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+            }
         })
         const json = await response.json()
 

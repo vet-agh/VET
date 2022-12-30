@@ -1,10 +1,20 @@
-import { usePatientContext } from "../hooks/usePatientContext"
+import { usePatientContext } from '../hooks/usePatientContext'
+import { useAuthContext } from '../hooks/useAuthContext'
 
 const PatientDetails = ({ patient }) => {
-    const {dispatch} = usePatientContext()
+    const { dispatch } = usePatientContext()
+    const { user } = useAuthContext()
+
     const handleClickDelete = async () => {
+        if (!user) {
+            return
+        }
+
         const response = await fetch('/api/patients/' + patient._id, {
-           method: "DELETE" 
+           method: 'DELETE',
+           headers: {
+               'Authorization': `Bearer ${user.token}`
+           }
         })
         const json = await response.json()
 
