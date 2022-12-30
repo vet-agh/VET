@@ -1,8 +1,10 @@
-import {useState} from "react"
-import {useScheduleContext} from "../hooks/useScheduleContext"
+import { useState } from 'react'
+import { useScheduleContext } from '../hooks/useScheduleContext'
+import { useAuthContext } from '../hooks/useAuthContext'
 
 const ScheduleForm = () => {
-  const {dispatch} = useScheduleContext()
+  const { dispatch } = useScheduleContext()
+  const { user } = useAuthContext()
   
   const [data, setData] = useState('')
   const [czas_trwania_min, setCzasTrwaniaMin] = useState('')
@@ -16,12 +18,20 @@ const ScheduleForm = () => {
   const handleScheduleSubmit = async (s) => {
     s.preventDefault()
 
+    if (!user) {
+      setError('You must be logged in')
+      return
+  }
+
     const schedule = {data, czas_trwania_min, usluga, id_lekarza, id_klienta, id_pacjenta, id_kliniki}
 
     const response = await fetch('/api/schedule', {
       method: 'POST',
       body: JSON.stringify(schedule),
-      headers: {'Content-Type': 'application/json'}
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user.token}`
+      }
     })
 
     const json = await response.json()

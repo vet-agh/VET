@@ -1,8 +1,10 @@
-import { useState } from "react"
-import { usePatientContext } from "../hooks/usePatientContext";
+import { useState } from 'react'
+import { usePatientContext } from '../hooks/usePatientContext'
+import { useAuthContext } from '../hooks/useAuthContext'
 
 const PatientForm = () => {
-    const {dispatch} = usePatientContext()
+    const { dispatch } = usePatientContext()
+    const { user } = useAuthContext()
 
     const [imie, setImie] = useState('')
     const [gatunek, setGatunek] = useState('')
@@ -13,13 +15,19 @@ const PatientForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
+        if (!user) {
+            setError('You must be logged in')
+            return
+        }
+
         const patient = {imie, gatunek, rasa, id_klienta}
 
         const response = await fetch('/api/patients',{
             method: 'POST',
             body: JSON.stringify(patient),
             headers: {
-                'Content-Type':'application/json'
+                'Content-Type':'application/json',
+                'Authorization': `Bearer ${user.token}`
             }
         })
 

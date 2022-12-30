@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useEquipmentContext } from '../hooks/useEquipmentContext'
 import { useClinicContext } from '../hooks/useClinicContext'
+import { useAuthContext } from '../hooks/useAuthContext'
 
 const EquipmentForm = () => {
 
@@ -27,7 +28,8 @@ const EquipmentForm = () => {
 
     // Fetch clinics data - end
 
-    const {dispatch} = useEquipmentContext()
+    const { dispatch } = useEquipmentContext()
+    const { user } = useAuthContext()
 
     const [nazwa, setNazwa] = useState('')
     const [kategoria, setKategoria] = useState('')
@@ -38,13 +40,19 @@ const EquipmentForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
+        if (!user) {
+            setError('You must be logged in')
+            return
+        }
+
         const equipment = {nazwa, kategoria, liczba_sprzetu, id_kliniki}
 
         const response = await fetch('/api/equipment',{
             method: 'POST',
             body: JSON.stringify(equipment),
             headers: {
-                'Content-Type':'application/json'
+                'Content-Type':'application/json',
+                'Authorization': `Bearer ${user.token}`
             }
         })
         const json = await response.json() 
