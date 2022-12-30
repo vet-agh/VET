@@ -12,26 +12,26 @@ import EquipmentMainPage from './views/EquipmentMainPage'
 import ClinicPage from './views/ClinicMainPage'
 import ClientPage from './views/ClientMainPage'
 import EmployeePage from './views/EmployeeMainPage'
-import {useAuthContext} from './hooks/useAuthContext'
+import { useAuthContext } from './hooks/useAuthContext'
 
 
 function App() {
-  const {user} = useAuthContext()
+  const { user } = useAuthContext()
   return (
     <div className="App">
       <BrowserRouter>
         <Navbar/>
         <div className="pages">
           <Routes>
-            <Route path="/" element={ user ? <Home/> : <Navigate to="/login"/> }/>
-            <Route path="/clients" element={ user ? <ClientPage/> : <Navigate to="/login"/> }/>
-            <Route path="/clinics" element={ user ? <ClinicPage/> : <Navigate to="/login"/> }/>
-            <Route path="/equipment" element={ user ? <EquipmentMainPage/> : <Navigate to="/login"/> }/>
-            <Route path="/patients" element={ user ? <PatientPage/> : <Navigate to="/login"/> }/>
-            <Route path="/schedule" element={ user ? <SchedulePage/> : <Navigate to="/login"/> }/>
-            <Route path="/employees" element={ user ? <EmployeePage/> : <Navigate to="/login"/> }/>
-            <Route path='/login' element={ !user ? <Login/> : <Navigate to="/"/>}/>
-            <Route path='/signup' element={ !user ? <Signup/> : <Navigate to="/"/>}/>
+            <Route path="/" element={user ? <Home/> : <Navigate to="/login"/>}/>
+            <Route path="/clients" element={user && <ClientPage/>}/>
+            <Route path="/clinics" element={user && <ClinicPage/>}/>
+            <Route path="/equipment" element={user && <EquipmentMainPage/>}/>
+            <Route path="/patients" element={user && <PatientPage/>}/>
+            <Route path="/schedule" element={user && <SchedulePage/>}/>
+            <Route path="/employees" element={user && <EmployeePage/>}/>
+            <Route path='/login' element={!user ? <Login/> : <Navigate to="/"/>}/>
+            <Route path='/signup' element={!user ? <Signup/> : <Navigate to="/"/>}/>
           </Routes>
         </div>
       </BrowserRouter> 
