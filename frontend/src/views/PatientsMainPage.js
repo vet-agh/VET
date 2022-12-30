@@ -1,16 +1,22 @@
-import { useEffect } from "react";
-import { usePatientContext } from "../hooks/usePatientContext";
+import { useEffect } from 'react'
+import { usePatientContext } from '../hooks/usePatientContext'
+import { useAuthContext } from '../hooks/useAuthContext'
 
 // components
 import PatientDetails from '../components/PatientDetails'
-import PatientForm from "../components/PatientForm";
+import PatientForm from '../components/PatientForm'
 
 const PatientPage = () => {
     const {patient, dispatch} = usePatientContext()
+    const {user} = useAuthContext()
 
     useEffect(() => {
     const fetchPatient = async() => {
-        const response = await fetch('/api/patients')
+        const response = await fetch('/api/patients', {
+          headers: {
+            'Authorization': `Bearer ${user.token}`
+          }
+        })
         const json = await response.json()
 
         if(response.ok) {
@@ -18,9 +24,10 @@ const PatientPage = () => {
         }
     }
 
-    fetchPatient()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    if (user) {
+      fetchPatient()
+    }
+    }, [dispatch, user])
 
     return(
        <>
