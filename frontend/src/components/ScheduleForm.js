@@ -10,25 +10,22 @@ const ScheduleForm = () => {
   const { employees } = useEmployeesContext()
   {
       const { dispatch } = useEmployeesContext()
-      
-
-          useEffect(() => {
+        useEffect(() => {
           const fetchEmployees = async () => {
-              const response = await fetch('/api/employees', {
-                headers: {
-                  'Authorization': `Bearer ${user.token}`
-                }
+            const response = await fetch('/api/employees', {
+              headers: {
+                'Authorization': `Bearer ${user.token}`
+              }
               })
               const json = await response.json()
 
               if (response.ok){
-                  dispatch({type: 'SET_EMPLOYEES', payload: json})
+                dispatch({type: 'SET_EMPLOYEES', payload: json})
               }
-          }
-          fetchEmployees()
-      }, [dispatch, user])
+            }
+            fetchEmployees()
+        }, [dispatch, user])
   }
-
   
   const [data, setData] = useState('')
   const [czas_trwania_min, setCzasTrwaniaMin] = useState('')
@@ -45,7 +42,7 @@ const ScheduleForm = () => {
     if (!user) {
       setError('You must be logged in')
       return
-  }
+    }
 
     const schedule = {data, czas_trwania_min, usluga, id_lekarza, id_klienta, id_pacjenta, id_kliniki}
 
