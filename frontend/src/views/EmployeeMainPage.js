@@ -35,7 +35,7 @@ const EmployeePage = () => {
                     <input className="go-back-button" type="submit" value="Wróć do strony głównej"/>
                 </form>
             </div>
-            <EmployeeForm/>
+            {user.role === 1 && <EmployeeForm/>}
 
             <h2>Lista pracowników:</h2>
             {employees && employees.map((e) => (
