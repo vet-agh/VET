@@ -26,7 +26,7 @@ const PatientDetails = ({ patient }) => {
 
     return (
         <div className="form-details">
-            <button className="delete-button" onClick={handleClickDelete}>Usuń pacjenta</button>
+            {(user.role === 1 || user.role === 2) && <button className="delete-button" onClick={handleClickDelete}>Usuń pacjenta</button>}
             <p><strong>Imie:</strong> {patient.imie} </p>
             <p><strong>Gatunek:</strong> {patient.gatunek} </p>
             <p><strong>Rasa: </strong>{patient.rasa}</p>
