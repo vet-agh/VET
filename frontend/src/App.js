@@ -31,7 +31,7 @@ function App() {
             <Route path="/schedule" element={user && <SchedulePage/>}/>
             <Route path="/employees" element={user && <EmployeePage/>}/>
             <Route path='/login' element={!user ? <Login/> : <Navigate to="/"/>}/>
-            <Route path='/signup' element={!user ? <Signup/> : <Navigate to="/"/>}/>
+            <Route path='/signup' element={(user && user.role === 1) ? <Signup/> : <Navigate to="/"/>}/>
           </Routes>
         </div>
       </BrowserRouter> 

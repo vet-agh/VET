@@ -48,7 +48,7 @@ const Signup = () => {
                 ))}
             </select>
 
-            <button disabled={isLoading}> Zarejestruj się </button>
+            <button disabled={isLoading}> Dodaj użytkownika </button>
             {error && <div className="error"> {error} </div>}
             
         </form>
