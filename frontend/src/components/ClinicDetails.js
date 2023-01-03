@@ -25,7 +25,7 @@ const ClinicDetails = ({clinic}) => {
     
     return (
         <div className="form-details">
-            <button className="delete-button" onClick={handleClickDelete}>Usuń klinikę</button>
+            {user.role === 1 && <button className="delete-button" onClick={handleClickDelete}>Usuń klinikę</button>}
             <p><strong>Nazwa Kliniki: </strong>{clinic.nazwa}</p>
             <p><strong>Numer telefonu: </strong>{clinic.numer_telefonu}</p>
             <p><strong>Adres: </strong>{clinic.adres}</p> 

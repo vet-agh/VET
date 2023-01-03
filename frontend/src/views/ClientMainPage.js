@@ -38,9 +38,9 @@ const ClientPage = () => {
               <input className="go-back-button" type="submit" value="Wróć do strony głównej" />
             </form>
         </div>
-        <ClientForm/>
-        <h2>Lista klientów:</h2>
+        {(user.role === 1 || user.role === 2) && <ClientForm/>}
 
+        <h2>Lista klientów:</h2>
         {clients && clients.map(c => (
         <ClientDetails client={c} key={c._id} /> 
         ))}

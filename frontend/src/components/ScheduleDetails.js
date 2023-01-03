@@ -26,7 +26,7 @@ const ScheduleDetails = ({schedule}) => {
   
   return (
     <div className="form-details">
-      <button className="delete-button" onClick={handleClickDelete}>Usuń wizyte</button>
+      {(user.role === 1 || user.role === 2) && <button className="delete-button" onClick={handleClickDelete}>Usuń wizyte</button>}
       <p><strong>Data wizyty:</strong> {schedule.data.substring(11, 16) + ' ' + schedule.data.substring(0, 10)}</p>
       <p><strong>ID Kliniki</strong>: {schedule.id_kliniki}</p> 
       <p><strong>ID Lekarza</strong>: {schedule.id_lekarza}</p>

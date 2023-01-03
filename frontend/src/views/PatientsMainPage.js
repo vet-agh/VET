@@ -36,7 +36,7 @@ const PatientPage = () => {
             <input className="go-back-button" type="submit" value="Wróć do strony głównej" />
           </form>
         </div>
-        <PatientForm/>
+        {(user.role === 1 || user.role === 2) && <PatientForm/>}
         
         <h2> Rejestr pacjentów </h2>
         {patient && patient.map(p => (

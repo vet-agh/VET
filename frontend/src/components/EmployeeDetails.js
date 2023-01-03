@@ -25,7 +25,7 @@ const EmployeeDetails = ({employee}) => {
 
     return (
         <div className="form-details">
-            <button className="delete-button" onClick={handleClickDelete}>Usuń pracownika</button>
+            {user.role === 1 && <button className="delete-button" onClick={handleClickDelete}>Usuń pracownika</button>}
             <p><strong>Imię: </strong>{employee.imie}</p>
             <p><strong>Nazwisko: </strong>{employee.nazwisko}</p>
             <p><strong>Numer telefonu: </strong>{employee.numer_telefonu}</p>

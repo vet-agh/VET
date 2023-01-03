@@ -36,7 +36,7 @@ const EquipmentPage = () => {
                     <input className="go-back-button" type="submit" value="Wróć do strony głównej"/>
                 </form>
             </div>
-            <EquipmentForm/>
+            {user.role === 1 && <EquipmentForm/>}
 
             <h2>Rejestr sprzętu </h2>
             {equipment && equipment.map((e) => ( 

@@ -36,7 +36,7 @@ const SchedulePage = () => {
           <form action="/">
           <input className="go-back-button" type="submit" value="Wróć do strony głównej" /></form>
         </div>
-        <ScheduleForm/>
+        {(user.role === 1 || user.role === 2) && <ScheduleForm/>}
 
         <h2>Harmonogram wizyt:</h2>
         {schedule && schedule.map(s => (

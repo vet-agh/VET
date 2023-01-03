@@ -25,7 +25,7 @@ const EquipmentDetails = ({ equipment }) => {
 
     return (
         <div className="form-details">
-            <button className="delete-button" onClick={handleClick}> Usuń sprzęt </button>
+            {user.role === 1 && <button className="delete-button" onClick={handleClick}> Usuń sprzęt </button>}
             <p><strong>Nazwa: </strong>{equipment.nazwa}</p> 
             <p><strong>Kategoria: </strong>{equipment.kategoria}</p> 
             <p><strong>Liczba sprzętu: </strong>{equipment.liczba_sprzetu}</p>
