@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useScheduleContext } from '../hooks/useScheduleContext'
 import { useAuthContext } from '../hooks/useAuthContext'
 import { useEmployeesContext } from '../hooks/useEmployeeContext'
+import { useClientContext } from '../hooks/useClientContext'
 
 const ScheduleForm = () => {  
   const { dispatch } = useScheduleContext()
@@ -27,6 +28,27 @@ const ScheduleForm = () => {
         }, [dispatch, user])
   }
   
+  const { clients } = useClientContext()
+  {
+      const { dispatch } = useClientContext()
+
+          useEffect(() => {
+          const fetchClients = async () => {
+              const response = await fetch('/api/clients', {
+                headers: {
+                  'Authorization': `Bearer ${user.token}`
+                }
+                })
+              const json = await response.json()
+
+              if (response.ok){
+                  dispatch({type: 'SET_CLIENTS', payload: json})
+              }
+          }
+          fetchClients()
+      }, [dispatch, user])
+  }
+
   const [data, setData] = useState('')
   const [czas_trwania_min, setCzasTrwaniaMin] = useState('')
   const [usluga, setUsluga] = useState('')
@@ -102,7 +124,14 @@ const ScheduleForm = () => {
       </select>
 
       <label>ID Klienta:</label>
-      <input type="text" onChange={(s) => setIdKlienta(s.target.value)} value={id_klienta}/>
+      <select onChange={(c) => setIdKlienta(c.target.value)} value = {id_klienta}>
+        <option value=''> -- Wybierz klienta -- </option>
+        {clients && clients.map((client) => (
+          <option key={client._id} value={client._id}>
+          {client.imie} {client.nazwisko}
+          </option>
+        ))}
+      </select>
 
       <label>ID Pacjenta:</label>
       <input type="text" onChange={(s) => setIdPacjenta(s.target.value)} value={id_pacjenta}/>
