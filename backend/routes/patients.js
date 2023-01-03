@@ -1,12 +1,6 @@
-const express = require('express')
+// Imports
 
-
-const Patient = require('../models/patientModel')
-
-
-const router = express.Router()
-
-
+// Loading the patientsController controller
 const {
     getPatients,
     getPatient,
@@ -14,7 +8,23 @@ const {
     deletePatient,
     updatePatient
 } = require('../controllers/patientController')
-  
+
+// Express package
+const express = require('express')
+
+// Patient model
+const Patient = require('../models/patientModel')
+
+// Router object to handle routes for employees
+const router = express.Router()
+
+// Require authentication for all routes
+const requireAuth = require('../middleware/requireAuth')
+
+router.use(requireAuth)
+
+// Routes
+
 // GET all patients
 router.get('/', getPatients)
 
@@ -27,8 +37,7 @@ router.post('/', createPatient)
 // DELETE patient
 router.delete('/:id', deletePatient)
 
-//PATCH employee
+// PATCH employee
 router.patch('/:id', updatePatient)
-
 
 module.exports = router

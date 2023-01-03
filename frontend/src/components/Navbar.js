@@ -18,7 +18,19 @@ const Navbar = () => {
                 <h1>System zarządzania siecią weterynaryjną</h1>
             </Link>
             <nav>
-                {user && (
+                {user && (user.role === 1) && (
+                <div>
+                    <p>
+                        <span>{user.email}</span>
+                    </p>
+                    <p>
+                        <Link to="/signup"> Dodaj nowego użytkownika </Link>
+                    </p>
+                    <button className="logout-button" onClick={handleClick}>Wyloguj</button>
+                </div>
+                )}
+                
+                {user && (user.role === 2 || user.role === 3) && (
                 <div>
                     <p>
                         <span>{user.email}</span>
@@ -30,9 +42,6 @@ const Navbar = () => {
                 {!user &&(
                 <div>
                     <Link to="/login"> Zaloguj się </Link>
-                    <p>
-                        <Link to="/signup"> Zarejestruj się </Link>
-                    </p>
                 </div>
                 )}
                 

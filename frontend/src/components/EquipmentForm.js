@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react'
 import { useEquipmentContext } from '../hooks/useEquipmentContext'
 import { useClinicContext } from '../hooks/useClinicContext'
+import { useAuthContext } from '../hooks/useAuthContext'
 
 const EquipmentForm = () => {
+    const { dispatch } = useEquipmentContext()
+    const { user } = useAuthContext()
 
     // Fetch clinics data - start
 
@@ -14,7 +17,11 @@ const EquipmentForm = () => {
 
             useEffect(() => {
             const fetchClinics = async () => {
-                const response = await fetch('/api/clinics')
+                const response = await fetch('/api/clinics', {
+                    headers: {
+                      'Authorization': `Bearer ${user.token}`
+                    }
+                  })
                 const json = await response.json()
 
                 if (response.ok){
@@ -22,12 +29,10 @@ const EquipmentForm = () => {
                 }
             }
             fetchClinics()
-        }, [dispatch])
+        }, [dispatch, user])
     }
 
     // Fetch clinics data - end
-
-    const {dispatch} = useEquipmentContext()
 
     const [nazwa, setNazwa] = useState('')
     const [kategoria, setKategoria] = useState('')
@@ -38,13 +43,19 @@ const EquipmentForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
+        if (!user) {
+            setError('You must be logged in')
+            return
+        }
+
         const equipment = {nazwa, kategoria, liczba_sprzetu, id_kliniki}
 
         const response = await fetch('/api/equipment',{
             method: 'POST',
             body: JSON.stringify(equipment),
             headers: {
-                'Content-Type':'application/json'
+                'Content-Type':'application/json',
+                'Authorization': `Bearer ${user.token}`
             }
         })
         const json = await response.json() 

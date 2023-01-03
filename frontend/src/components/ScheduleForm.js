@@ -1,34 +1,44 @@
-import {useState, useEffect} from "react"
-import {useScheduleContext} from "../hooks/useScheduleContext"
-import {useEmployeesContext} from "../hooks/useEmployeeContext"
-import {useClientContext} from "../hooks/useClientContext"
+import { useState, useEffect } from 'react'
+import { useScheduleContext } from '../hooks/useScheduleContext'
+import { useAuthContext } from '../hooks/useAuthContext'
+import { useEmployeesContext } from '../hooks/useEmployeeContext'
+import { useClientContext } from '../hooks/useClientContext'
 
-const ScheduleForm = () => {
+const ScheduleForm = () => {  
+  const { dispatch } = useScheduleContext()
+  const { user } = useAuthContext()
 
-  const {employees} = useEmployeesContext()
+  const { employees } = useEmployeesContext()
   {
-      const {dispatch} = useEmployeesContext()
-
-          useEffect(() => {
+      const { dispatch } = useEmployeesContext()
+        useEffect(() => {
           const fetchEmployees = async () => {
-              const response = await fetch('/api/employees')
+            const response = await fetch('/api/employees', {
+              headers: {
+                'Authorization': `Bearer ${user.token}`
+              }
+              })
               const json = await response.json()
 
               if (response.ok){
-                  dispatch({type: 'SET_EMPLOYEES', payload: json})
+                dispatch({type: 'SET_EMPLOYEES', payload: json})
               }
-          }
-          fetchEmployees()
-      }, [dispatch])
+            }
+            fetchEmployees()
+        }, [dispatch, user])
   }
   
-  const {clients} = useClientContext()
+  const { clients } = useClientContext()
   {
-      const {dispatch} = useClientContext()
+      const { dispatch } = useClientContext()
 
           useEffect(() => {
           const fetchClients = async () => {
-              const response = await fetch('/api/clients')
+              const response = await fetch('/api/clients', {
+                headers: {
+                  'Authorization': `Bearer ${user.token}`
+                }
+                })
               const json = await response.json()
 
               if (response.ok){
@@ -36,11 +46,9 @@ const ScheduleForm = () => {
               }
           }
           fetchClients()
-      }, [dispatch])
+      }, [dispatch, user])
   }
 
-  const {dispatch} = useScheduleContext()
-  
   const [data, setData] = useState('')
   const [czas_trwania_min, setCzasTrwaniaMin] = useState('')
   const [usluga, setUsluga] = useState('')
@@ -53,12 +61,20 @@ const ScheduleForm = () => {
   const handleScheduleSubmit = async (s) => {
     s.preventDefault()
 
+    if (!user) {
+      setError('You must be logged in')
+      return
+    }
+
     const schedule = {data, czas_trwania_min, usluga, id_lekarza, id_klienta, id_pacjenta, id_kliniki}
 
     const response = await fetch('/api/schedule', {
       method: 'POST',
       body: JSON.stringify(schedule),
-      headers: {'Content-Type': 'application/json'}
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user.token}`
+      }
     })
 
     const json = await response.json()

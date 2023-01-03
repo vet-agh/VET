@@ -1,19 +1,6 @@
 // Imports
 
-// Express package
-
-const express = require('express')
-
-// Employee model
-
-const Employee = require('../models/employeeModel')
-
-// Router object to handle routes for employees
-
-const router = express.Router()
-
-// Loading the employeeController Controller
-
+// Loading the employeeController controller
 const {
   addEmployee,
   getEmployees,
@@ -22,7 +9,21 @@ const {
   updateEmployee
 } = require('../controllers/employeeController')
 
-// routes
+// Express package
+const express = require('express')
+
+// Employee model
+const Employee = require('../models/employeeModel')
+
+// Router object to handle routes for employees
+const router = express.Router()
+
+// Require authentication for all routes
+const requireAuth = require('../middleware/requireAuth')
+
+router.use(requireAuth)
+
+// Routes
 
 // GET all employees
 router.get('/', getEmployees)
@@ -36,7 +37,7 @@ router.post('/', addEmployee)
 // DELETE employee
 router.delete('/:id', deleteEmployee)
 
-//PATCH employee
+// PATCH employee
 router.patch('/:id', updateEmployee)
 
 // Export employees routes to be used in server

@@ -1,10 +1,15 @@
+import {useAuthContext} from '../hooks/useAuthContext'
+
 const Home = () => 
 {
+  const { user } = useAuthContext()
   return (
   <>
     <center><h3> Strona startowa Sieci Weterynaryjnej</h3></center>
     <br></br>
-    <p>Jesteś zalogowany jako administrator</p>
+    <p>{user.role === 1 && "Jesteś zalogowany jako administrator"}</p>
+    <p>{user.role === 2 && "Jesteś zalogowany jako recepcja"}</p>
+    <p>{user.role === 3 && "Jesteś zalogowany jako lekarz"}</p>
     <div className="NavigationButtons">
 
       <form action="/clients">

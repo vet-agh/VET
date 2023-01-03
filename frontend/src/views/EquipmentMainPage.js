@@ -1,16 +1,22 @@
-import { useEffect} from "react";
-import { useEquipmentContext } from "../hooks/useEquipmentContext";
+import { useEffect} from 'react'
+import { useEquipmentContext } from '../hooks/useEquipmentContext'
+import { useAuthContext } from '../hooks/useAuthContext'
 
 // components
 import EquipmentDetails from '../components/EquipmentDetails'
-import EquipmentForm from "../components/EquipmentForm";
+import EquipmentForm from '../components/EquipmentForm'
 
 const EquipmentPage = () => {
     const {equipment, dispatch} = useEquipmentContext()
+    const {user} = useAuthContext()
 
     useEffect(() => {
     const fetchEquipment = async() => {
-        const response = await fetch('/api/equipment')
+        const response = await fetch('/api/equipment', {
+            headers: {
+              'Authorization': `Bearer ${user.token}`
+            }
+          })
         const json = await response.json()
 
         if(response.ok) {
@@ -18,8 +24,10 @@ const EquipmentPage = () => {
         }
     }
     
-    fetchEquipment()
-    }, [])
+    if (user) {
+        fetchEquipment()
+    }
+    }, [dispatch, user])
 
     return(
         <>
@@ -28,7 +36,7 @@ const EquipmentPage = () => {
                     <input className="go-back-button" type="submit" value="Wróć do strony głównej"/>
                 </form>
             </div>
-            <EquipmentForm/>
+            {user.role === 1 && <EquipmentForm/>}
 
             <h2>Rejestr sprzętu </h2>
             {equipment && equipment.map((e) => ( 

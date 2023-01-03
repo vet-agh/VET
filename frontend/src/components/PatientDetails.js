@@ -1,10 +1,20 @@
-import { usePatientContext } from "../hooks/usePatientContext"
+import { usePatientContext } from '../hooks/usePatientContext'
+import { useAuthContext } from '../hooks/useAuthContext'
 
 const PatientDetails = ({ patient }) => {
-    const {dispatch} = usePatientContext()
+    const { dispatch } = usePatientContext()
+    const { user } = useAuthContext()
+
     const handleClickDelete = async () => {
+        if (!user) {
+            return
+        }
+
         const response = await fetch('/api/patients/' + patient._id, {
-           method: "DELETE" 
+           method: 'DELETE',
+           headers: {
+               'Authorization': `Bearer ${user.token}`
+           }
         })
         const json = await response.json()
 
@@ -16,7 +26,7 @@ const PatientDetails = ({ patient }) => {
 
     return (
         <div className="form-details">
-            <button className="delete-button" onClick={handleClickDelete}>Usuń pacjenta</button>
+            {(user.role === 1 || user.role === 2) && <button className="delete-button" onClick={handleClickDelete}>Usuń pacjenta</button>}
             <p><strong>Imie:</strong> {patient.imie} </p>
             <p><strong>Gatunek:</strong> {patient.gatunek} </p>
             <p><strong>Rasa: </strong>{patient.rasa}</p>

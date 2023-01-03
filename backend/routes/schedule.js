@@ -1,5 +1,14 @@
 // Imports
 
+// Loading the scheduleController controller
+const {
+  getSchedules,
+  getSchedule,
+  addSchedule,
+  deleteSchedule,
+  updateSchedule
+} = require('../controllers/scheduleController')
+
 // Express package
 const express = require('express')
 
@@ -9,16 +18,12 @@ const Employee = require('../models/scheduleModel')
 // Router object to handle routes for schedule
 const router = express.Router()
 
-// Loading the scheduleController Controller
-const {
-  getSchedules,
-  getSchedule,
-  addSchedule,
-  deleteSchedule,
-  updateSchedule
-} = require('../controllers/scheduleController')
+// Require authentication for all routes
+const requireAuth = require('../middleware/requireAuth')
 
-// routes
+router.use(requireAuth)
+
+// Routes
 
 // GET all appointments
 router.get('/', getSchedules)
@@ -29,10 +34,10 @@ router.get('/:id', getSchedule)  // Where :id is a router parameter
 // POST appointment
 router.post('/', addSchedule) 
 
-//DELETE appointment
+// DELETE appointment
 router.delete('/:id', deleteSchedule)
 
-//UPDATE appointment
+// UPDATE appointment
 router.patch('/:id', updateSchedule)
 
 // Export schedule routes to be used in server

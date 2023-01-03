@@ -1,8 +1,10 @@
-import { useState } from "react"
+import { useState } from 'react'
 import { useClinicContext } from '../hooks/useClinicContext'
+import { useAuthContext } from '../hooks/useAuthContext'
 
 const ClinicForm = () => {
-    const {dispatch} = useClinicContext()
+    const { dispatch } = useClinicContext()
+    const { user } = useAuthContext()
 
     const [nazwa, setNazwa] = useState('')
     const [numer_telefonu, setNumer_telefonu] = useState('')
@@ -12,13 +14,19 @@ const ClinicForm = () => {
     const handleSubmit = async(c) => {
         c.preventDefault()
 
+        if (!user) {
+            setError('You must be logged in')
+            return
+        }
+
         const clinic = {nazwa, numer_telefonu, adres}
 
         const response = await fetch('/api/clinics', {
             method: 'POST',
             body: JSON.stringify(clinic),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
             }
         })
         const json = await response.json()

@@ -1,3 +1,13 @@
+// Imports
+
+// Loading the clinicsController controller
+const {
+    createClinic,
+    getClinic,
+    getClinics,
+    deleteClinic,
+    updateClinic
+} = require('../controllers/clinicController')
 
 // Express package
 const express = require('express')
@@ -7,28 +17,26 @@ const Clinic = require('../models/clinicModel')
 
 const router = express.Router()
 
- const {
-     createClinic,
-     getClinic,
-     getClinics,
-     deleteClinic,
-     updateClinic
+// Require authentication for all routes
+const requireAuth = require('../middleware/requireAuth')
 
- } = require('../controllers/clinicController')
- 
+router.use(requireAuth)
+
+// Routes
+
 // POST new clinic
-    router.post('/',createClinic)
+router.post('/',createClinic)
 
 // GET all clinics
-    router.get('/',getClinics)
+router.get('/',getClinics)
 
 // GET a single clinic
-    router.get('/:id',getClinic)
+router.get('/:id',getClinic)
 
 // DELETE a clinic 
-    router.delete('/:id', deleteClinic)
+router.delete('/:id', deleteClinic)
 
 // UPDATE a clinic
-    router.patch('/:id', updateClinic)
+router.patch('/:id', updateClinic)
 
-    module.exports = router
+module.exports = router

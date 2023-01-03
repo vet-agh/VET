@@ -1,8 +1,10 @@
-import { useState } from "react"
+import { useState } from 'react'
 import { useClientContext } from '../hooks/useClientContext'
+import { useAuthContext } from '../hooks/useAuthContext'
 
 const ClientForm = () => {
     const { dispatch } = useClientContext()
+    const { user } = useAuthContext()
 
     const [imie, setImie] = useState('')
     const [nazwisko, setNazwisko] = useState('')
@@ -12,6 +14,11 @@ const ClientForm = () => {
 
     const handleSubmit = async(e) => {
         e.preventDefault()
+
+        if (!user) {
+            setError('You must be logged in')
+            return
+        }
     
     const client = { imie, nazwisko, numer_konta, id_pacjenta }
 
@@ -19,7 +26,8 @@ const ClientForm = () => {
         method: 'POST',
         body: JSON.stringify(client),
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${user.token}`
         }
     })
     const json = await response.json()

@@ -13,14 +13,18 @@ const userSchema = new Schema({
     password: {
         type: String, 
         require: true
+    },
+    role: {
+        type: Number, 
+        require: true
     }
 })
 
 // static signup method
-userSchema.statics.signup = async function(email, password) {
+userSchema.statics.signup = async function(email, password, role) {
 
     // validation - check if all fields are filled
-    if (!email || !password) {
+    if (!email || !password || !role) {
         throw Error('All fields must be filled')
     }
 
@@ -46,7 +50,7 @@ userSchema.statics.signup = async function(email, password) {
 
     // password saved as hashed password+salt - additional protection layer
     const hash = await bcrypt.hash(password, salt)
-    const user = await this.create({email, password: hash})
+    const user = await this.create({email, password: hash, role})
 
     return user
 }

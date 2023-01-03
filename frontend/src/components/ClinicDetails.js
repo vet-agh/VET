@@ -1,11 +1,20 @@
-import { useClinicContext } from "../hooks/useClinicContext"
+import { useClinicContext } from '../hooks/useClinicContext'
+import { useAuthContext } from '../hooks/useAuthContext'
 
 const ClinicDetails = ({clinic}) => {
-    const {dispatch} = useClinicContext()
+    const { dispatch } = useClinicContext()
+    const { user } = useAuthContext()
 
     const handleClickDelete = async () => {
+        if (!user) {
+            return
+        }
+        
         const response = await fetch('/api/clinics/' + clinic._id, {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+            }
         })
         const json = await response.json()
 
@@ -16,7 +25,7 @@ const ClinicDetails = ({clinic}) => {
     
     return (
         <div className="form-details">
-            <button className="delete-button" onClick={handleClickDelete}>Usuń klinikę</button>
+            {user.role === 1 && <button className="delete-button" onClick={handleClickDelete}>Usuń klinikę</button>}
             <p><strong>Nazwa Kliniki: </strong>{clinic.nazwa}</p>
             <p><strong>Numer telefonu: </strong>{clinic.numer_telefonu}</p>
             <p><strong>Adres: </strong>{clinic.adres}</p> 

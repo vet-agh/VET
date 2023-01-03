@@ -1,15 +1,23 @@
-import { useEffect } from "react"
-import { useScheduleContext } from "../hooks/useScheduleContext"
+import { useEffect } from 'react'
+import { useScheduleContext } from '../hooks/useScheduleContext'
+import { useAuthContext } from '../hooks/useAuthContext'
+
+// components
 import ScheduleDetails from '../components/ScheduleDetails'
-import ScheduleForm from "../components/ScheduleForm"
+import ScheduleForm from '../components/ScheduleForm'
 
 
 const SchedulePage = () => {
     const {schedule, dispatch} = useScheduleContext()
+    const {user} = useAuthContext()
 
     useEffect(() => {
       const fetchSchedule = async() => {
-        const response = await fetch('/api/schedule')
+        const response = await fetch('/api/schedule', {
+          headers: {
+            'Authorization': `Bearer ${user.token}`
+          }
+        })
         const json = await response.json()
 
         if (response.ok)
@@ -18,16 +26,17 @@ const SchedulePage = () => {
         }
       }
 
-      fetchSchedule()
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+      if (user) {
+        fetchSchedule()
+      }
+    }, [dispatch, user])
     return (
       <>
         <div className="go_back">
           <form action="/">
           <input className="go-back-button" type="submit" value="Wróć do strony głównej" /></form>
         </div>
-        <ScheduleForm/>
+        {(user.role === 1 || user.role === 2) && <ScheduleForm/>}
 
         <h2>Harmonogram wizyt:</h2>
         {schedule && schedule.map(s => (
