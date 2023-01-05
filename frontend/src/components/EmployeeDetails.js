@@ -23,10 +23,34 @@ const EmployeeDetails = ({employee}) => {
         }
     }
 
+    const handleClickModify = async () => {
+        if (!user) {
+            return;
+        }
+
+        const body = JSON.stringify({
+            imie: "Joanna"
+        });
+
+        const response = await fetch('/api/employees/' + employee._id, {
+            method: 'PATCH',
+            headers: {
+                'Authorization': `Bearer ${user.token}`,
+                'Content-Type': `application/json`
+            },
+            body: body
+        });
+        const json = await response.json()
+
+        if (response.ok) {
+            dispatch({type: 'UPDATE_EMPLOYEES', payload: json})
+        }
+    }
+
     return (
         <div className="form-details">
             {user.role === 1 && <button className="delete-button" onClick={handleClickDelete}>Usuń pracownika</button>}
-            {user.role === 1 && <button className="modify-button" onClick={handleClickDelete}>Modyfikuj pracownika</button>}
+            {user.role === 1 && <button className="modify-button" onClick={handleClickModify}>Modyfikuj pracownika</button>}
             <p><strong>Imię: </strong>{employee.imie}</p>
             <p><strong>Nazwisko: </strong>{employee.nazwisko}</p>
             <p><strong>Numer telefonu: </strong>{employee.numer_telefonu}</p>
