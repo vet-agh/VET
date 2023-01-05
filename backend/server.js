@@ -25,6 +25,7 @@ const equipmentRoutes = require('./routes/equipment')
 const scheduleRoutes = require('./routes/schedule')
 const clinicRoutes = require('./routes/clinics')
 const userRoutes = require('./routes/user')
+const bodyParser = require('body-parser')
 
 // Middleware
 
@@ -38,6 +39,10 @@ app.use((req, res, next) => {
 // Attach data into the request
 
 app.use(express.json())
+
+// To parse request body as JSON
+
+app.use(bodyParser.json());
 
 // Routes
 
