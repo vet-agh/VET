@@ -74,8 +74,10 @@ const updateEmployee = async (req, res) => {
     return res.status(400).json({error: 'No employee with given id.'})
   }
 
-  const employee = await Employee.findByIdAndUpdate({_id: id}, {
-    ...req.body
+  const updatedEmployee = Object.assign({}, req.body);
+
+  const employee = await Employee.findOneAndUpdate({_id: id}, updatedEmployee, {
+    new: true,
   })
 
   if(!employee) {
