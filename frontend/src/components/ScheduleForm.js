@@ -4,10 +4,31 @@ import { useAuthContext } from '../hooks/useAuthContext'
 import { useEmployeesContext } from '../hooks/useEmployeeContext'
 import { useClientContext } from '../hooks/useClientContext'
 import { usePatientContext } from '../hooks/usePatientContext'
+import { useClinicContext } from '../hooks/useClinicContext'
 
 const ScheduleForm = () => {  
   const { dispatch } = useScheduleContext()
   const { user } = useAuthContext()
+
+  const { clinics } = useClinicContext()
+  {
+      const { dispatch } = useClinicContext()
+        useEffect(() => {
+          const fetchClinics = async () => {
+            const response = await fetch('/api/clinics', {
+              headers: {
+                'Authorization': `Bearer ${user.token}`
+              }
+              })
+              const json = await response.json()
+
+              if (response.ok){
+                dispatch({type: 'SET_CLINICS', payload: json})
+              }
+            }
+            fetchClinics()
+        }, [dispatch, user])
+  }
 
   const { employees } = useEmployeesContext()
   {
@@ -132,8 +153,15 @@ const ScheduleForm = () => {
       <label>Usluga:</label>
       <input type="text" onChange={(s) => setUsluga(s.target.value)} value={usluga}/>
 
-      <label>ID Kliniki:</label>
-      <input type="text" onChange={(s) => setIdKliniki(s.target.value)} value={id_kliniki}/>
+      <label>Klinika: </label>
+      <select onChange={(e) => setIdKliniki(e.target.value)} value = {id_kliniki}>
+        <option value=''> -- Wybierz klinikę -- </option>
+        {clinics && clinics.map((clinic) => (
+          <option key={clinic._id} value={clinic._id}>
+            {clinic.nazwa}
+          </option>
+        ))}
+      </select>
 
       <label>Pracownik: </label>
       <select onChange={(e) => setIdLekarza(e.target.value)} value = {id_lekarza}>
