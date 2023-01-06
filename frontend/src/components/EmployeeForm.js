@@ -124,7 +124,7 @@ const EmployeeForm = () => {
 
       <label> Klinika do której dodawany jest pracownik: </label>
       <select onChange={(e) => setId_kliniki(e.target.value)} value={id_kliniki}>
-        <option value=''> -- Wybierz klinikę -- </option>
+        <option value=''> -- Wybierz klinike -- </option>
         {clinics && clinics.map((clinic) => (
             <option key={clinic._id} value={clinic._id}>
               {clinic.nazwa}
