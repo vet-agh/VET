@@ -1,8 +1,29 @@
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import { usePatientContext } from '../hooks/usePatientContext'
 import { useAuthContext } from '../hooks/useAuthContext'
+import { useClientContext } from "../hooks/useClientContext"
 
 const PatientForm = () => {
+
+    const {clients} = useClientContext()
+    {
+        const {dispatch} = useClientContext()
+  
+            useEffect(() => {
+            const fetchClients = async () => {
+                const response = await fetch("/api/clients",{
+                    headers:{"Content-Type": `application/json`,"Authorization":`Bearer ${user.token}`}
+                })
+                const json = await response.json()
+  
+                if (response.ok){
+                    dispatch({type: 'SET_CLIENTS', payload: json})
+                }
+            }
+            fetchClients()
+        }, [dispatch])
+    }
+
     const { dispatch } = usePatientContext()
     const { user } = useAuthContext()
 
@@ -61,9 +82,15 @@ const PatientForm = () => {
         <label>Rasa pacjenta:</label>
         <input type="text" onChange={(p) => setRasa(p.target.value)} value = {rasa}/>
 
-        <label>ID Klienta:</label>
-        <input type="string" onChange={(p) => setIdKlienta(p.target.value)} value = {id_klienta}/>
-
+        <label>Wybierz klienta:</label>   
+        <select onChange={(c) => setIdKlienta(c.target.value)} value = {id_klienta}>
+        <option value=''> -- Wybierz klienta -- </option>
+        {clients && clients.map((client) => (
+          <option key={client._id} value={client._id}>
+          {client.imie} {client.nazwisko}
+          </option>
+        ))}
+      </select>
         <button className="add-button"> Dodaj pacjenta </button> 
         {error && <div className="error"> {error} </div>}
         </form>
