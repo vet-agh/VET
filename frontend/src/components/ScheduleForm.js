@@ -3,6 +3,7 @@ import { useScheduleContext } from '../hooks/useScheduleContext'
 import { useAuthContext } from '../hooks/useAuthContext'
 import { useEmployeesContext } from '../hooks/useEmployeeContext'
 import { useClientContext } from '../hooks/useClientContext'
+import { usePatientContext } from '../hooks/usePatientContext'
 
 const ScheduleForm = () => {  
   const { dispatch } = useScheduleContext()
@@ -47,6 +48,27 @@ const ScheduleForm = () => {
           }
           fetchClients()
       }, [dispatch, user])
+  }
+
+
+  const { patient } = usePatientContext()
+  {
+      const { dispatch } = usePatientContext()
+        useEffect(() => {
+          const fetchPatients = async () => {
+            const response = await fetch('/api/patients', {
+              headers: {
+                'Authorization': `Bearer ${user.token}`
+              }
+              })
+              const json = await response.json()
+
+              if (response.ok){
+                dispatch({type: 'SET_PATIENT', payload: json})
+              }
+            }
+            fetchPatients()
+        }, [dispatch, user])
   }
 
   const [data, setData] = useState('')
@@ -123,7 +145,7 @@ const ScheduleForm = () => {
         ))}
       </select>
 
-      <label>ID Klienta:</label>
+      <label>Klient:</label>
       <select onChange={(c) => setIdKlienta(c.target.value)} value = {id_klienta}>
         <option value=''> -- Wybierz klienta -- </option>
         {clients && clients.map((client) => (
@@ -133,8 +155,15 @@ const ScheduleForm = () => {
         ))}
       </select>
 
-      <label>ID Pacjenta:</label>
-      <input type="text" onChange={(s) => setIdPacjenta(s.target.value)} value={id_pacjenta}/>
+      <label>Pacjent: </label>
+      <select onChange={(p) => setIdPacjenta(p.target.value)} value = {id_pacjenta}>
+        <option value=''> -- Wybierz pacjenta -- </option>
+        {patient && patient.map((patient_) => (
+          <option key={patient_._id} value={patient_._id}>
+            {patient_.imie}
+          </option>
+        ))}
+      </select>
 
       <button className="add-button">Dodaj wizyte</button>
 
