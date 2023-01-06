@@ -78,7 +78,7 @@ const ClientForm = () => {
             <label> Numer konta (opcjonalne): </label>
             <input type="text" onChange={(c) => setNumer_konta(c.target.value)} value={numer_konta}/>
 
-            <label>Wybierz klienta:</label>   
+            <label>Wybierz pacjenta:</label>   
             <select onChange={(c) => setId_pacjenta(c.target.value)} value = {id_pacjenta}>
             <option value=''> -- Wybierz pacjenta -- </option>
             {patient && patient.map((patient_) => (
