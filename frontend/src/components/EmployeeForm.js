@@ -1,8 +1,27 @@
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import { useEmployeesContext } from '../hooks/useEmployeeContext'
 import { useAuthContext } from '../hooks/useAuthContext'
+import { useClinicContext } from '../hooks/useClinicContext'
 
 const EmployeeForm = () => {
+
+    const {clinics} = useClinicContext()
+    {
+        // dispatch declared locally - avoiding conflict with equipment dispatch
+        const {dispatch} = useClinicContext()
+
+            useEffect(() => {
+            const fetchClinics = async () => {
+                const response = await fetch('/api/clinics')
+                const json = await response.json()
+                if (response.ok){
+                    dispatch({type: 'SET_CLINICS', payload: json})
+                }
+            }
+            fetchClinics()
+        }, [dispatch])
+    }
+
     const { dispatch } = useEmployeesContext()
     const { user } = useAuthContext()
 
@@ -71,6 +90,15 @@ const EmployeeForm = () => {
                 <label>ID Kliniki: </label>
                 <input type="text" onChange={(e) => setId_kliniki(e.target.value)} value={id_kliniki}/>
     
+                <label> Klinika do której dodawany jest pracownik: </label>
+                <select onChange={(e) => setId_kliniki(e.target.value)} value = {id_kliniki}>
+                    <option value=''> -- Wybierz klinikę -- </option>
+                    {clinics && clinics.map((clinic) => (
+                        <option key={clinic._id} value={clinic._id}>
+                            {clinic.nazwa}
+                        </option>
+                    ))}
+                </select>
                 <button className="add-button">Dodaj pracownika</button>
                 {error && <div className="error">{error}</div>}
             </form>
