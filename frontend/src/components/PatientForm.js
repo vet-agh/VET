@@ -1,4 +1,4 @@
-import { useState,useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { usePatientContext } from '../hooks/usePatientContext'
 import { useAuthContext } from '../hooks/useAuthContext'
 import { useClientContext } from "../hooks/useClientContext"
@@ -12,7 +12,7 @@ const PatientForm = () => {
             useEffect(() => {
             const fetchClients = async () => {
                 const response = await fetch("/api/clients",{
-                    headers:{"Content-Type": `application/json`,"Authorization":`Bearer ${user.token}`}
+                    headers:{"Content-Type": `application/json`, "Authorization":`Bearer ${user.token}`}
                 })
                 const json = await response.json()
   
