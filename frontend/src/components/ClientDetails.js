@@ -11,7 +11,11 @@ const ClientDetails = ({ client }) => {
 
     useEffect(() => {
         const fetchData = async () => {   
-            const response = await fetch('/api/patients')
+            const response = await fetch('/api/patients', {
+                headers: {
+                  'Authorization': `Bearer ${user.token}`
+                }
+              })
             const json = await response.json()
             setPatients(json)
         }
