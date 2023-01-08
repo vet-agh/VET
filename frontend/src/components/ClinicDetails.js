@@ -29,7 +29,7 @@ const ClinicDetails = ({clinic}) => {
             <p><strong>Nazwa Kliniki: </strong>{clinic.nazwa}</p>
             <p><strong>Numer telefonu: </strong>{clinic.numer_telefonu}</p>
             <p><strong>Adres: </strong>{clinic.adres}</p> 
-            <p><i>Data dodania pacjenta do rejestru pacjentów: </i>{clinic.createdAt.substring(0, 10)}</p>
+            <p><i>Data dodania kliniki do rejestru klinik: </i>{clinic.createdAt.substring(0, 10)}</p>
         </div>
     )
 }
