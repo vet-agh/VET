@@ -13,7 +13,8 @@ const ClientDetails = ({ client }) => {
         const fetchData = async () => {   
             const response = await fetch('/api/patients', {
                 headers: {
-                  'Authorization': `Bearer ${user.token}`
+                  'Authorization': `Bearer ${user.token}`,
+                  'Content-Type': `application/json`
                 }
               })
             const json = await response.json()

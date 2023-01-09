@@ -1,9 +1,13 @@
 import { useEquipmentContext } from '../hooks/useEquipmentContext'
 import { useAuthContext } from '../hooks/useAuthContext'
+import { useEffect, useState } from 'react'
+import ClinicsDetails from '../components/ClinicDetails'
 
 const EquipmentDetails = ({ equipment }) => {
     const { dispatch } = useEquipmentContext()
     const { user } = useAuthContext()
+    const [clinics, setClinics] = useState('')
+    const [showed, setShowed] = useState('')
  
     const handleClick = async() => {
         if (!user) {
@@ -23,6 +27,20 @@ const EquipmentDetails = ({ equipment }) => {
         }
     }
 
+    useEffect(() => {
+        const fetchData = async () => {   
+            const response = await fetch('/api/clinics', {
+                headers: {
+                  'Authorization': `Bearer ${user.token}`,
+                  'Content-Type': `application/json`
+                }
+              })
+            const json = await response.json()
+            setClinics(json)
+        }
+        fetchData().catch(console.error);
+    }, [user.token])
+
     return (
         <div className="form-details">
             {user.role === 1 && <button className="delete-button" onClick={handleClick}> Usuń sprzęt </button>}
@@ -30,6 +48,13 @@ const EquipmentDetails = ({ equipment }) => {
             <p><strong>Kategoria: </strong>{equipment.kategoria}</p> 
             <p><strong>Liczba sprzętu: </strong>{equipment.liczba_sprzetu}</p>
             <p><strong>ID kliniki: </strong>{equipment.id_kliniki}</p>
+            <p style={{color: "#E5BA73"}} onClick={() => setShowed(showed => !showed)}><strong>Pokaż szczegóły kliniki:</strong></p>
+            {showed ? 
+            <div id="patient-details">
+                {clinics && clinics.filter(c => (c._id === equipment.id_kliniki)).map(c => (
+                <ClinicsDetails clinic={c} key={c._id}/>))}
+                <br></br>
+            </div> : null}
             <p><i>Data dodania sprzętu: </i>{equipment.createdAt.substring(0, 10)}</p>
         </div>
     )
