@@ -1,13 +1,16 @@
 import { useEmployeesContext } from '../hooks/useEmployeeContext'
 import { useAuthContext } from '../hooks/useAuthContext'
-import { useState } from 'react';
+import { useEffect, useState } from 'react'
 import { Button, Modal } from 'react-bootstrap'
+import ClinicsDetails from '../components/ClinicDetails'
 
 const EmployeeDetails = ({employee}) => {
     const { dispatch } = useEmployeesContext()
     const { user } = useAuthContext()
+    const [clinics, setClinics] = useState('')
+    const [showed, setShowed] = useState('')
 
-    const [showModal, setShowModal] = useState(false);
+    const [showModal, setShowModal] = useState(false)
     const [formData, setFormData] = useState({
         imie: employee.imie,
         nazwisko: employee.nazwisko,
@@ -56,6 +59,20 @@ const EmployeeDetails = ({employee}) => {
         setShowModal(true);
     }
         
+    useEffect(() => {
+        const fetchData = async () => {   
+            const response = await fetch('/api/clinics', {
+                headers: {
+                  'Authorization': `Bearer ${user.token}`,
+                  'Content-Type': `application/json`
+                }
+              })
+            const json = await response.json()
+            setClinics(json)
+        }
+        fetchData().catch(console.error);
+    }, [])
+
 
     const handleClickDelete = async () => {
         if (!user) {
@@ -134,6 +151,13 @@ const EmployeeDetails = ({employee}) => {
             <p><strong>Numer konta: </strong>{employee.numer_konta}</p>
             <p><strong>Adres: </strong>{employee.adres}</p>
             <p><strong>ID Kliniki: </strong>{employee.id_kliniki}</p>
+            <p style={{color: "#E5BA73"}} onClick={() => setShowed(showed => !showed)}><strong>Pokaż szczegóły kliniki:</strong></p>
+            {showed ? 
+            <div id="patient-details">
+                {clinics && clinics.filter(c => (c._id === employee.id_kliniki)).map(c => (
+                <ClinicsDetails clinic={c} key={c._id}/>))}
+                <br></br>
+            </div> : null}
             <p><i>Data dodania do rejestru pracowników: </i>{employee.createdAt.substring(0, 10)}</p>
         </div>
             

@@ -115,13 +115,6 @@ const EmployeeForm = () => {
         value={adres}
       />
 
-      <label>ID Kliniki: </label>
-      <input
-        type="text"
-        onChange={(e) => setId_kliniki(e.target.value)}
-        value={id_kliniki}
-      />
-
       <label> Klinika do której dodawany jest pracownik: </label>
       <select onChange={(e) => setId_kliniki(e.target.value)} value={id_kliniki}>
         <option value=''> -- Wybierz klinike -- </option>
