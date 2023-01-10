@@ -47,7 +47,6 @@ const ClientDetails = ({ client }) => {
             <p><strong>Imię: </strong>{client.imie}</p>
             <p><strong>Nazwisko: </strong>{client.nazwisko}</p>
             <p><strong>Numer konta: </strong>{client.numer_konta} </p>
-            <p><strong>ID Pacjenta: </strong>{client.id_pacjenta}</p>
             <p style={{color: "#E5BA73"}} onClick={() => setShowed(showed => !showed)}><strong>Pokaż szczegóły pacjentów:</strong></p>
             {showed ? 
             <div id="patient-details">
