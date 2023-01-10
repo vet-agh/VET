@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 //creating new Schema 
-const clinetSchema = new Schema({
+const clientSchema = new Schema({
     imie: {
         type: String,
         required: true
@@ -14,11 +14,8 @@ const clinetSchema = new Schema({
     },
     numer_konta: {
         type: String
-    },
-    id_pacjenta: {
-        type: String,
-        required: true
     }
 },{timestamps:true}) //add data when doc were created
-module.exports = mongoose.model('Client',clinetSchema)
+module.exports = mongoose.model('Client', clientSchema)
+
 

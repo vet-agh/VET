@@ -26,14 +26,13 @@ const getClient = async (req, res) => {
 
 //create new client
 const createClient = async (req, res) => {
-  const { imie, nazwisko, numer_konta, id_pacjenta } = req.body;
+  const { imie, nazwisko, numer_konta } = req.body;
   //adding document to database
   try {
     const client = await Client.create({
       imie,
       nazwisko,
-      numer_konta,
-      id_pacjenta,
+      numer_konta
     });
     res.status(200).json(client);
   } catch (error) {
@@ -70,7 +69,7 @@ const updateClient = async (req, res) => {
     {
       ...req.body, //adding all properties from body
     }
-  ); //each var doc has 5 properties - imie, nazwisko, numer_konta, id_pacjenta
+  );
 
   if (!client) {
     return res.status(404).json({ error: "No such client" });

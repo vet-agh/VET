@@ -29,7 +29,6 @@ const ClientForm = () => {
     const [imie, setImie] = useState('')
     const [nazwisko, setNazwisko] = useState('')
     const [numer_konta, setNumer_konta] = useState('')
-    const [id_pacjenta, setId_pacjenta] = useState('')
     const [error, setError] = useState(null)
 
     const handleSubmit = async(e) => {
@@ -40,7 +39,7 @@ const ClientForm = () => {
             return
         }
     
-    const client = { imie, nazwisko, numer_konta, id_pacjenta }
+    const client = { imie, nazwisko, numer_konta }
 
     const response = await fetch ('/api/clients', {
         method: 'POST',
@@ -59,7 +58,6 @@ const ClientForm = () => {
         setImie('')
         setNazwisko('')
         setNumer_konta('')
-        setId_pacjenta('')
         setError(null)
         dispatch({type: 'CREATE_CLIENT', payload: json})
     }
@@ -79,7 +77,7 @@ const ClientForm = () => {
             <input type="text" onChange={(c) => setNumer_konta(c.target.value)} value={numer_konta}/>
 
             <label>Wybierz pacjenta:</label>   
-            <select onChange={(c) => setId_pacjenta(c.target.value)} value = {id_pacjenta}>
+            <select>
             <option value=''> -- Wybierz pacjenta -- </option>
             {patient && patient.map((patient_) => (
             <option key={patient_._id} value={patient_._id}>
