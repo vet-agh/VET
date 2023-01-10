@@ -99,7 +99,7 @@ const PatientDetails = ({ patient }) => {
                         </div>
                         <div className="modal-form-group">
                             <label htmlFor="id_klienta">ID Klienta</label>
-                            <input type="text" className="modal-form-control" name="numer_konta" value={formData.id_klienta} onChange={handleChange} />
+                            <input type="text" className="modal-form-control" name="id_klienta" value={formData.id_klienta} onChange={handleChange} />
                         </div>
                     </form>
                     </Modal.Body>
@@ -123,6 +123,7 @@ const PatientDetails = ({ patient }) => {
                 <p><strong>ID Klienta:</strong> {patient.id_klienta} </p>
                 <p><i>Data dodania pacjenta do rejestru pacjentów: </i>{patient.createdAt.substring(0, 10)}</p>
             </div>
+            
         </div>
     )
 }
