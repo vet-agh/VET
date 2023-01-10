@@ -7,6 +7,14 @@ export const clientsReducer = (state, action) => {
         case 'SET_CLIENTS': return {clients: action.payload}
         case 'CREATE_CLIENT':return {clients: [action.payload, ...state.clients]}
         case 'DELETE_CLIENT': return {clients: state.clients.filter((c) => c._id !== action.payload._id)}
+        case 'UPDATE_CLIENTS': 
+        const updatedClients = state.clients.map(client => {
+            if (client._id === action.payload._id) {
+            return action.payload;
+            }
+            return client;
+        });
+        return { clients: updatedClients };
         default: return state
     }
 }
