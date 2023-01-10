@@ -64,12 +64,14 @@ const updateClient = async (req, res) => {
     //check if such id exists (is valid)
     return res.status(400).json({ error: "No such client" });
   }
-  const client = await Client.findOneAndUpdate(
-    { _id: id },
-    {
-      ...req.body, //adding all properties from body
-    }
-  );
+
+  const updatedClient = Object.assign({}, req.body)
+
+  const client = await Client.findOneAndUpdate({_id : id}, 
+    updatedClient, {
+      new: true
+    })
+
 
   if (!client) {
     return res.status(404).json({ error: "No such client" });
