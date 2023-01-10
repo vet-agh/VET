@@ -55,10 +55,13 @@ const updatePatient = async (req, res) => {
     if (!mongoose.Types.ObjectId.isValid(id)){
       return res.status(400).json({error: "No patient with given id."})
     }
-  
-    const patient = await Patient.findByIdAndUpdate({_id: id}, {
-      ...req.body
-    })
+
+    const updatedPatient = Object.assign({}, req.body)
+
+    const patient = await Patient.findOneAndUpdate({_id : id}, 
+      updatedPatient, {
+        new: true
+      })
   
     if(!patient) {
       return res.status(404).json({error: 'No patient with given id.'})
