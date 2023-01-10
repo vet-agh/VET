@@ -33,7 +33,7 @@ const PatientDetails = ({ patient }) => {
 
         const body = JSON.stringify(formData)
 
-        const response = await fetch('/api/patients' + patient._id, {
+        const response = await fetch('/api/patients/' + patient._id, {
             method: 'PATCH',
             headers: {
                 'Authorization': `Bearer ${user.token}`,
@@ -78,7 +78,7 @@ const PatientDetails = ({ patient }) => {
             <div className={showModal ? "modal-container" : ""}>
                 <Modal show={showModal} onHide={handleCloseModal} className="modal">
                     <Modal.Header className="modal-header">
-                    <Modal.Title className="modal-title">Modyfikuj pracownika</Modal.Title>
+                    <Modal.Title className="modal-title">Modyfikuj pacjenta</Modal.Title>
                     <button type="button" className="modal-close-button" onClick={handleCloseModal}>
                         &times;
                     </button>
