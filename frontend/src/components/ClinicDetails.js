@@ -32,10 +32,10 @@ const ClinicDetails = ({ clinic }) => {
 
         const body = JSON.stringify(formData)
 
-        const response = await fetch('/api/clinics' + clinic._id, {
+        const response = await fetch('/api/clinics/' + clinic._id, {
             method: 'PATCH',
             headers: {
-                'Authorization': `Bearer $(user.token)`,
+                'Authorization': `Bearer ${user.token}`,
                 'Content-Type': `application/json`
             },
             body: body
