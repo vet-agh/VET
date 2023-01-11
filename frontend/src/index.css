@@ -103,7 +103,6 @@ div.error {
 
 .delete-button {
   position: absolute;
-  top: 30%;
   right: 2%;
   font-family: "Poppins";
   margin: auto 0;
@@ -116,6 +115,10 @@ div.error {
   text-decoration: none;
   cursor: pointer;
   border-radius: 4px;
+}
+
+#delete-button-clinics {
+  top: 20%;
 }
 
 .delete-button:hover {
@@ -189,7 +192,6 @@ div.error {
 .modify-button {
   position: absolute;
   right: 2%;
-  top: 20%;
   font-family: "Poppins";
   margin: 10% 0%;
   background-color: sandybrown;
@@ -200,6 +202,10 @@ div.error {
   text-decoration: none;
   cursor: pointer;
   border-radius: 4px;
+}
+
+#modify-button-clinics {
+  top: -5%;
 }
 
 .modify-button:hover {
