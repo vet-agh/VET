@@ -108,7 +108,7 @@ const ClientDetails = ({ client }) => {
                             <input type="text" className="modal-form-control" name="nazwisko" value={formData.nazwisko} onChange={handleChange} />
                         </div>
                         <div className="modal-form-group">
-                            <label htmlFor="numer_konta">Numer Konta</label>
+                            <label htmlFor="numer_konta">Numer konta</label>
                             <input type="text" className="modal-form-control" name="numer_konta" value={formData.numer_konta} onChange={handleChange} />
                         </div>
                     </form>
