@@ -14,7 +14,7 @@ export const clientsReducer = (state, action) => {
             }
             return client;
         });
-        return { clients: updatedClients };
+        return {clients: updatedClients};
         default: return state
     }
 }
