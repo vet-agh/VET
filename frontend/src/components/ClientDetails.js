@@ -70,7 +70,7 @@ const ClientDetails = ({ client }) => {
 
     const handleClickDelete = async () => {
         if (!user) {
-            return
+            return;
         }
 
         const response = await fetch('/api/clients/' + client._id, {
