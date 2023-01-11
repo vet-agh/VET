@@ -14,7 +14,7 @@ export const ClinicReducer = (state, action) => {
             }
             return clinic;
         })
-    return { clinics: updatedClinics };
+    return {clinics: updatedClinics};
     default: return state
     }
 }
