@@ -7,6 +7,14 @@ export const patientReducer = (state, action) => {
         case 'SET_PATIENT': return {patient: action.payload }
         case 'CREATE_PATIENT': return {patient: [action.payload, ...state.patient] }
         case 'DELETE_PATIENT': return {patient: state.patient.filter(p => p._id !== action.payload._id)}
+        case 'UPDATE_PATIENTS': 
+        const updatedPatients = state.patient.map(p => {
+            if (p._id === action.payload._id) {
+            return action.payload;
+            }
+            return p;
+        });
+        return { patient: updatedPatients };
         default: return state
     }
 }
