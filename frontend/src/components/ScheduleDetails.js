@@ -30,7 +30,7 @@ const ScheduleDetails = ({schedule}) => {
         setClinics(json)
     }
     fetchData().catch(console.error);
-}, [])
+  }, [])
 
 
 
@@ -46,7 +46,7 @@ const ScheduleDetails = ({schedule}) => {
         setEmployees(json)
     }
     fetchData().catch(console.error);
-}, [])
+  }, [])
 
   useEffect(() => {
     const fetchData = async () => {   
@@ -60,21 +60,21 @@ const ScheduleDetails = ({schedule}) => {
         setPatients(json)
     }
     fetchData().catch(console.error);
-}, [])
+  }, [])
 
-useEffect(() => {
-  const fetchData = async () => {   
-      const response = await fetch('/api/clients', {
-          headers: {
-            'Authorization': `Bearer ${user.token}`,
-            'Content-Type': `application/json`
-          }
-        })
-      const json = await response.json()
-      setClients(json)
-  }
-  fetchData().catch(console.error);
-}, [])
+  useEffect(() => {
+    const fetchData = async () => {   
+        const response = await fetch('/api/clients', {
+            headers: {
+              'Authorization': `Bearer ${user.token}`,
+              'Content-Type': `application/json`
+            }
+          })
+        const json = await response.json()
+        setClients(json)
+    }
+    fetchData().catch(console.error);
+  }, [])
 
 
 
