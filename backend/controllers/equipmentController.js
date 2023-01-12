@@ -62,8 +62,11 @@ const deleteEquipment = async(req,res) => {
         return res.status(400).json({error: 'No object in equipment registry with given id'}) // if it's not valid it returns response with error message
     }
 
-    const equipment = await Equipment.findOneAndUpdate({_id: id}, {
-        ...req.body
+    const updatedEquipment = Object.assign({}, req.body)
+
+    const equipment = await Equipment.findOneAndUpdate({_id: id}, 
+        updatedEquipment, {
+            new: true
     })
 
     if(!equipment){                            // if there is no object by given id we use if statement and we send back error message

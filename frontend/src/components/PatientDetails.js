@@ -24,6 +24,52 @@ const PatientDetails = ({ patient }) => {
         fetchData().catch(console.error);
     }, [])
 
+    const [showModal, setShowModal] = useState(false)
+    const [formData, setFormData] = useState({
+        imie: patient.imie,
+        gatunek: patient.gatunek,
+        rasa: patient.rasa,
+        id_klienta: patient.id_klienta
+    })
+
+    const handleCloseModal = () => {
+        setShowModal(false)
+    }
+
+    const handleChange = (event) => {
+        setFormData({
+            ...formData,
+            [event.target.name]: event.target.value
+        })
+    }
+
+    const handleSubmitModal = async () => {
+        if (!user) {
+            return
+        }
+
+        const body = JSON.stringify(formData)
+
+        const response = await fetch('/api/patients/' + patient._id, {
+            method: 'PATCH',
+            headers: {
+                'Authorization': `Bearer ${user.token}`,
+                'Content-Type': `application/json`
+            },
+            body: body
+        })
+        const json = await response.json()
+
+        if (response.ok) {
+            dispatch({type: 'UPDATE_PATIENTS', payload: json})
+            setShowModal(false)
+        }
+    }
+
+    const handleClickModify = () => {
+        setShowModal(true)
+    }
+
     const handleClickDelete = async () => {
         if (!user) {
             return
