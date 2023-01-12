@@ -116,6 +116,7 @@ const ClinicDetails = ({ clinic }) => {
                 <p><strong>Adres: </strong>{clinic.adres}</p>
                 <p><i>Data dodania kliniki do rejestru klinik: </i>{clinic.createdAt.substring(0, 10)}</p>
             </div>
+            
         </div>
     )
 }

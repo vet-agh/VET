@@ -69,8 +69,11 @@ const updateClinic = async (req, res) => {
     return res.status(400).json({error: 'No clinic with given id.'})
   }
 
-  const clinic = await Clinic.findByIdAndUpdate({_id: id}, {
-    ...req.body
+  const updatedClinic = Object.assign({}, req.body)
+
+  const clinic = await Clinic.findOneAndUpdate({_id : id}, 
+      updatedClinic, {
+          new: true
   })
 
   if(!clinic) {

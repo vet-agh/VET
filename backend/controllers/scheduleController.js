@@ -72,10 +72,10 @@ const updateSchedule = async (req,res) => {
 
   const updatedSchedule = Object.assign({}, req.body)
 
-  const schedule = await Schedule.findOneAndUpdate({_id: id}, 
-    updateSchedule, {
+  const schedule = await Schedule.findOneAndUpdate({_id : id}, 
+    updatedSchedule, {
   ...req.body 
-  }) 
+  })
 
 if(!schedule){
   return res.status(404).json({error:'No such appointment'})

@@ -56,8 +56,6 @@ const EquipmentDetails = ({ equipment }) => {
         setShowModal(true)
     }
 
-
-
     const handleClick = async() => {
         if (!user) {
             return
