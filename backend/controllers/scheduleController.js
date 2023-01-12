@@ -69,9 +69,13 @@ const updateSchedule = async (req,res) => {
   if(!mongoose.Types.ObjectId.isValid(id)){   
       return res.status(400).json({error:'No such appointment'})
   }
-  const schedule = await Schedule.findOneAndUpdate({_id: id}, {
-  ...req.body 
-}) 
+
+  const updatedSchedule = Object.assign({}, req.body)
+
+  const schedule = await Schedule.findOneAndUpdate({_id : id}, 
+    updatedSchedule, {
+    new: true
+  })
 
 if(!schedule){
   return res.status(404).json({error:'No such appointment'})

@@ -64,7 +64,7 @@ const deleteEquipment = async(req,res) => {
 
     const updatedEquipment = Object.assign({}, req.body)
 
-    const equipment = await Equipment.findOneAndUpdate({_id: id}, 
+    const equipment = await Equipment.findOneAndUpdate({_id : id}, 
         updatedEquipment, {
             new: true
     })

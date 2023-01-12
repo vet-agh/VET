@@ -125,8 +125,8 @@ const ClientDetails = ({ client }) => {
             </div>
   
             <div className="form-details">
-                {(user.role === 1 || user.role === 2) && <button className="delete-button" onClick={handleClickDelete}>Usuń klienta</button>}
-                {(user.role === 1 || user.role === 2) && <Button className="modify-button" onClick={handleClickModify}>Modyfikuj klienta</Button>}
+                {(user.role === 1 || user.role === 2) && <button className="delete-button" id="delete-button-clients" onClick={handleClickDelete}>Usuń klienta</button>}
+                {(user.role === 1 || user.role === 2) && <Button className="modify-button" id="update-button-clients" onClick={handleClickModify}>Modyfikuj klienta</Button>}
                 <p><strong>Imię: </strong>{client.imie}</p>
                 <p><strong>Nazwisko: </strong>{client.nazwisko}</p>
                 <p><strong>Numer konta: </strong>{client.numer_konta} </p>
