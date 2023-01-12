@@ -70,7 +70,6 @@ const updateClinic = async (req, res) => {
   }
 
   const updatedClinic = Object.assign({}, req.body)
-
   const clinic = await Clinic.findOneAndUpdate({_id : id},
     updatedClinic, {
       new: true
