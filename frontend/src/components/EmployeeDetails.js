@@ -143,8 +143,8 @@ const EmployeeDetails = ({employee}) => {
         </div>
 
         <div className="form-details">
-            {user.role === 1 && <button className="delete-button" onClick={handleClickDelete}>Usuń pracownika</button>}
-            {user.role === 1 | user.role === 2 && <Button className="modify-button" onClick={handleClickModify}>Modyfikuj pracownika</Button>}
+            {user.role === 1 && <button className="delete-button" id="delete-button-employees" onClick={handleClickDelete}>Usuń pracownika</button>}
+            {user.role === 1 | user.role === 2 && <Button className="modify-button" id="modify-button-employees" onClick={handleClickModify}>Modyfikuj pracownika</Button>}
             <p><strong>Imię: </strong>{employee.imie}</p>
             <p><strong>Nazwisko: </strong>{employee.nazwisko}</p>
             <p><strong>Numer telefonu: </strong>{employee.numer_telefonu}</p>

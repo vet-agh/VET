@@ -133,8 +133,8 @@ const EquipmentDetails = ({ equipment }) => {
         </div>
 
         <div className="form-details">
-            {user.role === 1 && <button className="delete-button" onClick={handleClick}> Usuń sprzęt </button>}
-            {user.role === 1 && <Button className="modify-button" onClick={handleClickModify}>Modyfikuj sprzęt</Button>}
+            {user.role === 1 && <button className="delete-button" id="delete-button-equipment" onClick={handleClick}> Usuń sprzęt </button>}
+            {user.role === 1 && <Button className="modify-button" id="modify-button-equipment" onClick={handleClickModify}>Modyfikuj sprzęt</Button>}
             <p><strong>Nazwa: </strong>{equipment.nazwa}</p> 
             <p><strong>Kategoria: </strong>{equipment.kategoria}</p> 
             <p><strong>Liczba sprzętu: </strong>{equipment.liczba_sprzetu}</p>

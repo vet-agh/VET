@@ -115,8 +115,8 @@ const PatientDetails = ({ patient }) => {
             </div>
 
             <div className="form-details">
-                {(user.role === 1 || user.role === 2) && <button className="delete-button" onClick={handleClickDelete}>Usuń pacjenta</button>}
-                {(user.role === 1 || user.role === 2) && <Button className="modify-button" onClick={handleClickModify}>Modyfikuj pacjenta</Button>}
+                {(user.role === 1 || user.role === 2) && <button className="delete-button" id="delete-button-patients" onClick={handleClickDelete}>Usuń pacjenta</button>}
+                {(user.role === 1 || user.role === 2) && <Button className="modify-button" id="modify-button-patients" onClick={handleClickModify}>Modyfikuj pacjenta</Button>}
                 <p><strong>Imie:</strong> {patient.imie} </p>
                 <p><strong>Gatunek:</strong> {patient.gatunek} </p>
                 <p><strong>Rasa: </strong>{patient.rasa}</p>
