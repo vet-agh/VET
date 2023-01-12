@@ -1,11 +1,28 @@
+import { useEffect, useState } from 'react'
 import { usePatientContext } from '../hooks/usePatientContext'
 import { useAuthContext } from '../hooks/useAuthContext'
-import { useState } from 'react';
-import { Button, Modal } from 'react-bootstrap'
+import ClientDetails from '../components/ClientDetails'
+import { Modal, Button } from 'react-bootstrap'
 
 const PatientDetails = ({ patient }) => {
     const { dispatch } = usePatientContext()
     const { user } = useAuthContext()
+    const [clients, setClients] = useState('')
+    const [showed, setShowed] = useState('');
+
+    useEffect(() => {
+        const fetchData = async () => {   
+            const response = await fetch('/api/clients', {
+                headers: {
+                  'Authorization': `Bearer ${user.token}`,
+                  'Content-Type': `application/json`
+                }
+              })
+            const json = await response.json()
+            setClients(json)
+        }
+        fetchData().catch(console.error);
+    }, [])
 
     const [showModal, setShowModal] = useState(false)
     const [formData, setFormData] = useState({
@@ -118,14 +135,23 @@ const PatientDetails = ({ patient }) => {
                 {(user.role === 1 || user.role === 2) && <button className="delete-button" id="delete-button-patients" onClick={handleClickDelete}>Usuń pacjenta</button>}
                 {(user.role === 1 || user.role === 2) && <Button className="modify-button" id="modify-button-patients" onClick={handleClickModify}>Modyfikuj pacjenta</Button>}
                 <p><strong>Imie:</strong> {patient.imie} </p>
-                <p><strong>Gatunek:</strong> {patient.gatunek} </p>
-                <p><strong>Rasa: </strong>{patient.rasa}</p>
-                <p><strong>ID Klienta:</strong> {patient.id_klienta} </p>
-                <p><i>Data dodania pacjenta do rejestru pacjentów: </i>{patient.createdAt.substring(0, 10)}</p>
-            </div>
-            
+            <p><strong>Gatunek:</strong> {patient.gatunek} </p>
+            <p><strong>Rasa: </strong>{patient.rasa}</p>
+            <p><strong>ID Klienta:</strong> {patient.id_klienta} </p>
+            <p style={{color: "#E5BA73"}} onClick={() => setShowed(showed => !showed)}><strong>Pokaż szczegóły klienta:</strong></p>
+            {showed ? 
+            <div id="patient-details">
+                {clients && clients.filter(c => (c._id === patient.id_klienta)).map(c => (
+                <ClientDetails client={c} key={c._id}/>))}
+                <br></br>
+            </div> : null}
+            <p><i>Data dodania pacjenta do rejestru pacjentów: </i>{patient.createdAt.substring(0, 10)}</p>
+
         </div>
+            
+    </div>
     )
+
 }
 
 export default PatientDetails
