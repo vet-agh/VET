@@ -74,7 +74,7 @@ const updateSchedule = async (req,res) => {
 
   const schedule = await Schedule.findOneAndUpdate({_id : id}, 
     updatedSchedule, {
-  ...req.body 
+    new: true
   })
 
 if(!schedule){
