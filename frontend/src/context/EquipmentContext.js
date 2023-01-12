@@ -7,6 +7,14 @@ export const equipmentReducer = (state, action) => {
         case "SET_EQUIPMENT": return {equipment: action.payload}
         case "CREATE_EQUIPMENT": return {equipment: [action.payload, ...state.equipment]}
         case "DELETE_EQUIPMENT": return {equipment: state.equipment.filter(e => e._id !== action.payload._id )}
+        case 'UPDATE_EQUIPMENT':
+            const updatedEquipment = state.equipment.map(e => {
+                if (e._id === action.payload._id) {
+                    return action.payload;
+                }
+                return e;
+            });
+            return {equipment: updatedEquipment};
         default: return state
     }
 }
