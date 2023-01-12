@@ -117,6 +117,26 @@ div.error {
   border-radius: 4px;
 }
 
+#delete-button-clients {
+  top: 25%;
+}
+
+#delete-button-patients {
+  top: 20%;
+}
+
+#delete-button-schedule {
+  top: 25%;
+}
+
+#delete-button-equipment {
+  top: 25%;
+}
+
+#delete-button-employees {
+  top: 25%;
+}
+
 #delete-button-clinics {
   top: 20%;
 }
@@ -202,6 +222,26 @@ div.error {
   text-decoration: none;
   cursor: pointer;
   border-radius: 4px;
+}
+
+#modify-button-clients {
+  top: 0%;
+}
+
+#modify-button-patients {
+  top: 5%;
+}
+
+#modify-button-schedule {
+  top: 25%;
+}
+
+#modify-button-equipment {
+  top: 10%;
+}
+
+#modify-button-employees {
+  top: 25%;
 }
 
 #modify-button-clinics {
