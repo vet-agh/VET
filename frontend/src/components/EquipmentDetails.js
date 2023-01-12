@@ -10,7 +10,7 @@ const EquipmentDetails = ({ equipment }) => {
     const [clinics, setClinics] = useState('')
     const [showed, setShowed] = useState('')
 
-    const [showModal, setShowModal] = useState(false)
+    const [showModal, setShowModal] = useState('')
     const [formData, setFormData] = useState({
         nazwa: equipment.nazwa,
         kategoria: equipment.kategoria,
@@ -19,7 +19,7 @@ const EquipmentDetails = ({ equipment }) => {
     })
 
     const handleCloseModal = () => {
-        setShowModal(false)
+        setShowModal('')
     }
 
     const handleChange = (event) => {
@@ -48,7 +48,7 @@ const EquipmentDetails = ({ equipment }) => {
 
         if (response.ok) {
             dispatch({type: 'UPDATE_EQUIPMENT', payload: json})
-            setShowModal(false)
+            setShowModal('')
         }   
     }
 

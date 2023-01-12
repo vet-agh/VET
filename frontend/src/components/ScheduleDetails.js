@@ -7,7 +7,7 @@ const ScheduleDetails = ({ schedule }) => {
   const { dispatch } = useScheduleContext()
   const { user } = useAuthContext()
 
-  const [showModal, setShowModal] = useState(false)
+  const [showModal, setShowModal] = useState('')
   const [formData, setFormData] = useState({
       data: schedule.data,
       czas_trwania_min: schedule.czas_trwania_min,
@@ -19,7 +19,7 @@ const ScheduleDetails = ({ schedule }) => {
   })
 
   const handleCloseModal = () => {
-      setShowModal(false)
+      setShowModal('')
   }
 
   const handleChange = (event) => {
