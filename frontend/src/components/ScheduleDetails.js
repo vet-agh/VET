@@ -93,8 +93,8 @@ const ScheduleDetails = ({ schedule }) => {
                     <input type="text" className="modal-form-control" name="data" value={formData.data} onChange={handleChange} />
                 </div>
                 <div className="modal-form-group">
-                    <label htmlFor="min_czas_trwania">Minimalny czas trwania</label>
-                    <input type="text" className="modal-form-control" name="min_czas_trwania" value={formData.min_czas_trwania} onChange={handleChange} />
+                    <label htmlFor="czas_trwania_min">Minimalny czas trwania</label>
+                    <input type="text" className="modal-form-control" name="czas_trwania_min" value={formData.czas_trwania_min} onChange={handleChange} />
                 </div>
                 <div className="modal-form-group">
                     <label htmlFor="usluga">Usługa</label>
