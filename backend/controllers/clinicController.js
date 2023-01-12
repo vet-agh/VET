@@ -73,7 +73,7 @@ const updateClinic = async (req, res) => {
 
   const clinic = await Clinic.findOneAndUpdate({_id : id}, 
     updatedClinic, {
-      new: true
+    new: true
   })
 
   if(!clinic) {
